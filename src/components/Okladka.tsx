@@ -51,7 +51,7 @@ export const Okladka = (props: IOkladkaProps) => {
 }
 
 export const OkladkaContainer = styled.div<IOkladkaProps>`
-    margin: 0;
+    margin-top: 10mm;
     width: 18.5cm;
     height: 12cm;
     border: 1px #cecece solid;

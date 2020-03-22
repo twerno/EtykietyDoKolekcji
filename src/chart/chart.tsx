@@ -88,6 +88,7 @@ function minimap(chart: am4maps.MapChart, polygonSeries: am4maps.MapPolygonSerie
         chart.smallMap.background.stroke = am4core.color("grey")
         chart.smallMap.background.strokeWidth = 2;
         chart.smallMap.background.fillOpacity = 1;
+        chart.smallMap.background.fill = am4core.color("#aadaff").lighten(0.7);
 
         let smallSeries = chart.smallMap.series.getIndex(0);
         if (smallSeries instanceof am4maps.MapPolygonSeries) {

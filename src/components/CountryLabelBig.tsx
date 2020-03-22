@@ -15,11 +15,12 @@ export const CountryLabelBig: React.FC<ICountryLabelProps> = (props) => {
 
     return (
         <CountryLabelBigContainer>
+            <div>
+                <img src={flagUrl} />
 
-            <img src={flagUrl} />
-
-            <div className="label">
-                {countryList.find(c => c.code === props.countryCode.toUpperCase())?.name_pl}
+                <div className="label">
+                    {countryList.find(c => c.code === props.countryCode.toUpperCase())?.name_pl}
+                </div>
             </div>
 
             <ul className="info">
@@ -42,19 +43,23 @@ export const CountryLabelBigContainer = styled.div`
     justify-content: space-between;
 
     border: 1px solid #cecece;
-    width: 4cm;
-    margin: 0.15cm;
+    width: 3cm;
+    margin: 0.191cm;
     padding: 5px;
 
+    .flag {
+        position: relative;
+    }
+
     img {
-        outline: 1px solid #cecece; 
-        outline-offset: -1px;
-        width: 4cm;
+        width: 3cm;
+        outline: 1px solid #cecece87; 
+        outline-offset: -1px;  
     }
 
     .label{
         font-family: 'Inter', sans-serif; 
-        font-size: 22px;
+        font-size: 17px;
         font-weight: bold;
         margin-top: 15px;
         margin-bottom: 10px;
@@ -64,10 +69,11 @@ export const CountryLabelBigContainer = styled.div`
         margin: 0;
         list-style: none;
         padding: 0;
+        font-size: 10px;
+        color: #7b7b7b99;
     }
 
-    ul.info li {
-        font-size: 12px;
-        color: #7b7b7b99;
+    ul.info li:not(':first-child') {
+        margin-top: 1px;
     }
 `;

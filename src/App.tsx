@@ -10,7 +10,7 @@ function App() {
         labelList={[
           { countryCode: 'se', info: ['Korona szwedzka', '1 korona = 100 öre'] },
           { countryCode: 'cz', info: ['Korona czeska', '1 korona = 100 halerzy'] },
-          { countryCode: 'sk', info: ['Korona słowacka', '1 korona = 100 halerzy'] },
+          { countryCode: 'sk', info: ['Korona słowacka', '1 korona = 100 halerzy', 'Euro od 1 stycznia 2009'] },
           { countryCode: 'hr', info: ['Kuna', '1 kuna = 100 lip'] },
           { countryCode: 'bg', info: ['Lew', '1 lew = 100 stotinek'] },
         ]}
@@ -37,7 +37,7 @@ function App() {
       <OkładkaA4
         labelList={[
           { countryCode: 'tr', info: ['Lira turecka', '1 lira = 100 kuruszy'] },
-          { countryCode: 'il', info: ['Nowy izraelski szekel', '1 szekiel = 100 agor'] },
+          { countryCode: 'il', info: ['Nowy izraelski szekel', '1 szekel = 100 agor'] },
         ]}
         minimap="bottom-left"
       />
@@ -62,13 +62,7 @@ function App() {
           { countryCode: 'bt', info: ['Ngultrum', '1 ngultrum = 100 czetrum'] },
           { countryCode: 'mm', info: ['Kiat', '1 kiat = 100 pia'] },
           { countryCode: 'lk', info: ['Rupia lankijska', '1 rupia = 100 centów'] },
-          { countryCode: 'kh', info: ['Riel kambodżański', '1 riel = 10 kaków = 100 senów'] },
-        ]}
-        minimap="top-left"
-      />
-
-      <OkładkaA4
-        labelList={[
+          { countryCode: 'kh', info: ['Riel kambodżański', '1 riel = 100 senów'] },
           { countryCode: 'af', info: ['Afgani', '1 afgani = 100 pul'] },
           { countryCode: 'mn', info: ['Tugrik', '1 tugrik = 100 möngö'] },
         ]}
