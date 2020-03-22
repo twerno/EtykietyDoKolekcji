@@ -3,8 +3,7 @@ import styled from "styled-components";
 export const A4Page = styled.div`
     height: 297mm;
     width: 210mm;
-
-    padding: 10mm;
+    margin: 10mm;
 
     display: flex;
     flex-direction: column;
@@ -13,4 +12,10 @@ export const A4Page = styled.div`
     @media print {
         page-break-after: always;
     }
+
+    @media screen {
+        margin: 30px;
+    }
+
+    /* background-color: red; */
 `;

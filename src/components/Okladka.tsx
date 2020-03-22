@@ -1,14 +1,16 @@
-import styled from 'styled-components';
 import * as React from 'react';
+import styled from 'styled-components';
 import { MapChart, MinimapPosition } from '../chart/chart';
+import { FlagIconCssProvider } from '../chart/FlagProvider';
+import { CountryLabelBig } from './CountryLabelBig';
 import { FlexContainer } from './FlexContainer';
-import { CountryLabel } from './CountryLabel';
 
 export interface IOkladkaProps {
     direction?: 'column' | 'row';
-    labelList: Array<{ countryCode: string, label?: React.ReactNode }>;
+    labelList: Array<{ countryCode: string, label?: React.ReactNode, info?: string[] }>;
     zoomToCountriesList?: string[];
     minimap?: MinimapPosition;
+    mode?: 'mapOnly' | 'labelsOnly';
 }
 
 export const Okladka = (props: IOkladkaProps) => {
@@ -17,26 +19,33 @@ export const Okladka = (props: IOkladkaProps) => {
         ? 'row'
         : 'column';
 
+    const showMapChart = props.mode === undefined || props.mode === 'mapOnly';
+    const showLabels = props.mode === undefined || props.mode === 'labelsOnly';
+
     return (
         <OkladkaContainer {...props}>
-            <MapChart
+            {showMapChart && <MapChart
                 labelList={props.labelList}
                 zoomToCountriesList={props.zoomToCountriesList}
                 minimap={props.minimap}
             />
-            <FlexContainer direction={labelFlexDirections}>
+            }
+
+            {showLabels && <FlexContainer direction={labelFlexDirections}>
                 {
                     props.labelList.map(data =>
-                        <CountryLabel
-                            key={`${data.countryCode}`}
+                        <CountryLabelBig
+                            key={data.countryCode}
                             countryCode={data.countryCode}
-                            direction={props.direction}
+                            flagProvider={FlagIconCssProvider}
+                            info={data.info}
                         >
                             {data.label}
-                        </CountryLabel>
+                        </CountryLabelBig>
                     )
                 }
             </FlexContainer>
+            }
         </OkladkaContainer>
     );
 }
@@ -50,4 +59,5 @@ export const OkladkaContainer = styled.div<IOkladkaProps>`
 
     display: flex;
     flex-direction: ${props => props.direction ?? 'column'};
+    flex-wrap: wrap;
 `;

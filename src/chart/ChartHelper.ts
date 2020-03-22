@@ -4,7 +4,8 @@ import { IFlagProvider } from "./FlagProvider";
 
 export default {
     zoomAtCountries,
-    fillWithCountryFlag
+    fillWithCountryFlag,
+    zoomToMultiple
 }
 
 function zoomAtCountries(countriesId: string[], chart: am4maps.MapChart, polygonSeries: am4maps.MapPolygonSeries) {
@@ -44,6 +45,35 @@ function zoomAtCountries(countriesId: string[], chart: am4maps.MapChart, polygon
 
     chart.zoomToGeoPoint(geoPoint, zoomLevel, true, 0);
 }
+// https://www.amcharts.com/docs/v4/tutorials/pre-zooming-map-to-a-list-of-countries/
+function zoomToMultiple(countriesId: string[], chart: am4maps.MapChart, polygonSeries: am4maps.MapPolygonSeries) {
+
+    const countryPolygonList = countriesId
+        .map(v => v.toUpperCase())
+        .map(v => polygonSeries.getPolygonById(v));
+
+    const { north, south, west, east } = countryPolygonList.reduce<{ north: number, south: number, west: number, east: number }>((prev, curr) => ({
+        north: prev.north === undefined || curr.north > prev.north
+            ? curr.north
+            : prev.north,
+
+        south: prev.south === undefined || curr.south < prev.south
+            ? curr.south
+            : prev.south,
+
+        west: prev.west === undefined || curr.west < prev.west
+            ? curr.west
+            : prev.west,
+
+        east: prev.east === undefined || curr.east > prev.east
+            ? curr.east
+            : prev.east
+    }), {} as any);
+
+    countryPolygonList.forEach(c => c.isActive = true);
+
+    chart.zoomToRectangle(north, east, south, west, 1, true, 0);
+}
 
 function fillWithCountryFlag(countryId: string, target: am4maps.MapPolygon, flagProvider: IFlagProvider) {
     const bbox = getBBoxOf(target);
@@ -53,17 +83,8 @@ function fillWithCountryFlag(countryId: string, target: am4maps.MapPolygon, flag
     const flagRatio = flag.height / flag.width;
 
     const backgroundPattern = new am4core.Pattern();
-    backgroundPattern.shapeRendering = "geometricPrecision";
-    // const image = new am4core.Paper();
     const image = new am4core.Image();
-    image.shapeRendering = "geometricPrecision";
     image.href = flag.url;
-    // image.href = "data:image/svg+xml;charset=utf-8;base64,PHN2ZyB2ZXJzaW9uPSIxIiB2aWV3Qm94PSIwIDAgNjEyIDc5MiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBmaWxsPSIjZmNhZjE3IiBkPSJNMzA2IDE1M2wtOTAgMTQ2LTE2NiA0MCAxMTEgMTMwLTEzIDE3MSAxNTgtNjUgMTU4IDY1LTEzLTE3MSAxMTEtMTMwLTE2Ni00MC05MC0xNDZ6Ii8+PC9zdmc+";
-    // image.width = 15;
-    // image.height = 20;
-    image.nonScaling = true;
-    console.log(image.maskRectangle);
-    image.exportable = false;
 
     // adjust flag size to match bbox size
     if (bBoxRatio >= flagRatio) {
@@ -78,14 +99,12 @@ function fillWithCountryFlag(countryId: string, target: am4maps.MapPolygon, flag
         image.height = Math.ceil(flagRatio * bbox.width);
 
         backgroundPattern.x = bbox.x;
-        backgroundPattern.y = Math.floor(bbox.y - (flagRatio * bbox.width - bbox.height) / 2);
+        backgroundPattern.y = bbox.y - (flagRatio * bbox.width - bbox.height) / 2;
     }
     backgroundPattern.addElement(image.element as any);
     backgroundPattern.width = image.width;
     backgroundPattern.height = image.height;
     backgroundPattern.backgroundOpacity = 1;
-    backgroundPattern.strokeWidth = 0;
-    backgroundPattern.strokeOpacity = 0;
 
     return backgroundPattern;
 }

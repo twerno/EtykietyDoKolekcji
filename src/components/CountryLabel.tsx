@@ -1,15 +1,17 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { countryList } from '../helper/CountryNames';
+import { IFlagProvider } from '../chart/FlagProvider';
 
 export interface ICountryLabelProps {
     countryCode: string;
     direction?: 'column' | 'row';
+    flagProvider: IFlagProvider;
 }
 
 export const CountryLabel: React.FC<ICountryLabelProps> = (props) => {
 
-    const flagUrl = `https://lipis.github.io/flag-icon-css/flags/4x3/${props.countryCode.toLowerCase()}.svg`;
+    const flagUrl = props.flagProvider.provideFlagFor(props.countryCode).url;
 
     return (
         <CountryLabelContainer direction={props.direction}>
@@ -57,14 +59,14 @@ export const CountryLabelContainer = styled.div<ICountryLabelContainerProps>`
 `;
 
 
-export const Flaga: React.FC = (props) => {
-    return (
-        <div style={
-            {
-                margin: '2px',
-                border: '1px solid black',
-                padding: '2px'
-            }
-        }>{props.children}</div>
-    );
-};
+// export const Flaga: React.FC = (props) => {
+//     return (
+//         <div style={
+//             {
+//                 margin: '2px',
+//                 border: '1px solid black',
+//                 padding: '2px'
+//             }
+//         }>{props.children}</div>
+//     );
+// };
