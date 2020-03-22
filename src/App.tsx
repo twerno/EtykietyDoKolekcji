@@ -1,24 +1,96 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Okladka } from './components/Okladka';
+import { A4Page } from './components/A4Page';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <A4Page>
+        <Okladka
+          direction="row"
+          labelList={[
+            { countryCode: 'se' },
+            { countryCode: 'cz' },
+            { countryCode: 'hr' },
+            { countryCode: 'sk' },
+            { countryCode: 'bg' },
+          ]}
+          minimap="bottom-left"
+        />
+
+        <Okladka
+          direction="row"
+          labelList={[
+            { countryCode: 'us' },
+            { countryCode: 'ca' },
+            { countryCode: 'au' },
+          ]}
+          minimap="bottom-left"
+        />
+      </A4Page>
+
+      <A4Page>
+        <Okladka
+          direction="row"
+          labelList={[
+            { countryCode: 'bs' },
+          ]}
+          zoomToCountriesList={['pa', 'cu', 'pr']}
+          minimap="bottom-left"
+        />
+
+        <Okladka
+          direction="row"
+          labelList={[
+            { countryCode: 'tr' },
+            { countryCode: 'il' },
+          ]}
+          minimap="bottom-left"
+        />
+      </A4Page>
+
+      <A4Page>
+        <Okladka
+          direction="row"
+          labelList={[
+            { countryCode: 'br' },
+          ]}
+          minimap="bottom-left"
+        />
+
+        <Okladka
+          direction="row"
+          labelList={[
+            { countryCode: 'mu' },
+          ]}
+          zoomToCountriesList={['mu', 'mg', 'mz']}
+          minimap="bottom-left"
+        />
+      </A4Page>
+
+      <A4Page>
+        <Okladka
+          direction="row"
+          labelList={[
+            { countryCode: 'bt' },
+            { countryCode: 'mm' },
+            { countryCode: 'lk' },
+            { countryCode: 'kh' },
+          ]}
+          minimap="top-left"
+        />
+
+        <Okladka
+          direction="row"
+          labelList={[
+            { countryCode: 'af' },
+            { countryCode: 'mn' },
+          ]}
+          minimap="bottom-right"
+        />
+      </A4Page>
+
     </div>
   );
 }
