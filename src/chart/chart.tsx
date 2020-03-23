@@ -4,13 +4,16 @@ import * as am4maps from "@amcharts/amcharts4/maps";
 import * as React from 'react';
 import ChartHelper from "./ChartHelper";
 import ChartStyle from "./ChartStyle";
+import { IOkladkaCountryProps } from "../components/Okladka";
+import { IFlagProvider } from "./FlagProvider";
 
 export type MinimapPosition = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
 
 export interface IMapChartProps {
-    labelList: Array<{ countryCode: string, label?: React.ReactNode }>;
-    zoomToCountriesList?: string[];
+    countryDataList: IOkladkaCountryProps[];
+    includeInView?: string[];
     minimap?: MinimapPosition;
+    flagProvider: IFlagProvider;
 }
 
 export const MapChart = (props: IMapChartProps) => {
@@ -69,12 +72,16 @@ const setUpChart = (chart: am4maps.MapChart, props: IMapChartProps) => {
 
     // zoom to country
     chart.events.on("ready", (ev) => {
-        const countryList = props.zoomToCountriesList || props.labelList.map(v => v.countryCode);
+        const countryList = props.countryDataList.map(v => v.countryCode);
+        props.includeInView?.forEach(v => countryList.push(v));
+
         ChartHelper.zoomAtCountries(countryList, chart, polygonSeries);
+
+        // Bubbles
+        configureBubbles(chart, polygonSeries, props);
     });
 
     minimap(chart, polygonSeries, props);
-
 }
 
 function minimap(chart: am4maps.MapChart, polygonSeries: am4maps.MapPolygonSeries, props: IMapChartProps) {
@@ -101,4 +108,36 @@ function minimap(chart: am4maps.MapChart, polygonSeries: am4maps.MapPolygonSerie
         chart.smallMap.align = props.minimap.indexOf('left') !== -1 ? 'left' : 'right';
         chart.smallMap.valign = props.minimap.indexOf('top') !== -1 ? 'top' : 'bottom';
     }
+}
+
+function configureBubbles(chart: am4maps.MapChart, polygonSeries: am4maps.MapPolygonSeries, props: IMapChartProps) {
+    const imageSeries = chart.series.push(new am4maps.MapImageSeries());
+    const imageSeriesTemplate = imageSeries.mapImages.template;
+    const flag = imageSeriesTemplate.createChild(am4core.Image);
+    flag.width = 25;
+    flag.height = 18.75;
+
+    flag.nonScaling = true;
+    flag.horizontalCenter = "left";
+    flag.verticalCenter = "middle";
+    flag.propertyFields.href = 'url';
+
+    imageSeriesTemplate.propertyFields.latitude = "latitude";
+    imageSeriesTemplate.propertyFields.longitude = "longitude";
+    imageSeriesTemplate.filters.push(new am4core.DropShadowFilter());
+    const focusFilter = imageSeriesTemplate.filters.push(new am4core.FocusFilter());
+    focusFilter.stroke = am4core.color("white", 0.5);
+    focusFilter.strokeWidth = 1;
+
+    const imageSeriesData = props.countryDataList
+        .filter(d => d.showPin)
+        .map(d => d.countryCode)
+        .map(v => v.toUpperCase())
+        .map(countryId => ({ countryId, polygon: polygonSeries.getPolygonById(countryId) }))
+        .map(d => ({
+            latitude: d.polygon.latitude,
+            longitude: d.polygon.longitude,
+            url: props.flagProvider.provideFlagFor(d.countryId).url
+        }));
+    imageSeries.data = imageSeriesData;
 }

@@ -2,7 +2,6 @@ import * as am4core from "@amcharts/amcharts4/core";
 import * as am4maps from "@amcharts/amcharts4/maps";
 import { IMapChartProps } from "./chart";
 import ChartHelper from "./ChartHelper";
-import { FlagIconCssProvider } from "./FlagProvider";
 
 export default {
     fillStyle,
@@ -18,9 +17,8 @@ function isCountryFromList(id: string | undefined, countryIdList: string[]): id 
 function fillStyle(props: IMapChartProps) {
     return (fill: am4core.Optional<am4core.Color | am4core.Pattern | am4core.LinearGradient | am4core.RadialGradient>, target: am4maps.MapPolygon) => {
         const id = (target.dataItem.dataContext as any)?.id as string | undefined;
-        return isCountryFromList(id, props.labelList.map(v => v.countryCode))
-            ? ChartHelper.fillWithCountryFlag(id, target, FlagIconCssProvider)
-            // ? am4core.color('rgb(232, 232, 232)')
+        return isCountryFromList(id, props.countryDataList.map(v => v.countryCode))
+            ? ChartHelper.fillWithCountryFlag(id, target, props.flagProvider)
             : fill;
     }
 }
@@ -28,7 +26,7 @@ function fillStyle(props: IMapChartProps) {
 function strokeStyle(props: IMapChartProps) {
     return (stroke: am4core.Optional<am4core.Color | am4core.Pattern | am4core.LinearGradient | am4core.RadialGradient>, target: am4maps.MapPolygon) => {
         const id = (target.dataItem.dataContext as any)?.id as string | undefined;
-        return isCountryFromList(id, props.labelList.map(v => v.countryCode))
+        return isCountryFromList(id, props.countryDataList.map(v => v.countryCode))
             ? am4core.color("black")
             : stroke;
     }
@@ -37,7 +35,7 @@ function strokeStyle(props: IMapChartProps) {
 function strokeWidthStyle(props: IMapChartProps) {
     return (strokeWidth: number | undefined, target: am4maps.MapPolygon) => {
         const id = (target.dataItem.dataContext as any)?.id as string | undefined;
-        return isCountryFromList(id, props.labelList.map(v => v.countryCode))
+        return isCountryFromList(id, props.countryDataList.map(v => v.countryCode))
             ? 2.5
             : strokeWidth;
     }

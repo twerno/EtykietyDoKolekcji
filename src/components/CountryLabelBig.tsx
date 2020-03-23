@@ -2,30 +2,34 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { countryList } from '../helper/CountryNames';
 import { IFlagProvider } from '../chart/FlagProvider';
+import { IOkladkaCountryProps } from './Okladka';
 
 export interface ICountryLabelProps {
-    countryCode: string;
-    info?: string[];
+    countryData: IOkladkaCountryProps;
     flagProvider: IFlagProvider;
 }
 
-export const CountryLabelBig: React.FC<ICountryLabelProps> = (props) => {
+export const CountryLabelBig = (props: ICountryLabelProps) => {
+    const countryCode = props.countryData.countryCode;
 
-    const flagUrl = props.flagProvider.provideFlagFor(props.countryCode).url;
+    const flagUrl = props.flagProvider.provideFlagFor(countryCode).url;
 
     return (
         <CountryLabelBigContainer>
             <div>
-                <img src={flagUrl} />
+                <img src={flagUrl} alt={countryCode} />
 
                 <div className="label">
-                    {countryList.find(c => c.code === props.countryCode.toUpperCase())?.name_pl}
+                    {
+                        props.countryData.label
+                        || countryList.find(c => c.code === countryCode.toUpperCase())?.name_pl
+                    }
                 </div>
             </div>
 
             <ul className="info">
-                {props.info?.map((v, idx) =>
-                    <li key={`${props.countryCode}_${idx}`}>
+                {props.countryData.info?.map((v, idx) =>
+                    <li key={`${countryCode}_${idx}`}>
                         {v}
                     </li>)
                 }
@@ -69,7 +73,7 @@ export const CountryLabelBigContainer = styled.div`
         margin: 0;
         list-style: none;
         padding: 0;
-        font-size: 10px;
+        font-size: 9px;
         color: #7b7b7b99;
     }
 

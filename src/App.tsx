@@ -7,7 +7,7 @@ function App() {
     <div className="App">
 
       <OkładkaA4
-        labelList={[
+        countryList={[
           { countryCode: 'se', info: ['Korona szwedzka', '1 korona = 100 öre'] },
           { countryCode: 'cz', info: ['Korona czeska', '1 korona = 100 halerzy'] },
           { countryCode: 'sk', info: ['Korona słowacka', '1 korona = 100 halerzy', 'Euro od 1 stycznia 2009'] },
@@ -18,24 +18,25 @@ function App() {
       />
 
       <OkładkaA4
-        labelList={[
+        countryList={[
           { countryCode: 'ca', info: ['Dolar kanadyjski', '1 dolar = 100 centów'] },
           { countryCode: 'us', info: ['Dolar amerykański', '1 dolar = 100 centów'] },
+          { countryCode: 'bs', info: ['Dolar bahamski', '1 dolar = 100 centów'], showPin: true },
           { countryCode: 'au', info: ['Dolar australijski', '1 dolar = 100 centów'] },
         ]}
         minimap="bottom-left"
       />
 
-      <OkładkaA4
-        labelList={[
-          { countryCode: 'bs', info: ['Dolar bahamski', '1 dolar = 100 centów'] },
+      {/* <OkładkaA4
+        countryList={[
+          { countryCode: 'bs', info: ['Dolar bahamski', '1 dolar = 100 centów'], showPin: true },
         ]}
-        zoomToCountriesList={['pa', 'cu', 'pr', 'bm']}
+        includeInView={['pa', 'cu', 'pr', 'bm']}
         minimap="bottom-left"
-      />
+      /> */}
 
       <OkładkaA4
-        labelList={[
+        countryList={[
           { countryCode: 'tr', info: ['Lira turecka', '1 lira = 100 kuruszy'] },
           { countryCode: 'il', info: ['Nowy izraelski szekel', '1 szekel = 100 agor'] },
         ]}
@@ -43,24 +44,24 @@ function App() {
       />
 
       <OkładkaA4
-        labelList={[
+        countryList={[
           { countryCode: 'br', info: ['Real brazylijski', '1 real = 100 centavos'] },
         ]}
         minimap="bottom-left"
       />
 
       <OkładkaA4
-        labelList={[
+        countryList={[
           { countryCode: 'mu', info: ['Rupia maurytyjska', '1 rumia = 100 centów'] },
         ]}
-        zoomToCountriesList={['mu', 'mg', 'mz']}
+        includeInView={['mg', 'mz']}
         minimap="bottom-left"
       />
 
       <OkładkaA4
-        labelList={[
+        countryList={[
           { countryCode: 'bt', info: ['Ngultrum', '1 ngultrum = 100 czetrum'] },
-          { countryCode: 'mm', info: ['Kiat', '1 kiat = 100 pia'] },
+          { countryCode: 'mm', info: ['Kiat', '1 kiat = 100 pia', 'dawniej „Birma”'] },
           { countryCode: 'lk', info: ['Rupia lankijska', '1 rupia = 100 centów'] },
           { countryCode: 'kh', info: ['Riel kambodżański', '1 riel = 100 senów'] },
           { countryCode: 'af', info: ['Afgani', '1 afgani = 100 pul'] },

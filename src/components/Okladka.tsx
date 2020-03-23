@@ -5,10 +5,17 @@ import { FlagIconCssProvider } from '../chart/FlagProvider';
 import { CountryLabelBig } from './CountryLabelBig';
 import { FlexContainer } from './FlexContainer';
 
+export interface IOkladkaCountryProps {
+    countryCode: string;
+    label?: React.ReactNode;
+    info?: string[];
+    showPin?: true;
+}
+
 export interface IOkladkaProps {
     direction?: 'column' | 'row';
-    labelList: Array<{ countryCode: string, label?: React.ReactNode, info?: string[] }>;
-    zoomToCountriesList?: string[];
+    countryList: IOkladkaCountryProps[];
+    includeInView?: string[];
     minimap?: MinimapPosition;
     mode?: 'mapOnly' | 'labelsOnly';
 }
@@ -25,23 +32,21 @@ export const Okladka = (props: IOkladkaProps) => {
     return (
         <OkladkaContainer {...props}>
             {showMapChart && <MapChart
-                labelList={props.labelList}
-                zoomToCountriesList={props.zoomToCountriesList}
+                countryDataList={props.countryList}
+                includeInView={props.includeInView}
                 minimap={props.minimap}
+                flagProvider={FlagIconCssProvider}
             />
             }
 
             {showLabels && <FlexContainer direction={labelFlexDirections}>
                 {
-                    props.labelList.map(data =>
+                    props.countryList.map(data =>
                         <CountryLabelBig
                             key={data.countryCode}
-                            countryCode={data.countryCode}
+                            countryData={data}
                             flagProvider={FlagIconCssProvider}
-                            info={data.info}
-                        >
-                            {data.label}
-                        </CountryLabelBig>
+                        />
                     )
                 }
             </FlexContainer>
