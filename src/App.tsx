@@ -27,14 +27,6 @@ function App() {
         minimap="bottom-left"
       />
 
-      {/* <OkładkaA4
-        countryList={[
-          { countryCode: 'bs', info: ['Dolar bahamski', '1 dolar = 100 centów'], showPin: true },
-        ]}
-        includeInView={['pa', 'cu', 'pr', 'bm']}
-        minimap="bottom-left"
-      /> */}
-
       <OkładkaA4
         countryList={[
           { countryCode: 'tr', info: ['Lira turecka', '1 lira = 100 kuruszy'] },
@@ -47,6 +39,7 @@ function App() {
         countryList={[
           { countryCode: 'br', info: ['Real brazylijski', '1 real = 100 centavos'] },
         ]}
+        includeInView={['br', 'gs', 'pa']}
         minimap="bottom-left"
       />
 
@@ -61,7 +54,7 @@ function App() {
       <OkładkaA4
         countryList={[
           { countryCode: 'bt', info: ['Ngultrum', '1 ngultrum = 100 czetrum'] },
-          { countryCode: 'mm', info: ['Kiat', '1 kiat = 100 pia', 'dawniej „Birma”'] },
+          { countryCode: 'mm', label: 'Mjanma/Birma', info: ['Kiat', '1 kiat = 100 pia'] },
           { countryCode: 'lk', info: ['Rupia lankijska', '1 rupia = 100 centów'] },
           { countryCode: 'kh', info: ['Riel kambodżański', '1 riel = 100 senów'] },
           { countryCode: 'af', info: ['Afgani', '1 afgani = 100 pul'] },

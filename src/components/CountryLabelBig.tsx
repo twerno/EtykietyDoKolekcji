@@ -67,6 +67,8 @@ export const CountryLabelBigContainer = styled.div`
         font-weight: bold;
         margin-top: 15px;
         margin-bottom: 10px;
+        margin-left: -5px;
+        margin-right: -5px;
     }
 
     ul.info {
@@ -75,6 +77,8 @@ export const CountryLabelBigContainer = styled.div`
         padding: 0;
         font-size: 9px;
         color: #7b7b7b99;
+        margin-left: -5px;
+        margin-right: -5px;
     }
 
     ul.info li:not(':first-child') {
