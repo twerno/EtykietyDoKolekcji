@@ -8,7 +8,7 @@ import { FlexContainer } from './FlexContainer';
 export interface IOkladkaCountryProps {
     countryCode: string;
     label?: React.ReactNode;
-    info?: string[];
+    info?: Array<string | Promise<string>>;
     showPin?: true;
 }
 

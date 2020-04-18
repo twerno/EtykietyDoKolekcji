@@ -1,8 +1,8 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { countryList } from '../helper/CountryNames';
 import { IFlagProvider } from '../chart/FlagProvider';
 import { IOkladkaCountryProps } from './Okladka';
+import CountryConverterService from '../service/CountryConverterService';
 
 export interface ICountryLabelProps {
     countryData: IOkladkaCountryProps;
@@ -13,6 +13,7 @@ export const CountryLabelBig = (props: ICountryLabelProps) => {
     const countryCode = props.countryData.countryCode;
 
     const flagUrl = props.flagProvider.provideFlagFor(countryCode).url;
+    const namePl = CountryConverterService.countryCode2NamePl(countryCode);
 
     return (
         <CountryLabelBigContainer>
@@ -20,17 +21,14 @@ export const CountryLabelBig = (props: ICountryLabelProps) => {
                 <img src={flagUrl} alt={countryCode} />
 
                 <div className="label">
-                    {
-                        props.countryData.label
-                        || countryList.find(c => c.code === countryCode.toUpperCase())?.name_pl
-                    }
+                    {namePl}
                 </div>
             </div>
 
             <ul className="info">
                 {props.countryData.info?.map((v, idx) =>
                     <li key={`${countryCode}_${idx}`}>
-                        {v}
+                        <AsyncTextRenderer provider={v} />
                     </li>)
                 }
             </ul>
@@ -85,3 +83,19 @@ export const CountryLabelBigContainer = styled.div`
         margin-top: 1px;
     }
 `;
+
+function AsyncTextRenderer(props: { provider: string | Promise<string> }) {
+    const [text, setText] = React.useState<string | null>(null);
+
+    React.useEffect(() => {
+        if (typeof props.provider === 'string') {
+            setText(props.provider);
+        }
+        else {
+            props.provider
+                .then(setText);
+        }
+    }, [props.provider]);
+
+    return <>{text}</>;
+}

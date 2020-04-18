@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { countryList } from '../helper/CountryNames';
 import { IFlagProvider } from '../chart/FlagProvider';
+import CountryConverterService from '../service/CountryConverterService';
 
 export interface ICountryLabelProps {
     countryCode: string;
@@ -12,6 +12,7 @@ export interface ICountryLabelProps {
 export const CountryLabel: React.FC<ICountryLabelProps> = (props) => {
 
     const flagUrl = props.flagProvider.provideFlagFor(props.countryCode).url;
+    const namePl = CountryConverterService.countryCode2NamePl(props.countryCode);
 
     return (
         <CountryLabelContainer direction={props.direction}>
@@ -21,7 +22,7 @@ export const CountryLabel: React.FC<ICountryLabelProps> = (props) => {
             </svg>
 
             <div>
-                {props.children || countryList.find(c => c.code === props.countryCode.toUpperCase())?.name_pl}
+                {props.children || namePl}
             </div>
         </CountryLabelContainer>
     );
