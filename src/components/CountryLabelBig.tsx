@@ -42,11 +42,14 @@ export const CountryLabelBigContainer = styled.div`
     flex-direction: column;
 
     align-items: center;
-    justify-content: space-between;
+    /* justify-content: space-between; */
 
-    border: 1px solid #cecece;
+    flex: 0.5;
+
+    /* border: 1px solid #cecece;
     width: 3cm;
     margin: 0.191cm;
+    margin: 0.2cm 0.6cm; */
     padding: 5px;
 
     .flag {

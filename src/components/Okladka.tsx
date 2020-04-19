@@ -39,7 +39,7 @@ export const Okladka = (props: IOkladkaProps) => {
             />
             }
 
-            {showLabels && <FlexContainer direction={labelFlexDirections}>
+            {showLabels && <FlexContainer direction='column'>
                 {
                     props.countryList.map(data =>
                         <CountryLabelBig
@@ -65,4 +65,6 @@ export const OkladkaContainer = styled.div<IOkladkaProps>`
     display: flex;
     flex-direction: ${props => props.direction ?? 'column'};
     flex-wrap: wrap;
+
+    
 `;

@@ -8,4 +8,7 @@ export const FlexContainer = styled.div<IFlexContainerProps>`
     display: flex;
     flex-direction: ${props => props.direction ?? 'column'};
     flex-wrap: wrap;
+
+    height: 100%;
+    align-items: center;
 `;
