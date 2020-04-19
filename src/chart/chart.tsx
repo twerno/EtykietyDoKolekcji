@@ -4,8 +4,8 @@ import * as am4maps from "@amcharts/amcharts4/maps";
 import * as React from 'react';
 import ChartHelper from "./ChartHelper";
 import ChartStyle from "./ChartStyle";
-import { IOkladkaCountryProps } from "../components/Okladka";
 import { IFlagProvider } from "./FlagProvider";
+import { IOkladkaCountryProps } from "../components/OkladkaMapa";
 
 export type MinimapPosition = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
 

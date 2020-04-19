@@ -1,8 +1,9 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { IFlagProvider } from '../chart/FlagProvider';
-import { IOkladkaCountryProps } from './Okladka';
 import CountryConverterService from '../service/CountryConverterService';
+import { AsyncTextRenderer } from './AsyncTextRenderer';
+import { IOkladkaCountryProps } from './OkladkaMapa';
 
 export interface ICountryLabelProps {
     countryData: IOkladkaCountryProps;
@@ -42,14 +43,9 @@ export const CountryLabelBigContainer = styled.div`
     flex-direction: column;
 
     align-items: center;
-    /* justify-content: space-between; */
 
     flex: 0.5;
 
-    /* border: 1px solid #cecece;
-    width: 3cm;
-    margin: 0.191cm;
-    margin: 0.2cm 0.6cm; */
     padding: 5px;
 
     .flag {
@@ -58,8 +54,7 @@ export const CountryLabelBigContainer = styled.div`
 
     img {
         width: 3cm;
-        outline: 1px solid #cecece87; 
-        outline-offset: -1px;  
+        outline: 1px solid #cececee6; 
     }
 
     .label{
@@ -86,19 +81,3 @@ export const CountryLabelBigContainer = styled.div`
         margin-top: 1px;
     }
 `;
-
-function AsyncTextRenderer(props: { provider: string | Promise<string> }) {
-    const [text, setText] = React.useState<string | null>(null);
-
-    React.useEffect(() => {
-        if (typeof props.provider === 'string') {
-            setText(props.provider);
-        }
-        else {
-            props.provider
-                .then(setText);
-        }
-    }, [props.provider]);
-
-    return <>{text}</>;
-}

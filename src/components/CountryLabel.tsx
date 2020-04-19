@@ -58,16 +58,3 @@ export const CountryLabelContainer = styled.div<ICountryLabelContainerProps>`
     font-family: 'Inter', sans-serif; 
     font-size: 18px;
 `;
-
-
-// export const Flaga: React.FC = (props) => {
-//     return (
-//         <div style={
-//             {
-//                 margin: '2px',
-//                 border: '1px solid black',
-//                 padding: '2px'
-//             }
-//         }>{props.children}</div>
-//     );
-// };
