@@ -8,7 +8,12 @@ export const A4Page = styled.div`
     display: flex;
     flex-direction: column;
 
+    margin: 10px;
+    border: 1px solid black;
+
     @media print {
         page-break-after: always;
+        margin: 0px;
+        border: none;
     }
 `;

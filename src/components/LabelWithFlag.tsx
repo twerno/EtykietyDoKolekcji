@@ -1,50 +1,57 @@
 import * as React from 'react';
-import styled from 'styled-components';
+import styled, { withTheme } from 'styled-components';
 import { IFlagProvider } from '../chart/FlagProvider';
 import CountryConverterService from '../service/CountryConverterService';
-import { AsyncTextRenderer } from './AsyncTextRenderer';
-import { IOkladkaCountryProps } from './OkladkaMapa';
+import { AsyncTextRenderer } from './utils/AsyncTextRenderer';
 
 export interface ICountryLabelProps {
-    countryData: IOkladkaCountryProps;
+    countryCode: string;
+    infoList?: Array<string | Promise<string>>;
+    flagUrl?: string;
     flagProvider: IFlagProvider;
 }
 
-export const CountryLabelBig = (props: ICountryLabelProps) => {
-    const countryCode = props.countryData.countryCode;
+export const LabelWithFlag = (props: ICountryLabelProps) => {
+    const countryCode = props.countryCode;
 
-    const flagUrl = props.flagProvider.provideFlagFor(countryCode).url;
+    const flagUrl = props.flagUrl
+        || props.flagProvider.provideFlagFor(countryCode).url;
     const namePl = CountryConverterService.countryCode2NamePl(countryCode);
 
     return (
-        <CountryLabelBigContainer>
-            <div>
-                <img src={flagUrl} alt={countryCode} />
+        <LabelWithFlagContainer
+            imgWidth={3}
+        >
+            <img src={flagUrl} alt={countryCode} />
 
-                <div className="label">
-                    {namePl}
-                </div>
+            <div className="label">
+                {namePl}
             </div>
 
             <ul className="info">
-                {props.countryData.info?.map((v, idx) =>
+                {props.infoList?.map((v, idx) =>
                     <li key={`${countryCode}_${idx}`}>
                         <AsyncTextRenderer provider={v} />
                     </li>)
                 }
             </ul>
 
-        </CountryLabelBigContainer>
+        </LabelWithFlagContainer>
     );
 };
 
-export const CountryLabelBigContainer = styled.div`
+interface ILabelWithFlagContainerProps {
+    imgWidth?: number;
+}
+
+const LabelWithFlagContainer = styled.div<ILabelWithFlagContainerProps>`
     display: flex;
     flex-direction: column;
-
     align-items: center;
-
     flex: 0.5;
+    /* border: 1px solid #cececee6; */
+    width: ${props => props.imgWidth || 3}cm;
+    transform: scale(1);
 
     padding: 5px;
 
@@ -53,7 +60,8 @@ export const CountryLabelBigContainer = styled.div`
     }
 
     img {
-        width: 3cm;
+        width: ${props => props.imgWidth || 3}cm;
+        /* width:100%; */
         outline: 1px solid #cececee6; 
     }
 
@@ -75,6 +83,7 @@ export const CountryLabelBigContainer = styled.div`
         color: #7b7b7b99;
         margin-left: -5px;
         margin-right: -5px;
+        transform: scale(${props => (props.imgWidth || 3) / 3});
     }
 
     ul.info li:not(':first-child') {

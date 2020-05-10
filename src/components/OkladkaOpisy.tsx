@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { FlagIconCssProvider } from '../chart/FlagProvider';
 import CountryConverterService from '../service/CountryConverterService';
-import { CountryLabelBig } from './CountryLabelBig';
-import { FlexContainer } from './FlexContainer';
-import { IOkladkaCountryProps, OkladkaContainer } from './OkladkaMapa';
+import { FlexContainer } from './containers/FlexContainer';
+import { IOkladkaCountryProps } from './OkladkaMapa';
+import { Typ2Container } from './containers/Typ2Container';
+import { LabelWithFlag } from './LabelWithFlag';
 
 export interface IOkladkaOpisyProps {
     countryList: IOkladkaCountryProps[];
@@ -12,21 +13,22 @@ export interface IOkladkaOpisyProps {
 export const OkladkaOpisy = (props: IOkladkaOpisyProps) => {
 
     return (
-        <OkladkaContainer>
-            <FlexContainer direction='column'>
+        <Typ2Container>
+            <FlexContainer flexDirection='column' flexWrap="wrap" height="100%" alignItems="center">
                 {
                     props.countryList
                         .sort(sortByNamePl)
                         .map(data =>
-                            <CountryLabelBig
+                            <LabelWithFlag
                                 key={data.countryCode}
-                                countryData={data}
+                                countryCode={data.countryCode}
                                 flagProvider={FlagIconCssProvider}
+                                infoList={data.info}
                             />
                         )
                 }
             </FlexContainer>
-        </OkladkaContainer>
+        </Typ2Container>
     );
 }
 

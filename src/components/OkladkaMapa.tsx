@@ -1,7 +1,7 @@
 import * as React from 'react';
-import styled from 'styled-components';
 import { MapChart, MinimapPosition } from '../chart/chart';
 import { FlagIconCssProvider } from '../chart/FlagProvider';
+import { Typ2Container } from './containers/Typ2Container';
 
 export interface IOkladkaCountryProps {
     countryCode: string;
@@ -19,23 +19,13 @@ export interface IOkladkaMapaProps {
 export const OkladkaMapa = (props: IOkladkaMapaProps) => {
 
     return (
-        <OkladkaContainer>
+        <Typ2Container>
             <MapChart
                 countryDataList={props.countryList}
                 includeInView={props.includeInView}
                 minimap={props.minimap}
                 flagProvider={FlagIconCssProvider}
             />
-        </OkladkaContainer>
+        </Typ2Container>
     );
 }
-
-export const OkladkaContainer = styled.div`
-    margin-top: 10mm;
-    width: 18.5cm;
-    height: 12cm;
-    border: 1px #cecece solid;
-    overflow: hidden;
-
-    padding: 10px 0px;
-`;
