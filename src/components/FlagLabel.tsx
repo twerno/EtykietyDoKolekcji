@@ -29,28 +29,27 @@ export const FlagLabel = ({ flag, countryCode, variant }: IFlagLabelProps) => {
     );
 };
 
-type LabelWithFlagContainerVariants = 'typ35' | 'typ20' | 'regular';
+export type LabelWithFlagContainerVariants = 'typ35' | 'typ20' | 'regular';
 
 const labelVariants = variant<object, LabelWithFlagContainerVariants>(
     {
         variants: {
             typ35: css`
-                justify-content: space-evenly;
                 padding: 0px;
+                justify-content: flex-start;
 
                 .flag {
                     width: 17mm;
-                    margin-top: 4%;
+                    margin-top: 5px;
                 }
 
                 .label {
                     font-size: 12px; 
-                    margin: 0px;
-                    margin-top: 5%;
+                    margin: 3px 0px;
+                    height: 100%;
                 }
             `,
             typ20: css`
-                justify-content: space-evenly;
                 padding: 0px;
 
                 .flag {
@@ -61,6 +60,7 @@ const labelVariants = variant<object, LabelWithFlagContainerVariants>(
                     font-size: 14px; 
                     margin: 0px;
                     padding: 0px 1px;
+                    flex: 1 1 auto;
                 }
             `,
             regular: {}
@@ -77,7 +77,7 @@ const LabelWithFlagContainer = styled.div<ILabelWithFlagContainerProps>((props) 
     align-items: center;
     justify-content: space-evenly;
     height: 100%;
-    padding: 5px;
+    padding: 0;
 
     .flag {
         width: 30mm;
@@ -90,11 +90,10 @@ const LabelWithFlagContainer = styled.div<ILabelWithFlagContainerProps>((props) 
         font-family: 'Inter', sans-serif; 
         font-size: 17px;
         font-weight: bold;
-        margin: 15px -5px 10px -5px;
+        /* margin: 15px -5px 10px -5px; */
         
         /* https://stackoverflow.com/questions/90178/make-a-div-fill-the-height-of-the-remaining-screen-space */
         display: flex;
-        flex: 1 1 auto;
         align-items: center;
     }
 `, labelVariants);

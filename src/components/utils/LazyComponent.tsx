@@ -27,3 +27,5 @@ export const LazyComponent: React.FC<{}> = (props) => {
         </div>
     );
 };
+
+document.addEventListener('load', () => window.scroll());

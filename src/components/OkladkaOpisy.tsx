@@ -5,6 +5,7 @@ import { FlexContainer } from './containers/FlexContainer';
 import { IOkladkaCountryProps } from './OkladkaMapa';
 import { Typ2Container } from './containers/Typ2Container';
 import { LabelWithFlag } from './LabelWithFlag';
+import { LabelWithFlagContainerVariants } from './FlagLabel';
 
 export interface IOkladkaOpisyProps {
     countryList: IOkladkaCountryProps[];
@@ -12,9 +13,13 @@ export interface IOkladkaOpisyProps {
 
 export const OkladkaOpisy = (props: IOkladkaOpisyProps) => {
 
+    const variant = props.countryList.length > 12
+        ? 'typ35'
+        : 'regular';
+
     return (
         <Typ2Container>
-            <FlexContainer flexDirection='column' flexWrap="wrap" height="100%" alignItems="center">
+            <FlexContainer flexDirection='column' flexWrap="wrap" height="100%" alignItems="center" justifyContent="space-between">
                 {
                     props.countryList
                         .sort(sortByNamePl)
@@ -24,6 +29,7 @@ export const OkladkaOpisy = (props: IOkladkaOpisyProps) => {
                                 countryCode={data.countryCode}
                                 flagProvider={FlagIconCssProvider}
                                 infoList={data.info}
+                                variant={variant}
                             />
                         )
                 }

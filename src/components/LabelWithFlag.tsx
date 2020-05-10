@@ -1,7 +1,7 @@
 import * as React from 'react';
-import styled, { withTheme } from 'styled-components';
+import styled from 'styled-components';
 import { IFlagProvider } from '../chart/FlagProvider';
-import CountryConverterService from '../service/CountryConverterService';
+import { FlagLabel, LabelWithFlagContainerVariants } from './FlagLabel';
 import { AsyncTextRenderer } from './utils/AsyncTextRenderer';
 
 export interface ICountryLabelProps {
@@ -9,24 +9,15 @@ export interface ICountryLabelProps {
     infoList?: Array<string | Promise<string>>;
     flagUrl?: string;
     flagProvider: IFlagProvider;
+    variant: 'regular' | 'typ35';
 }
 
 export const LabelWithFlag = (props: ICountryLabelProps) => {
     const countryCode = props.countryCode;
 
-    const flagUrl = props.flagUrl
-        || props.flagProvider.provideFlagFor(countryCode).url;
-    const namePl = CountryConverterService.countryCode2NamePl(countryCode);
-
     return (
-        <LabelWithFlagContainer
-            imgWidth={3}
-        >
-            <img src={flagUrl} alt={countryCode} />
-
-            <div className="label">
-                {namePl}
-            </div>
+        <LabelWithFlagContainer variant={props.variant}>
+            <FlagLabel variant={props.variant} flag={props.flagProvider} countryCode={countryCode} />
 
             <ul className="info">
                 {props.infoList?.map((v, idx) =>
@@ -41,39 +32,16 @@ export const LabelWithFlag = (props: ICountryLabelProps) => {
 };
 
 interface ILabelWithFlagContainerProps {
-    imgWidth?: number;
+    variant: 'regular' | 'typ35';
 }
 
 const LabelWithFlagContainer = styled.div<ILabelWithFlagContainerProps>`
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex: 0.5;
-    /* border: 1px solid #cececee6; */
-    width: ${props => props.imgWidth || 3}cm;
-    transform: scale(1);
+    flex: ${props => props.variant === 'regular' ? '0.5 0' : '0 0'};
 
     padding: 5px;
-
-    .flag {
-        position: relative;
-    }
-
-    img {
-        width: ${props => props.imgWidth || 3}cm;
-        /* width:100%; */
-        outline: 1px solid #cececee6; 
-    }
-
-    .label{
-        font-family: 'Inter', sans-serif; 
-        font-size: 17px;
-        font-weight: bold;
-        margin-top: 15px;
-        margin-bottom: 10px;
-        margin-left: -5px;
-        margin-right: -5px;
-    }
 
     ul.info {
         margin: 0;
@@ -83,7 +51,7 @@ const LabelWithFlagContainer = styled.div<ILabelWithFlagContainerProps>`
         color: #7b7b7b99;
         margin-left: -5px;
         margin-right: -5px;
-        transform: scale(${props => (props.imgWidth || 3) / 3});
+        flex: 1 1 auto;
     }
 
     ul.info li:not(':first-child') {

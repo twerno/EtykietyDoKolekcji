@@ -11,7 +11,7 @@ export interface IFlexContainerProps {
 
     flexDirection?: 'row' | 'column' | 'row-reverse' | 'column-reverse';
     flexWrap?: 'nowrap' | 'wrap';
-    justifyContent?: 'flex-start' | 'center';
+    justifyContent?: 'flex-start' | 'center' | 'space-between';
     alignItems?: 'base-line' | 'flex-start' | 'center';
     alignContent?: 'flex-start' | 'space-around';
     flexGrow?: number;

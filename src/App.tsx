@@ -70,6 +70,36 @@ function App() {
 
       <OkładkaA4
         countryList={[
+          { countryCode: 'ie', info: ['od 1 stycznia 1999'] },
+          { countryCode: 'es', info: ['od 1 stycznia 1999'] },
+          { countryCode: 'fr', info: ['od 1 stycznia 1999'] },
+          { countryCode: 'be', info: ['od 1 stycznia 1999'] },
+          { countryCode: 'nl', info: ['od 1 stycznia 1999'] },
+          { countryCode: 'de', info: ['od 1 stycznia 1999'] },
+          { countryCode: 'dk', info: ['od 1 stycznia 1999'] },
+          { countryCode: 'fi', info: ['od 1 stycznia 1999'] },
+          { countryCode: 'ee', info: ['od 1 stycznia 2011'] },
+          { countryCode: 'lv', info: ['od 1 stycznia 2015'] },
+          { countryCode: 'lt', info: ['od 1 stycznia 2014'] },
+          { countryCode: 'it', info: ['od 1 stycznia 1999'] },
+          { countryCode: 'gr', info: ['od 1 stycznia 1999'] },
+          { countryCode: 'at', info: ['od 1 stycznia 1999'] },
+          { countryCode: 'sk', info: ['od 1 stycznia 2009'] },
+          { countryCode: 'si', info: ['od 1 stycznia 2007'] },
+          { countryCode: 'pt', info: ['od 1 stycznia 1999'] },
+          { countryCode: 'cy', info: ['od 1 stycznia 2008'], showPin: true },
+          { countryCode: 'lu', info: ['od 1 stycznia 1999'], showPin: true },
+          { countryCode: 'mt', info: ['od 1 stycznia 2008'], showPin: true },
+          { countryCode: 'ad', info: ['od 1 stycznia 2015'], showPin: true },
+          { countryCode: 'mc', info: ['od 1 stycznia 2002'], showPin: true },
+          { countryCode: 'sm', info: ['od 1 stycznia 2002'], showPin: true },
+          { countryCode: 'va', info: ['od 1 stycznia 2002'], showPin: true },
+        ]}
+        minimap="bottom-left"
+      />
+
+      <OkładkaA4
+        countryList={[
           { countryCode: 'hr', info: ['Kuna', '1 kuna = 100 lip', currencyRate('hr')] },
           { countryCode: 'cz', info: ['Korona czeska', '1 korona = 100 halerzy', currencyRate('cz')] },
           { countryCode: 'no', info: ['Korona norweska', '1 korona = 100 öre', currencyRate('no')] },
