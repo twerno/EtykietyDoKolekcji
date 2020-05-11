@@ -165,9 +165,21 @@ function App() {
       <OkładkaA4
         countryList={[
           { countryCode: 'bt', info: ['Ngultrum', '1 ngultrum = 100 czetrum', currencyRate('bt', 0.055)] },
-          { countryCode: 'mm', label: 'Mjanma/Birma', info: ['Kiat', '1 kiat = 100 pia', currencyRate('mm')] },
+          {
+            countryCode: 'mm',
+            label: {
+              sortName: 'Mjanma',
+              renderer:
+                <div>
+                  Mjanma
+                  <div style={{ fontSize: '12px' }}>
+                    (Birma)
+                  </div>
+                </div>
+            },
+            info: ['Kiat', '1 kiat = 100 pia', currencyRate('mm')]
+          },
           { countryCode: 'lk', info: ['Rupia lankijska', '1 rupia = 100 centów', currencyRate('lk')] },
-          // { countryCode: 'kh', info: ['Riel kambodżański', '1 riel = 100 senów', currencyRate('kh')] },
           { countryCode: 'mn', info: ['Tugrik', '1 tugrik = 100 möngö', currencyRate('mn')] },
           { countryCode: 'th', info: ['Bat', '1 bat = 100 satangów', currencyRate('th')] },
           { countryCode: 'la', info: ['Kip', '1 kip = 100 at', currencyRate('la')] },
