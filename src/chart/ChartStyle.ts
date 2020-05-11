@@ -36,7 +36,7 @@ function strokeWidthStyle(props: IMapChartProps) {
     return (strokeWidth: number | undefined, target: am4maps.MapPolygon) => {
         const id = (target.dataItem.dataContext as any)?.id as string | undefined;
         return isCountryFromList(id, props.countryDataList.map(v => v.countryCode))
-            ? 2.5
+            ? 3
             : strokeWidth;
     }
 }

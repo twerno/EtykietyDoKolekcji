@@ -77,29 +77,29 @@ function zoomToMultiple(countriesId: string[], chart: am4maps.MapChart, polygonS
 
 function fillWithCountryFlag(countryId: string, target: am4maps.MapPolygon, flagProvider: IFlagProvider) {
     const bbox = getBBoxOf(target);
-    const bBoxRatio = bbox.height / bbox.width;
+    const bBoxRatio = bbox.width / bbox.height;
 
     const flag = flagProvider.provideFlagFor(countryId);
-    const flagRatio = flag.height / flag.width;
+    const flagRatio = flag.width / flag.height;
 
     const backgroundPattern = new am4core.Pattern();
     const image = new am4core.Image();
     image.href = flag.url;
 
     // adjust flag size to match bbox size
-    if (bBoxRatio >= flagRatio) {
-        image.width = Math.ceil((flagRatio ** -1) * bbox.height);
-        image.height = Math.ceil(bbox.height);
+    if (flagRatio >= bBoxRatio) {
+        image.width = bbox.height * flagRatio * 1.2;
+        image.height = bbox.height * 1.2;
 
         backgroundPattern.x = bbox.x - (image.width - bbox.width) / 2;
-        backgroundPattern.y = bbox.y;
+        backgroundPattern.y = bbox.y - bbox.height * 0.05;
     }
     else {
-        image.width = Math.ceil(bbox.width);
-        image.height = Math.ceil(flagRatio * bbox.width);
+        image.width = bbox.width * 1.2;
+        image.height = bbox.width * flagRatio * 1.2;
 
         backgroundPattern.x = bbox.x;
-        backgroundPattern.y = bbox.y - (flagRatio * bbox.width - bbox.height) / 2;
+        backgroundPattern.y = bbox.y - (flagRatio * bbox.width - bbox.height) / 2 - bbox.width * 0.05;
     }
     backgroundPattern.addElement(image.element as any);
     backgroundPattern.width = image.width;

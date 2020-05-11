@@ -163,8 +163,8 @@ function App() {
           { countryCode: 'la', info: ['Kip', '1 kip = 100 at', currencyRate('la')] },
 
         ]}
-        includeInView={['jp']}
-        minimap="top-left"
+        includeInView={['jp', 'pg']}
+        minimap="top-right"
       />
 
     </div>

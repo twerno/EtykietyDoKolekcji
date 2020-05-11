@@ -125,9 +125,6 @@ function configureBubbles(chart: am4maps.MapChart, polygonSeries: am4maps.MapPol
     imageSeriesTemplate.propertyFields.latitude = "latitude";
     imageSeriesTemplate.propertyFields.longitude = "longitude";
     imageSeriesTemplate.filters.push(new am4core.DropShadowFilter());
-    const focusFilter = imageSeriesTemplate.filters.push(new am4core.FocusFilter());
-    focusFilter.stroke = am4core.color("white", 0.5);
-    focusFilter.strokeWidth = 1;
 
     const imageSeriesData = props.countryDataList
         .filter(d => d.showPin)
