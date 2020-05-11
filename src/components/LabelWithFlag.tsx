@@ -10,7 +10,7 @@ export interface ICountryLabelProps {
     flagUrl?: string;
     flagProvider: IFlagProvider;
     variant: 'regular' | 'typ35';
-    label?: string;
+    label?: string | React.ReactElement;
 }
 
 export const LabelWithFlag = (props: ICountryLabelProps) => {
@@ -45,20 +45,20 @@ const LabelWithFlagContainer = styled.div<ILabelWithFlagContainerProps>`
     flex-direction: column;
     align-items: center;
     flex: ${props => props.variant === 'regular' ? '0.5 0' : '0 0'};
+    justify-content: space-between;
 
     padding: 5px;
     min-width: ${props => props.variant === 'regular' ? 'initial' : '85px'};
-    min-height: ${props => props.variant === 'regular' ? 'initial' : '100px'};
+    min-height: ${props => props.variant === 'regular' ? 'initial' : '104px'};
 
     ul.info {
         margin: 0;
         list-style: none;
         padding: 0;
-        font-size: 9px;
+        font-size:  ${props => props.variant === 'regular' ? '9px' : '8px'};
         color: #7b7b7b99;
         margin-left: -5px;
         margin-right: -5px;
-        flex: 1 1 auto;
     }
 
     ul.info li:not(':first-child') {

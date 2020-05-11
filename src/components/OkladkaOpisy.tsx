@@ -2,10 +2,9 @@ import * as React from 'react';
 import { FlagIconCssProvider } from '../chart/FlagProvider';
 import CountryConverterService from '../service/CountryConverterService';
 import { FlexContainer } from './containers/FlexContainer';
-import { IOkladkaCountryProps } from './OkladkaMapa';
 import { Typ2Container } from './containers/Typ2Container';
 import { LabelWithFlag } from './LabelWithFlag';
-import { LabelWithFlagContainerVariants } from './FlagLabel';
+import { IOkladkaCountryProps } from './OkladkaMapa';
 
 export interface IOkladkaOpisyProps {
     countryList: IOkladkaCountryProps[];

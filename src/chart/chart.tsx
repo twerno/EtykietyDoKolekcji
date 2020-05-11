@@ -114,8 +114,10 @@ function configureBubbles(chart: am4maps.MapChart, polygonSeries: am4maps.MapPol
     const imageSeries = chart.series.push(new am4maps.MapImageSeries());
     const imageSeriesTemplate = imageSeries.mapImages.template;
     const flag = imageSeriesTemplate.createChild(am4core.Image);
-    flag.width = 25;
-    flag.height = 18.75;
+
+    const bubbleRatio = 4.5;
+    flag.width = 4 * bubbleRatio;
+    flag.height = 3 * bubbleRatio;
 
     flag.nonScaling = true;
     flag.horizontalCenter = "left";

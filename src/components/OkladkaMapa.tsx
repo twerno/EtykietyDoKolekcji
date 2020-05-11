@@ -5,7 +5,7 @@ import { Typ2Container } from './containers/Typ2Container';
 
 export interface IOkladkaCountryProps {
     countryCode: string;
-    label?: string;
+    label?: React.ReactElement | string;
     info?: Array<string | Promise<string>>;
     showPin?: true;
 }

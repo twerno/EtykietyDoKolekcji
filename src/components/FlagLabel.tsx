@@ -7,7 +7,7 @@ import CountryConverterService from '../service/CountryConverterService';
 export interface IFlagLabelProps {
     flag: string | IFlagProvider;
     countryCode: string;
-    label?: string;
+    label?: string | React.ReactElement;
     variant: LabelWithFlagContainerVariants;
 }
 
@@ -45,8 +45,8 @@ const labelVariants = variant<object, LabelWithFlagContainerVariants>(
                 }
 
                 .label {
-                    font-size: 12px; 
-                    margin: 3px 0px;
+                    font-size: 11px; 
+                    margin: 4px 0px;
                     height: 100%;
                 }
             `,
@@ -74,6 +74,7 @@ interface ILabelWithFlagContainerProps {
 
 const LabelWithFlagContainer = styled.div<ILabelWithFlagContainerProps>((props) => css`
     display: flex;
+    position: relative;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;

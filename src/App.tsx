@@ -70,7 +70,14 @@ function App() {
           { countryCode: 'es', info: ['w UE od 1986', '€ od 1 stycznia 1999'] },
           { countryCode: 'fr', info: ['w UE od 1957', '€ od 1 stycznia 1999'] },
           { countryCode: 'be', info: ['w UE od 1957', '€ od 1 stycznia 1999'] },
-          { countryCode: 'nl', label: 'Niderlandy', info: ['dawniej Holandia', 'w UE od 1957', '€ od 1 stycznia 1999'] },
+          {
+            countryCode: 'nl', label: (
+              <div style={{ position: 'relative' }}>Niderlandy
+                <div style={{ fontSize: '10px', position: 'absolute', width: '100%' }}>
+                  (Holandia)
+                </div>
+              </div>), info: ['w UE od 1957', '€ od 1 stycznia 1999']
+          },
           { countryCode: 'de', info: ['w UE od 1957', '€ od 1 stycznia 1999'] },
           { countryCode: 'dk', info: ['w UE od 1973', '€ od 1 stycznia 1999'] },
           { countryCode: 'fi', info: ['w UE od 1995', '€ od 1 stycznia 1999'] },
