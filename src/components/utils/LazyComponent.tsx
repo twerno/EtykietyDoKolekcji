@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { FlexContainer } from '../containers/FlexContainer';
 
 export const LazyComponent: React.FC<{}> = (props) => {
 
@@ -19,12 +20,12 @@ export const LazyComponent: React.FC<{}> = (props) => {
         if (wrapperRef.current) {
             observer.current.observe(wrapperRef.current);
         }
-    }, [wrapperRef.current]);
+    }, []);
 
     return (
-        <div ref={wrapperRef} style={{ minWidth: '100px', minHeight: '100px', position: 'relative' }}>
+        <FlexContainer ref={wrapperRef} fullSize display="block">
             {inView ? props.children : null}
-        </div>
+        </FlexContainer>
     );
 };
 

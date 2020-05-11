@@ -3,6 +3,8 @@ import styled, { CSSObject } from "styled-components";
 export interface IFlexContainerProps {
     center?: boolean;
     side?: 'front' | 'back';
+    fullSize?: boolean;
+    position?: 'relative' | 'absolute';
 
     display?: 'block' | 'flex';
     margin?: string | number;
@@ -30,6 +32,7 @@ export const FlexContainer = styled.div<IFlexContainerProps>(props => (
         margin: addPxToNumber(props.margin),
         padding: addPxToNumber(props.padding),
         height: addPxToNumber(props.height),
+        position: props.position,
 
         flexDirection: props.flexDirection,
         flexWrap: props.flexWrap,
@@ -63,6 +66,13 @@ export const FlexContainer = styled.div<IFlexContainerProps>(props => (
                     alignContent: 'normal'
                 })
             )(props.side === 'front')
+        },
+        {
+            condition: props => !!props.fullSize,
+            formatter: _ => ({
+                width: '100%',
+                height: '100%',
+            })
         }
     ])
 );
