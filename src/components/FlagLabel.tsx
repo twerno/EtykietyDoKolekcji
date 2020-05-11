@@ -47,7 +47,6 @@ const labelVariants = variant<object, LabelWithFlagContainerVariants>(
                 .label {
                     font-size: 11px; 
                     margin: 4px 0px;
-                    height: 100%;
                 }
             `,
             typ20: css`
@@ -61,7 +60,6 @@ const labelVariants = variant<object, LabelWithFlagContainerVariants>(
                     font-size: 14px; 
                     margin: 0px;
                     padding: 0px 1px;
-                    flex: 1 1 auto;
                 }
             `,
             regular: {}
@@ -77,9 +75,9 @@ const LabelWithFlagContainer = styled.div<ILabelWithFlagContainerProps>((props) 
     position: relative;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
-    height: 100%;
+    justify-content: flex-start;
     padding: 0;
+    flex: 1 0 auto;
 
     .flag {
         width: 30mm;
@@ -92,10 +90,10 @@ const LabelWithFlagContainer = styled.div<ILabelWithFlagContainerProps>((props) 
         font-family: 'Inter', sans-serif; 
         font-size: 17px;
         font-weight: bold;
-        /* margin: 15px -5px 10px -5px; */
         
         /* https://stackoverflow.com/questions/90178/make-a-div-fill-the-height-of-the-remaining-screen-space */
         display: flex;
         align-items: center;
+        flex: 1;
     }
 `, labelVariants);

@@ -75,8 +75,8 @@ function App() {
             label: {
               sortName: 'Niderlandy',
               renderer:
-                <div style={{ position: 'relative' }}>Niderlandy
-                  <div style={{ fontSize: '10px', position: 'absolute', width: '100%' }}>
+                <div>Niderlandy
+                  <div style={{ fontSize: '10px', margin: '-3px 0', width: '100%' }}>
                     (Holandia)
                   </div>
                 </div>

@@ -44,12 +44,12 @@ const LabelWithFlagContainer = styled.div<ILabelWithFlagContainerProps>`
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex: ${props => props.variant === 'regular' ? '0.5 0' : '0 0'};
     justify-content: space-between;
+    flex: 1;
 
     padding: 5px;
-    min-width: ${props => props.variant === 'regular' ? 'initial' : '85px'};
-    min-height: ${props => props.variant === 'regular' ? 'initial' : '104px'};
+    min-width: ${props => props.variant === 'regular' ? '130px' : '85px'};
+    min-height: ${props => props.variant === 'regular' ? '175px' : '104px'};
 
     ul.info {
         margin: 0;

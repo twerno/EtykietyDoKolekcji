@@ -8,4 +8,6 @@ export const Typ20Container = styled.div`
 
     padding: 0px;
     margin: 10px;
+
+    display: flex;
 `;
