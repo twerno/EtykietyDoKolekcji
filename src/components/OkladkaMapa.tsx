@@ -63,5 +63,6 @@ const Label = styled.div`
     padding: 5px 10px;
     border-radius: 6px;
     border: 1px solid #00000061;
-    background-color: rgba(255, 255, 255, 0.73);
+    background-color: white;
+    box-shadow: 3px 3px 6px 1px rgba(0,0,0,0.51);
 `;

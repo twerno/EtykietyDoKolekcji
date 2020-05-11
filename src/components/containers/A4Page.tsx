@@ -17,6 +17,7 @@ export const A4Page = styled.div`
         page-break-after: always;
         margin: 0px;
         border: none;
+        padding: 5px;
     }
 
 `;
