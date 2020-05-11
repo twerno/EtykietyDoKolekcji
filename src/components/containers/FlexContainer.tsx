@@ -1,4 +1,4 @@
-import styled, { CSSObject } from "styled-components";
+import styled, { CSSObject, css } from "styled-components";
 
 export interface IFlexContainerProps {
     center?: boolean;
@@ -26,29 +26,57 @@ export interface IFlexContainerProps {
     overflowY?: 'visible' | 'hidden';
 }
 
-export const FlexContainer = styled.div<IFlexContainerProps>(props => (
-    {
-        display: props.display || 'flex',
-        margin: addPxToNumber(props.margin),
-        padding: addPxToNumber(props.padding),
-        height: addPxToNumber(props.height),
-        position: props.position,
+export const FlexContainer = styled.div<IFlexContainerProps>(props => css`
+    position: relative;
+    display: flex;
 
-        flexDirection: props.flexDirection,
-        flexWrap: props.flexWrap,
-        justifyContent: props.justifyContent,
-        alignItems: props.alignItems,
-        alignContent: props.alignContent,
-        flexGrow: props.flexGrow,
-        flexShrink: props.flexShrink,
-        flexBasis: props.flexBasis,
-        flex: props.flex,
+    @media screen {
+        &::before {
+            content: ${pp => props.side ? `'${props.side}'` : undefined};
+            position: absolute;
+            margin-top: -15px;
+            margin-left: -15px;
+            background: white;
+            box-shadow: 3px 3px 6px 1px rgba(0, 0, 0, 0.51);
+            z-index: 1000;
+            border: 1px solid black;
+            padding: 5px 10px;
+            border-radius: 8px;
+            left: 0px;
+            transition: all 0.2s;
+        }
 
-        overflow: props.overflow,
-        overflowX: props.overflowX,
-        overflowY: props.overflowY
-    }),
+        &:hover::before {
+            background: #a3ffa3f0;
+        }
+    }
+    `,
+
     cssMerge([
+        {
+            condition: _ => true,
+            formatter: props => ({
+                display: props.display,
+                margin: addPxToNumber(props.margin),
+                padding: addPxToNumber(props.padding),
+                height: addPxToNumber(props.height),
+                position: props.position,
+
+                flexDirection: props.flexDirection,
+                flexWrap: props.flexWrap,
+                justifyContent: props.justifyContent,
+                alignItems: props.alignItems,
+                alignContent: props.alignContent,
+                flexGrow: props.flexGrow,
+                flexShrink: props.flexShrink,
+                flexBasis: props.flexBasis,
+                flex: props.flex,
+
+                overflow: props.overflow,
+                overflowX: props.overflowX,
+                overflowY: props.overflowY,
+            })
+        },
         {
             condition: props => !!props.center,
             formatter: _ => ({
