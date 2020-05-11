@@ -86,24 +86,23 @@ function fillWithCountryFlag(countryId: string, target: am4maps.MapPolygon, flag
     const image = new am4core.Image();
     image.href = flag.url;
 
+    const backgroundScale = 1.1;
+
     // adjust flag size to match bbox size
     if (flagRatio >= bBoxRatio) {
-        image.width = bbox.height * flagRatio * 1.2;
-        image.height = bbox.height * 1.2;
-
-        backgroundPattern.x = bbox.x - (image.width - bbox.width) / 2;
-        backgroundPattern.y = bbox.y - bbox.height * 0.05;
+        image.width = bbox.height * flagRatio * backgroundScale;
+        image.height = bbox.height * backgroundScale;
     }
     else {
-        image.width = bbox.width * 1.2;
-        image.height = bbox.width * flagRatio * 1.2;
-
-        backgroundPattern.x = bbox.x;
-        backgroundPattern.y = bbox.y - (flagRatio * bbox.width - bbox.height) / 2 - bbox.width * 0.05;
+        image.width = bbox.width * backgroundScale;
+        image.height = bbox.width * flagRatio * backgroundScale;
     }
+
     backgroundPattern.addElement(image.element as any);
     backgroundPattern.width = image.width;
     backgroundPattern.height = image.height;
+    backgroundPattern.x = bbox.x - Math.abs((image.width - bbox.width) / 2);
+    backgroundPattern.y = bbox.y - Math.abs((image.height - bbox.height) / 2);
     backgroundPattern.backgroundOpacity = 1;
 
     return backgroundPattern;

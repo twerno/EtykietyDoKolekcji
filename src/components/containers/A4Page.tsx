@@ -16,4 +16,5 @@ export const A4Page = styled.div`
         margin: 0px;
         border: none;
     }
+
 `;

@@ -7,4 +7,10 @@ export const Typ2Container = styled.div`
     border: 1px #cecece solid;
     overflow: hidden;
     position: relative;
+    
+    background: #ededed59;
+
+    @media print {
+        background: none;
+    }
 `;
