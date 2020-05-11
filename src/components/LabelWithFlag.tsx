@@ -10,6 +10,7 @@ export interface ICountryLabelProps {
     flagUrl?: string;
     flagProvider: IFlagProvider;
     variant: 'regular' | 'typ35';
+    label?: string;
 }
 
 export const LabelWithFlag = (props: ICountryLabelProps) => {
@@ -17,8 +18,12 @@ export const LabelWithFlag = (props: ICountryLabelProps) => {
 
     return (
         <LabelWithFlagContainer variant={props.variant}>
-            <FlagLabel variant={props.variant} flag={props.flagProvider} countryCode={countryCode} />
-
+            <FlagLabel
+                variant={props.variant}
+                flag={props.flagProvider}
+                countryCode={countryCode}
+                label={props.label}
+            />
             <ul className="info">
                 {props.infoList?.map((v, idx) =>
                     <li key={`${countryCode}_${idx}`}>
@@ -42,6 +47,8 @@ const LabelWithFlagContainer = styled.div<ILabelWithFlagContainerProps>`
     flex: ${props => props.variant === 'regular' ? '0.5 0' : '0 0'};
 
     padding: 5px;
+    min-width: ${props => props.variant === 'regular' ? 'initial' : '85px'};
+    min-height: ${props => props.variant === 'regular' ? 'initial' : '100px'};
 
     ul.info {
         margin: 0;

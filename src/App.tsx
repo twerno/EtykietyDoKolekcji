@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
 import './App.css';
-import { OkładkaA4 } from './components/OkładkaA4';
-import CurrencyService from './service/CurrencyService';
-import CountryConverterService from './service/CountryConverterService';
 import { A4Page } from './components/containers/A4Page';
-import { Typ35Container } from './components/containers/Typ35Container';
-import { FlagLabel } from './components/FlagLabel';
-import { FlagIconCssProvider } from './chart/FlagProvider';
-import { Typ20Container } from './components/containers/Typ20Container';
 import { FlexContainer } from './components/containers/FlexContainer';
-import { EtykietaTyp35 } from './components/etykiety/EtykietaTyp35';
 import { EtykietaTyp20 } from './components/etykiety/EtykietaTyp20';
+import { EtykietaTyp35 } from './components/etykiety/EtykietaTyp35';
+import { OkładkaA4 } from './components/OkładkaA4';
+import CountryConverterService from './service/CountryConverterService';
+import CurrencyService from './service/CurrencyService';
 
 const currencyRate = async (countryCode: string, staticRate?: number) => {
   const currencyCode = CountryConverterService.countryCode2CurrencyCode(countryCode);
@@ -70,30 +66,32 @@ function App() {
 
       <OkładkaA4
         countryList={[
-          { countryCode: 'ie', info: ['od 1 stycznia 1999'] },
-          { countryCode: 'es', info: ['od 1 stycznia 1999'] },
-          { countryCode: 'fr', info: ['od 1 stycznia 1999'] },
-          { countryCode: 'be', info: ['od 1 stycznia 1999'] },
-          { countryCode: 'nl', info: ['od 1 stycznia 1999'] },
-          { countryCode: 'de', info: ['od 1 stycznia 1999'] },
-          { countryCode: 'dk', info: ['od 1 stycznia 1999'] },
-          { countryCode: 'fi', info: ['od 1 stycznia 1999'] },
-          { countryCode: 'ee', info: ['od 1 stycznia 2011'] },
-          { countryCode: 'lv', info: ['od 1 stycznia 2015'] },
-          { countryCode: 'lt', info: ['od 1 stycznia 2014'] },
-          { countryCode: 'it', info: ['od 1 stycznia 1999'] },
-          { countryCode: 'gr', info: ['od 1 stycznia 1999'] },
-          { countryCode: 'at', info: ['od 1 stycznia 1999'] },
-          { countryCode: 'sk', info: ['od 1 stycznia 2009'] },
-          { countryCode: 'si', info: ['od 1 stycznia 2007'] },
-          { countryCode: 'pt', info: ['od 1 stycznia 1999'] },
-          { countryCode: 'cy', info: ['od 1 stycznia 2008'], showPin: true },
-          { countryCode: 'lu', info: ['od 1 stycznia 1999'], showPin: true },
-          { countryCode: 'mt', info: ['od 1 stycznia 2008'], showPin: true },
-          { countryCode: 'ad', info: ['od 1 stycznia 2015'], showPin: true },
-          { countryCode: 'mc', info: ['od 1 stycznia 2002'], showPin: true },
-          { countryCode: 'sm', info: ['od 1 stycznia 2002'], showPin: true },
-          { countryCode: 'va', info: ['od 1 stycznia 2002'], showPin: true },
+          { countryCode: 'ie', info: ['w UE od 1973', '€ od 1 stycznia 1999'] },
+          { countryCode: 'es', info: ['w UE od 1986', '€ od 1 stycznia 1999'] },
+          { countryCode: 'fr', info: ['w UE od 1957', '€ od 1 stycznia 1999'] },
+          { countryCode: 'be', info: ['w UE od 1957', '€ od 1 stycznia 1999'] },
+          { countryCode: 'nl', label: 'Niderlandy', info: ['dawniej Holandia', 'w UE od 1957', '€ od 1 stycznia 1999'] },
+          { countryCode: 'de', info: ['w UE od 1957', '€ od 1 stycznia 1999'] },
+          { countryCode: 'dk', info: ['w UE od 1973', '€ od 1 stycznia 1999'] },
+          { countryCode: 'fi', info: ['w UE od 1995', '€ od 1 stycznia 1999'] },
+          { countryCode: 'ee', info: ['w UE od 2004', '€ od 1 stycznia 2011'] },
+          { countryCode: 'lv', info: ['w UE od 2004', '€ od 1 stycznia 2015'] },
+          { countryCode: 'lt', info: ['w UE od 2004', '€ od 1 stycznia 2014'] },
+          { countryCode: 'it', info: ['w UE od 1957', '€ od 1 stycznia 1999'] },
+          { countryCode: 'gr', info: ['w UE od 1981', '€ od 1 stycznia 1999'] },
+          { countryCode: 'at', info: ['w UE od 1995', '€ od 1 stycznia 1999'] },
+          { countryCode: 'sk', info: ['w UE od 2004', '€ od 1 stycznia 2009'] },
+          { countryCode: 'si', info: ['w UE od 2004', '€ od 1 stycznia 2007'] },
+          { countryCode: 'pt', info: ['w UE od 1986', '€ od 1 stycznia 1999'] },
+          { countryCode: 'cy', info: ['w UE od 2004', '€ od 1 stycznia 2008'], showPin: true },
+          { countryCode: 'lu', info: ['w UE od 1957', '€ od 1 stycznia 1999'], showPin: true },
+          { countryCode: 'mt', info: ['w UE od 2004', '€ od 1 stycznia 2008'], showPin: true },
+          { countryCode: 'ad', info: ['nie jest członkie UE', '€ od 1 stycznia 2015'], showPin: true },
+          { countryCode: 'mc', info: ['nie jest członkie UE', '€ od 1 stycznia 2002'], showPin: true },
+          { countryCode: 'sm', info: ['nie jest członkie UE', '€ od 1 stycznia 2002'], showPin: true },
+          { countryCode: 'va', info: ['nie jest członkie UE', '€ od 1 stycznia 2002'], showPin: true },
+          { countryCode: 'me', info: ['nie jest członkie UE', '€ bez umowy z UE'] },
+          { countryCode: 'xk', label: "Kosowo", info: ['nie jest członkie UE', '€ bez umowy z UE'] },
         ]}
         minimap="bottom-left"
       />

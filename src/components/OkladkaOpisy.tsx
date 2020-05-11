@@ -16,10 +16,11 @@ export const OkladkaOpisy = (props: IOkladkaOpisyProps) => {
     const variant = props.countryList.length > 12
         ? 'typ35'
         : 'regular';
+    const flexDirection = variant === 'regular' ? 'column' : 'row';
 
     return (
         <Typ2Container>
-            <FlexContainer flexDirection='column' flexWrap="wrap" height="100%" alignItems="center" justifyContent="space-between">
+            <FlexContainer flexDirection={flexDirection} flexWrap="wrap" height="100%" alignItems="center" justifyContent="space-between">
                 {
                     props.countryList
                         .sort(sortByNamePl)
@@ -30,6 +31,7 @@ export const OkladkaOpisy = (props: IOkladkaOpisyProps) => {
                                 flagProvider={FlagIconCssProvider}
                                 infoList={data.info}
                                 variant={variant}
+                                label={data.label}
                             />
                         )
                 }

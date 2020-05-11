@@ -7,10 +7,11 @@ import CountryConverterService from '../service/CountryConverterService';
 export interface IFlagLabelProps {
     flag: string | IFlagProvider;
     countryCode: string;
+    label?: string;
     variant: LabelWithFlagContainerVariants;
 }
 
-export const FlagLabel = ({ flag, countryCode, variant }: IFlagLabelProps) => {
+export const FlagLabel = ({ flag, countryCode, variant, label }: IFlagLabelProps) => {
 
     const flagUrl = typeof flag === 'string'
         ? flag
@@ -23,7 +24,7 @@ export const FlagLabel = ({ flag, countryCode, variant }: IFlagLabelProps) => {
             <img className="flag" src={flagUrl} alt={countryCode} />
 
             <div className="label">
-                {namePl}
+                {label || namePl}
             </div>
         </LabelWithFlagContainer>
     );
