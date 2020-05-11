@@ -115,7 +115,7 @@ function configureBubbles(chart: am4maps.MapChart, polygonSeries: am4maps.MapPol
     const imageSeriesTemplate = imageSeries.mapImages.template;
     const flag = imageSeriesTemplate.createChild(am4core.Image);
 
-    const bubbleRatio = 4.5;
+    const bubbleRatio = 5;
     flag.width = 4 * bubbleRatio;
     flag.height = 3 * bubbleRatio;
 

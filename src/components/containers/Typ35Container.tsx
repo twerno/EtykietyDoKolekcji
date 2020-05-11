@@ -8,6 +8,7 @@ export const Typ35Container = styled.div`
 
     padding: 0px;
     margin: 10px;
-    
+
+    position: relative;
     display: flex;
 `;

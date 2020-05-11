@@ -6,6 +6,5 @@ export const Typ2Container = styled.div`
     height: 12cm;
     border: 1px #cecece solid;
     overflow: hidden;
-
-    padding: 10px 0px;
+    position: relative;
 `;

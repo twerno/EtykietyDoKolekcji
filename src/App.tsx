@@ -65,6 +65,7 @@ function App() {
       </A4Page>
 
       <OkładkaA4
+        mapLabel="Strefa Euro"
         countryList={[
           { countryCode: 'ie', info: ['w UE od 1973', '€ od 1 stycznia 1999'] },
           { countryCode: 'es', info: ['w UE od 1986', '€ od 1 stycznia 1999'] },

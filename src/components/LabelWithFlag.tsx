@@ -48,6 +48,7 @@ const LabelWithFlagContainer = styled.div<ILabelWithFlagContainerProps>`
     flex: 1;
 
     padding: 5px;
+    padding-top: 2px;
     min-width: ${props => props.variant === 'regular' ? '130px' : '85px'};
     min-height: ${props => props.variant === 'regular' ? '175px' : '104px'};
 
