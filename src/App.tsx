@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
-import { A4Page } from './components/containers/A4Page';
-import { FlexContainer } from './components/containers/FlexContainer';
+import { A4TwoSideLabelContainer } from './components/containers/TwoSideLabelContainer';
 import { EtykietaTyp20 } from './components/etykiety/EtykietaTyp20';
 import { EtykietaTyp35 } from './components/etykiety/EtykietaTyp35';
 import { OkładkaA4 } from './components/OkładkaA4';
@@ -23,46 +22,46 @@ const currencyName = async (countryCode: string) => {
 }
 
 function App() {
-  const [side, setSide] = useState<boolean>(true);
 
   return (
     <div className="App">
 
-      <A4Page>
-        <FlexContainer center flexWrap="wrap" flexDirection="row" height="100%" side={side ? 'front' : 'back'}
-          onClick={_ => setSide(v => !v)}>
-          <EtykietaTyp35 countryCode="us" />
-          <EtykietaTyp35 countryCode="bs" />
-          <EtykietaTyp20 countryCode="il" />
-          <EtykietaTyp20 countryCode="il" />
-          <EtykietaTyp20 countryCode="mu" />
-          <EtykietaTyp20 countryCode="lk" />
-          <EtykietaTyp20 countryCode="th" />
-          <EtykietaTyp35 countryCode="at" />
-          <EtykietaTyp35 countryCode="fr" />
-          <EtykietaTyp35 countryCode="sk" />
-          <EtykietaTyp35 countryCode="de" />
-          <EtykietaTyp35 countryCode="gr" />
-          <EtykietaTyp35 countryCode="it" />
-          <EtykietaTyp35 countryCode="es" />
-          <EtykietaTyp35 countryCode="be" />
-          <EtykietaTyp35 countryCode="pt" />
-          <EtykietaTyp35 countryCode="nl" />
-          <EtykietaTyp35 countryCode="nl" />
-          <EtykietaTyp35 countryCode="cy" />
-          <EtykietaTyp35 countryCode="lu" />
-          <EtykietaTyp20 countryCode="fr" />
-          <EtykietaTyp20 countryCode="de" />
-          <EtykietaTyp35 countryCode="hr" />
-          <EtykietaTyp35 countryCode="no" />
-          <EtykietaTyp35 countryCode="bg" />
-          <EtykietaTyp35 countryCode="tr" />
-          <EtykietaTyp20 countryCode="tr" />
-          <EtykietaTyp35 countryCode="sk" />
-          <EtykietaTyp20 countryCode="se" />
-          <EtykietaTyp20 countryCode="cz" />
-        </FlexContainer>
-      </A4Page>
+      <A4TwoSideLabelContainer>
+        <EtykietaTyp35 countryCode="us" />
+        <EtykietaTyp35 countryCode="bs" />
+        <EtykietaTyp20 countryCode="il" />
+        <EtykietaTyp20 countryCode="il" />
+        <EtykietaTyp20 countryCode="mu" />
+        <EtykietaTyp20 countryCode="lk" />
+        <EtykietaTyp20 countryCode="th" />
+        <EtykietaTyp35 countryCode="at" />
+        <EtykietaTyp35 countryCode="fr" />
+        <EtykietaTyp35 countryCode="sk" />
+        <EtykietaTyp35 countryCode="de" />
+        <EtykietaTyp35 countryCode="gr" />
+        <EtykietaTyp35 countryCode="it" />
+        <EtykietaTyp35 countryCode="es" />
+        <EtykietaTyp35 countryCode="be" />
+        <EtykietaTyp35 countryCode="pt" />
+        <EtykietaTyp35 countryCode="nl" />
+        <EtykietaTyp35 countryCode="nl" />
+        <EtykietaTyp35 countryCode="cy" />
+        <EtykietaTyp35 countryCode="lu" />
+        <EtykietaTyp20 countryCode="fr" />
+        <EtykietaTyp20 countryCode="de" />
+        <EtykietaTyp35 countryCode="hr" />
+        <EtykietaTyp35 countryCode="no" />
+        <EtykietaTyp35 countryCode="bg" />
+        <EtykietaTyp35 countryCode="tr" />
+        <EtykietaTyp20 countryCode="tr" />
+        <EtykietaTyp35 countryCode="sk" />
+        <EtykietaTyp20 countryCode="se" />
+        <EtykietaTyp20 countryCode="cz" />
+      </A4TwoSideLabelContainer>
+
+      <A4TwoSideLabelContainer>
+        <EtykietaTyp20 countryCode="es" />
+      </A4TwoSideLabelContainer>
 
       <OkładkaA4
         mapLabel="Strefa Euro"

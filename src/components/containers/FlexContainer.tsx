@@ -1,8 +1,8 @@
 import styled, { CSSObject, css } from "styled-components";
+import StyledHelper from "../utils/StyledHelper";
 
 export interface IFlexContainerProps {
     center?: boolean;
-    side?: 'front' | 'back';
     fullSize?: boolean;
     position?: 'relative' | 'absolute';
 
@@ -27,39 +27,17 @@ export interface IFlexContainerProps {
 }
 
 export const FlexContainer = styled.div<IFlexContainerProps>(props => css`
-    position: relative;
     display: flex;
-
-    @media screen {
-        &::before {
-            content: ${pp => props.side ? `'${props.side}'` : undefined};
-            position: absolute;
-            margin-top: -15px;
-            margin-left: -15px;
-            background: white;
-            box-shadow: 3px 3px 6px 1px rgba(0, 0, 0, 0.51);
-            z-index: 1000;
-            border: 1px solid black;
-            padding: 5px 10px;
-            border-radius: 8px;
-            left: 0px;
-            transition: all 0.2s;
-        }
-
-        &:hover::before {
-            background: #a3ffa3f0;
-        }
-    }
     `,
 
-    cssMerge([
+    StyledHelper.cssMerge([
         {
             condition: _ => true,
             formatter: props => ({
                 display: props.display,
-                margin: addPxToNumber(props.margin),
-                padding: addPxToNumber(props.padding),
-                height: addPxToNumber(props.height),
+                margin: StyledHelper.addPxToNumber(props.margin),
+                padding: StyledHelper.addPxToNumber(props.padding),
+                height: StyledHelper.addPxToNumber(props.height),
                 position: props.position,
 
                 flexDirection: props.flexDirection,
@@ -85,17 +63,6 @@ export const FlexContainer = styled.div<IFlexContainerProps>(props => css`
             })
         },
         {
-            condition: props => !!props.side,
-            formatter: props => (
-                (isFront): CSSObject => ({
-                    display: 'flex',
-                    flexDirection: isFront ? 'row' : 'row-reverse',
-                    justifyContent: isFront ? 'flex-start' : 'end',
-                    alignContent: 'normal'
-                })
-            )(props.side === 'front')
-        },
-        {
             condition: props => !!props.fullSize,
             formatter: _ => ({
                 width: '100%',
@@ -104,16 +71,3 @@ export const FlexContainer = styled.div<IFlexContainerProps>(props => css`
         }
     ])
 );
-
-function addPxToNumber(source: any): any {
-    return typeof source === 'number'
-        ? `${source}px`
-        : source;
-}
-
-function cssMerge<Props>(items: Array<{ condition: (props: Props) => boolean, formatter: (props: Props) => CSSObject }>) {
-    return (props: Props) => items
-        .filter(item => item.condition(props))
-        .map(item => item.formatter(props))
-        .reduce((prev, curr) => ({ ...prev, ...curr }), {});
-}

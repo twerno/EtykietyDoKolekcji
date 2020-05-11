@@ -14,7 +14,6 @@ export const A4Page = styled.div`
     box-sizing: border-box;
 
     @media print {
-        page-break-after: always;
         margin: 0px;
         border: none;
         padding: 5px;

@@ -59,7 +59,7 @@ const Label = styled.div`
     font-family: 'Inter',sans-serif;
     font-size: 18px;
     font-weight: bold;
-    margin: 5px;
+    margin: 8px;
     padding: 5px 10px;
     border-radius: 6px;
     border: 1px solid #00000061;
