@@ -1,4 +1,4 @@
-import styled, { CSSObject, css } from "styled-components";
+import styled, { css } from "styled-components";
 import StyledHelper from "../utils/StyledHelper";
 
 export interface IFlexContainerProps {
@@ -15,7 +15,7 @@ export interface IFlexContainerProps {
     flexWrap?: 'nowrap' | 'wrap';
     justifyContent?: 'flex-start' | 'center' | 'space-between';
     alignItems?: 'base-line' | 'flex-start' | 'center';
-    alignContent?: 'flex-start' | 'space-around';
+    alignContent?: 'flex-start' | 'space-around' | 'space-between' | 'space-evenly' | "baseline";
     flexGrow?: number;
     flexShrink?: number;
     flexBasis?: number | string;

@@ -18,7 +18,7 @@ export const OkladkaOpisy = (props: IOkladkaOpisyProps) => {
 
     return (
         <Typ2Container>
-            <FlexContainer flexDirection="row" flexWrap="wrap" height="100%" alignItems="center" justifyContent="space-between">
+            <FlexContainer flexDirection="row" flexWrap="wrap" height="100%" alignItems="base-line" alignContent="space-evenly">
                 {
                     props.countryList
                         .sort(sortByNamePl)

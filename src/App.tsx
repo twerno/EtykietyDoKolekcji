@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { A4TwoSideLabelContainer } from './components/containers/TwoSideLabelContainer';
 import { EtykietaTyp20 } from './components/etykiety/EtykietaTyp20';
-import { EtykietaTyp35 } from './components/etykiety/EtykietaTyp35';
+import { EtykietaTyp35, Typ35Label } from './components/etykiety/EtykietaTyp35';
 import { OkładkaA4 } from './components/OkładkaA4';
 import CountryConverterService from './service/CountryConverterService';
 import CurrencyService from './service/CurrencyService';
@@ -29,11 +29,9 @@ function App() {
       <A4TwoSideLabelContainer>
         <EtykietaTyp35 countryCode="us" />
         <EtykietaTyp35 countryCode="bs" />
-        <EtykietaTyp20 countryCode="il" />
-        <EtykietaTyp20 countryCode="il" />
-        <EtykietaTyp20 countryCode="mu" />
-        <EtykietaTyp20 countryCode="lk" />
-        <EtykietaTyp20 countryCode="th" />
+        <EtykietaTyp35 countryCode="" label='Żeton telefoniczny' flag='https://etykiety.s3-eu-west-1.amazonaws.com/poczta_polska.jpg' />
+        <EtykietaTyp35 countryCode="" label='Żeton' flag='https://etykiety.s3-eu-west-1.amazonaws.com/lidl.png' />
+        <EtykietaTyp35 countryCode="" label='Żeton' flag='https://etykiety.s3-eu-west-1.amazonaws.com/eurocoin.png' />
         <EtykietaTyp35 countryCode="at" />
         <EtykietaTyp35 countryCode="fr" />
         <EtykietaTyp35 countryCode="sk" />
@@ -43,24 +41,29 @@ function App() {
         <EtykietaTyp35 countryCode="es" />
         <EtykietaTyp35 countryCode="be" />
         <EtykietaTyp35 countryCode="pt" />
-        <EtykietaTyp35 countryCode="nl" />
-        <EtykietaTyp35 countryCode="nl" />
+        <EtykietaTyp35 countryCode="nl" label={Typ35Label('Niderlandy', '(Holandia)')} />
+        <EtykietaTyp35 countryCode="nl" label={Typ35Label('Niderlandy', '(Holandia)')} />
         <EtykietaTyp35 countryCode="cy" />
         <EtykietaTyp35 countryCode="lu" />
-        <EtykietaTyp20 countryCode="fr" />
-        <EtykietaTyp20 countryCode="de" />
         <EtykietaTyp35 countryCode="hr" />
         <EtykietaTyp35 countryCode="no" />
         <EtykietaTyp35 countryCode="bg" />
         <EtykietaTyp35 countryCode="tr" />
-        <EtykietaTyp20 countryCode="tr" />
         <EtykietaTyp35 countryCode="sk" />
-        <EtykietaTyp20 countryCode="se" />
-        <EtykietaTyp20 countryCode="cz" />
       </A4TwoSideLabelContainer>
 
       <A4TwoSideLabelContainer>
         <EtykietaTyp20 countryCode="es" />
+        <EtykietaTyp20 countryCode="il" />
+        <EtykietaTyp20 countryCode="il" />
+        <EtykietaTyp20 countryCode="mu" />
+        <EtykietaTyp20 countryCode="lk" />
+        <EtykietaTyp20 countryCode="th" />
+        <EtykietaTyp20 countryCode="fr" />
+        <EtykietaTyp20 countryCode="de" />
+        <EtykietaTyp20 countryCode="cz" />
+        <EtykietaTyp20 countryCode="se" />
+        <EtykietaTyp20 countryCode="tr" />
       </A4TwoSideLabelContainer>
 
       <OkładkaA4
@@ -74,12 +77,7 @@ function App() {
             countryCode: 'nl',
             label: {
               sortName: 'Niderlandy',
-              renderer:
-                <div>Niderlandy
-                  <div style={{ fontSize: '10px', margin: '-3px 0', width: '100%' }}>
-                    (Holandia)
-                  </div>
-                </div>
+              renderer: Typ35Label('Niderlandy', '(Holandia)')
             }, info: ['w UE od 1957', '€ od 1 stycznia 1999']
           },
           { countryCode: 'de', info: ['w UE od 1957', '€ od 1 stycznia 1999'] },
@@ -133,7 +131,7 @@ function App() {
 
       <OkładkaA4
         countryList={[
-          { countryCode: 'az', info: ['Manat azerbejdżański', '1 manat = 100 gapików', currencyRate('az')] },
+          { countryCode: 'az', info: ['Manat azerbejdżański', '1 manat = 100 gapików', 'denominacja w 2007 roku', '1 nowy manat = 5000 starych', currencyRate('az')] },
           { countryCode: 'il', info: ['Nowy izraelski szekel', '1 szekel = 100 agor', currencyRate('il')] },
           { countryCode: 'af', info: ['Afgani', '1 afgani = 100 pul', currencyRate('af')] },
         ]}
@@ -168,13 +166,7 @@ function App() {
             countryCode: 'mm',
             label: {
               sortName: 'Mjanma',
-              renderer:
-                <div>
-                  Mjanma
-                  <div style={{ fontSize: '12px' }}>
-                    (Birma)
-                  </div>
-                </div>
+              renderer: Typ35Label('Mjanma', '(Birma)'),
             },
             info: ['Kiat', '1 kiat = 100 pia', currencyRate('mm')]
           },

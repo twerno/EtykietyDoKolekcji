@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { IFlagProvider } from '../chart/FlagProvider';
-import { FlagLabel, LabelWithFlagContainerVariants } from './FlagLabel';
+import { FlagLabel } from './FlagLabel';
 import { AsyncTextRenderer } from './utils/AsyncTextRenderer';
 
 export interface ICountryLabelProps {
@@ -44,7 +44,7 @@ const LabelWithFlagContainer = styled.div<ILabelWithFlagContainerProps>`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: ${props => props.variant === 'regular' ? 'start' : 'space-between'};
     flex: 1;
 
     padding: 5px;

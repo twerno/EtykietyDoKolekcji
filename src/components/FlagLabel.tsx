@@ -37,6 +37,7 @@ const labelVariants = variant<object, LabelWithFlagContainerVariants>(
         variants: {
             typ35: css`
                 padding: 0px;
+                padding: 0px;
                 justify-content: flex-start;
 
                 .flag {
@@ -51,6 +52,7 @@ const labelVariants = variant<object, LabelWithFlagContainerVariants>(
             `,
             typ20: css`
                 padding: 0px;
+                padding: 0px;
 
                 .flag {
                     width: 30mm;
@@ -62,7 +64,12 @@ const labelVariants = variant<object, LabelWithFlagContainerVariants>(
                     padding: 0px 1px;
                 }
             `,
-            regular: {}
+            regular: css`
+                min-height: 140px;
+                min-height: 140px;
+                flex: unset;
+            `
+
         }
     });
 

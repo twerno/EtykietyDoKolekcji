@@ -10,7 +10,6 @@ export const A4TwoSideLabelContainer: React.FC<{}> = ({ children }) => {
     return (
         <A4Page>
             <TwoSideLabelContainer
-                center
                 flexWrap="wrap"
                 flexDirection="row"
                 height="100%"
@@ -54,8 +53,8 @@ export const TwoSideLabelContainer = styled(FlexContainer)<{ side?: 'front' | 'b
                 (isFront): CSSObject => ({
                     display: 'flex',
                     flexDirection: isFront ? 'row' : 'row-reverse',
-                    justifyContent: isFront ? 'flex-start' : 'end',
-                    alignContent: 'normal'
+                    justifyContent: 'center',
+                    alignContent: 'baseline',
                 })
             )(props.side === 'front')
         },
