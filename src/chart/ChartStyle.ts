@@ -18,7 +18,7 @@ function fillStyle(props: IMapChartProps) {
     return (fill: am4core.Optional<am4core.Color | am4core.Pattern | am4core.LinearGradient | am4core.RadialGradient>, target: am4maps.MapPolygon) => {
         const id = (target.dataItem.dataContext as any)?.id as string | undefined;
         return isCountryFromList(id, props.countryDataList.map(v => v.countryCode))
-            ? ChartHelper.fillWithCountryFlag(id, target, props.flagProvider)
+            ? props.backgroundColor || ChartHelper.fillWithCountryFlag(id, target, props.flagProvider)
             : fill;
     }
 }

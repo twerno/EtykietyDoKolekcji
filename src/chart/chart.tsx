@@ -14,6 +14,7 @@ export interface IMapChartProps {
     includeInView?: string[];
     minimap?: MinimapPosition;
     flagProvider: IFlagProvider;
+    backgroundColor?: am4core.Optional<am4core.Color | am4core.Pattern | am4core.LinearGradient | am4core.RadialGradient>;
 }
 
 export const MapChart = (props: IMapChartProps) => {

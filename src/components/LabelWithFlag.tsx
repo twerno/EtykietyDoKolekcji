@@ -7,20 +7,20 @@ import { AsyncTextRenderer } from './utils/AsyncTextRenderer';
 export interface ICountryLabelProps {
     countryCode: string;
     infoList?: Array<string | Promise<string>>;
-    flagUrl?: string;
-    flagProvider: IFlagProvider;
+    flag: IFlagProvider | string;
     variant: 'regular' | 'typ35';
     label?: string | React.ReactElement;
 }
 
 export const LabelWithFlag = (props: ICountryLabelProps) => {
     const countryCode = props.countryCode;
+    console.log(props);
 
     return (
         <LabelWithFlagContainer variant={props.variant}>
             <FlagLabel
                 variant={props.variant}
-                flag={props.flagProvider}
+                flag={props.flag}
                 countryCode={countryCode}
                 label={props.label}
             />
@@ -60,6 +60,10 @@ const LabelWithFlagContainer = styled.div<ILabelWithFlagContainerProps>`
         color: #7b7b7b99;
         margin-left: -5px;
         margin-right: -5px;
+    }
+
+    ul li {
+        min-height: 10px;
     }
 
     ul.info li:not(':first-child') {

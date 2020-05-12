@@ -1,11 +1,18 @@
 import React from 'react';
 import './App.css';
+import { MapChart } from './chart/chart';
+import { FlagIconCssProvider } from './chart/FlagProvider';
+import { A4Page } from './components/containers/A4Page';
+import { FlexContainer } from './components/containers/FlexContainer';
 import { A4TwoSideLabelContainer } from './components/containers/TwoSideLabelContainer';
+import { Typ3Container } from './components/containers/Typ3Container';
 import { EtykietaTyp20 } from './components/etykiety/EtykietaTyp20';
 import { EtykietaTyp35, Typ35Label } from './components/etykiety/EtykietaTyp35';
+import { LabelWithFlag } from './components/LabelWithFlag';
 import { OkładkaA4 } from './components/OkładkaA4';
 import CountryConverterService from './service/CountryConverterService';
 import CurrencyService from './service/CurrencyService';
+import * as am4core from "@amcharts/amcharts4/core";
 
 const currencyRate = async (countryCode: string, staticRate?: number) => {
   const currencyCode = CountryConverterService.countryCode2CurrencyCode(countryCode);
@@ -25,6 +32,50 @@ function App() {
 
   return (
     <div className="App">
+
+      <A4Page>
+        <Typ3Container>
+          <FlexContainer flexDirection="row" height="100%">
+            <MapChart
+              countryDataList={[
+                { countryCode: 'si' },
+                { countryCode: 'hr' },
+                { countryCode: 'ba' },
+                { countryCode: 'rs' },
+                { countryCode: 'me' },
+                { countryCode: 'mk' },
+                { countryCode: 'xk' },
+                { countryCode: 'me' },
+              ]}
+              includeInView={['gr', 'pl', 'fr']}
+              minimap='bottom-left'
+              flagProvider={FlagIconCssProvider}
+              backgroundColor={am4core.color('red')}
+            />
+            <LabelWithFlag
+              countryCode='ju'
+              flag='https://etykiety.s3-eu-west-1.amazonaws.com/jugos%C5%82awia.png'
+              infoList={[
+                'Dinar jugosłowiański',
+                '1 dinar = 100 para',
+                '',
+                'rozpad Jugosławi w 1991r.',
+                '',
+                'Teren byłej Jugosławii zajmują:',
+                '- Bośnia i Harcegowina',
+                '- Chorwacja',
+                '- Kosowo',
+                '- Monteregro',
+                '- Macedonia',
+                '- Serbia',
+                '- Słowenia',
+              ]}
+              variant='regular'
+              label='Jugosławia'
+            />
+          </FlexContainer>
+        </Typ3Container>
+      </A4Page>
 
       <A4TwoSideLabelContainer>
         <EtykietaTyp35 countryCode="us" />

@@ -15,16 +15,16 @@ export const FlagLabel = ({ flag, countryCode, variant, label }: IFlagLabelProps
 
     const flagUrl = typeof flag === 'string'
         ? flag
-        : flag.provideFlagFor(countryCode).url;
+        : flag?.provideFlagFor(countryCode).url;
 
-    const namePl = CountryConverterService.countryCode2NamePl(countryCode);
+    const namePl = label || CountryConverterService.countryCode2NamePl(countryCode);
 
     return (
         <LabelWithFlagContainer variant={variant}>
-            <img className="flag" src={flagUrl} alt={countryCode} />
+            <img className="flag" src={flagUrl} alt={countryCode || flagUrl} />
 
             <div className="label">
-                {label || namePl}
+                {namePl}
             </div>
         </LabelWithFlagContainer>
     );

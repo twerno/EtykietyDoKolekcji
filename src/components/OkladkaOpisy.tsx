@@ -26,7 +26,7 @@ export const OkladkaOpisy = (props: IOkladkaOpisyProps) => {
                             <LabelWithFlag
                                 key={data.countryCode}
                                 countryCode={data.countryCode}
-                                flagProvider={FlagIconCssProvider}
+                                flag={FlagIconCssProvider}
                                 infoList={data.info}
                                 variant={variant}
                                 label={isRendererWithSortName(data.label) ? data.label.renderer : data.label}
