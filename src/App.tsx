@@ -5,7 +5,6 @@ import { MapChart } from './chart/chart';
 import { FlagIconCssProvider } from './chart/FlagProvider';
 import { A4Page } from './components/containers/A4Page';
 import { FlexContainer } from './components/containers/FlexContainer';
-import { A4TwoSideLabelContainer } from './components/containers/TwoSideLabelContainer.old';
 import { Typ3Container } from './components/containers/Typ3Container';
 import { EtykietaTyp20, Typ20Label } from './components/etykiety/EtykietaTyp20';
 import { EtykietaTyp35, Typ35Label } from './components/etykiety/EtykietaTyp35';
@@ -13,7 +12,7 @@ import { LabelWithFlag } from './components/LabelWithFlag';
 import { OkładkaA4 } from './components/OkładkaA4';
 import CountryConverterService from './service/CountryConverterService';
 import CurrencyService from './service/CurrencyService';
-import VerticalLabel from "./components/VerticalLabel";
+import { VerticalLabel, TwoSideVerticalLabel } from "./components/VerticalLabel";
 import { A4TwoSideMasterContainer, TwoSideContainer, TwoSideComponent } from "./components/containers/TwoSideLabelContainer";
 
 const currencyRate = async (countryCode: string, staticRate?: number) => {
@@ -83,107 +82,76 @@ function App() {
         <FlexContainer fullSize flexDirection='column'>
           <Typ3Container>
             <TwoSideContainer>
-              <TwoSideComponent
-                front={
-                  <VerticalLabel
-                    countryCode='th'
-                    flag={FlagIconCssProvider}
-                    variant='regular'
-                    infoList={['1', 'FRONT', 'Bat', '1 bat = 100 satangów', currencyRate('th')]}
-                  />
-                }
-                back={
-                  <VerticalLabel
-                    countryCode='th'
-                    flag={FlagIconCssProvider}
-                    variant='regular'
-                    infoList={['1', 'BACK', 'Bat', '1 bat = 100 satangów', currencyRate('th')]}
-                  />
-                }
+              <TwoSideVerticalLabel
+                countryCode='bt'
+                flag={FlagIconCssProvider}
+                frontSideInfo={['1', 'FRONT', 'Bat', '1 bat = 100 satangów', currencyRate('th')]}
+                backSideInfo={['1', 'BACK', 'Bat', '1 bat = 100 satangów', currencyRate('th')]}
               />
 
-              <TwoSideComponent
-                front={
-                  <VerticalLabel
-                    countryCode='th'
-                    flag={FlagIconCssProvider}
-                    variant='regular'
-                    infoList={['2', 'FRONT', 'Bat', '1 bat = 100 satangów', currencyRate('th')]}
-                  />
-                }
-                back={
-                  <VerticalLabel
-                    countryCode='th'
-                    flag={FlagIconCssProvider}
-                    variant='regular'
-                    infoList={['2', 'BACK', 'Bat', '1 bat = 100 satangów', currencyRate('th')]}
-                  />
-                }
+              <TwoSideVerticalLabel
+                countryCode='th'
+                flag={FlagIconCssProvider}
+                frontSideInfo={['2', 'FRONT', 'Bat', '1 bat = 100 satangów', currencyRate('th')]}
+                backSideInfo={['2', 'BACK', 'Bat', '1 bat = 100 satangów', currencyRate('th')]}
               />
 
-              <TwoSideComponent
-                front={
-                  <VerticalLabel
-                    countryCode='th'
-                    flag={FlagIconCssProvider}
-                    variant='regular'
-                    infoList={['3', 'FRONT', 'Bat', '1 bat = 100 satangów', currencyRate('th')]}
-                  />
-                }
-                back={
-                  <VerticalLabel
-                    countryCode='th'
-                    flag={FlagIconCssProvider}
-                    variant='regular'
-                    infoList={['3', 'BACK', 'Bat', '1 bat = 100 satangów', currencyRate('th')]}
-                  />
-                }
+              <TwoSideVerticalLabel
+                countryCode='th'
+                flag={FlagIconCssProvider}
+                frontSideInfo={['3', 'FRONT', 'Bat', '1 bat = 100 satangów', currencyRate('th')]}
+                backSideInfo={['3', 'BACK', 'Bat', '1 bat = 100 satangów', currencyRate('th')]}
               />
+
             </TwoSideContainer>
           </Typ3Container>
         </FlexContainer>
       </A4TwoSideMasterContainer>
 
-      <A4TwoSideLabelContainer>
-        <EtykietaTyp35 countryCode="us" />
-        <EtykietaTyp35 countryCode="bs" />
-        <EtykietaTyp35 countryCode="" label='Żeton telefoniczny' flag='https://etykiety.s3-eu-west-1.amazonaws.com/poczta_polska.jpg' />
-        <EtykietaTyp35 countryCode="" label='Żeton' flag='https://etykiety.s3-eu-west-1.amazonaws.com/lidl.png' />
-        <EtykietaTyp35 countryCode="" label='Żeton' flag='https://etykiety.s3-eu-west-1.amazonaws.com/eurocoin.png' />
-        <EtykietaTyp35 countryCode="at" />
-        <EtykietaTyp35 countryCode="fr" />
-        <EtykietaTyp35 countryCode="sk" />
-        <EtykietaTyp35 countryCode="de" />
-        <EtykietaTyp35 countryCode="gr" />
-        <EtykietaTyp35 countryCode="it" />
-        <EtykietaTyp35 countryCode="es" />
-        <EtykietaTyp35 countryCode="be" />
-        <EtykietaTyp35 countryCode="pt" />
-        <EtykietaTyp35 countryCode="nl" label={Typ35Label('Niderlandy', '(Holandia)')} />
-        <EtykietaTyp35 countryCode="nl" label={Typ35Label('Niderlandy', '(Holandia)')} />
-        <EtykietaTyp35 countryCode="cy" />
-        <EtykietaTyp35 countryCode="lu" />
-        <EtykietaTyp35 countryCode="hr" />
-        <EtykietaTyp35 countryCode="no" />
-        <EtykietaTyp35 countryCode="bg" />
-        <EtykietaTyp35 countryCode="tr" />
-        <EtykietaTyp35 countryCode="sk" />
-      </A4TwoSideLabelContainer>
+      <A4TwoSideMasterContainer>
+        <TwoSideContainer>
+          <EtykietaTyp35 countryCode="us" />
+          <EtykietaTyp35 countryCode="bs" />
+          <EtykietaTyp35 countryCode="" label='Żeton telefoniczny' flag='https://etykiety.s3-eu-west-1.amazonaws.com/poczta_polska.jpg' />
+          <EtykietaTyp35 countryCode="" label='Żeton' flag='https://etykiety.s3-eu-west-1.amazonaws.com/lidl.png' />
+          <EtykietaTyp35 countryCode="" label='Żeton' flag='https://etykiety.s3-eu-west-1.amazonaws.com/eurocoin.png' />
+          <EtykietaTyp35 countryCode="at" />
+          <EtykietaTyp35 countryCode="fr" />
+          <EtykietaTyp35 countryCode="sk" />
+          <EtykietaTyp35 countryCode="de" />
+          <EtykietaTyp35 countryCode="gr" />
+          <EtykietaTyp35 countryCode="it" />
+          <EtykietaTyp35 countryCode="es" />
+          <EtykietaTyp35 countryCode="be" />
+          <EtykietaTyp35 countryCode="pt" />
+          <EtykietaTyp35 countryCode="nl" label={Typ35Label('Niderlandy', '(Holandia)')} />
+          <EtykietaTyp35 countryCode="nl" label={Typ35Label('Niderlandy', '(Holandia)')} />
+          <EtykietaTyp35 countryCode="cy" />
+          <EtykietaTyp35 countryCode="lu" />
+          <EtykietaTyp35 countryCode="hr" />
+          <EtykietaTyp35 countryCode="no" />
+          <EtykietaTyp35 countryCode="bg" />
+          <EtykietaTyp35 countryCode="tr" />
+          <EtykietaTyp35 countryCode="sk" />
+        </TwoSideContainer>
+      </A4TwoSideMasterContainer>
 
-      <A4TwoSideLabelContainer>
-        <EtykietaTyp20 countryCode="es" />
-        <EtykietaTyp20 countryCode="il" />
-        <EtykietaTyp20 countryCode="il" />
-        <EtykietaTyp20 countryCode="mu" />
-        <EtykietaTyp20 countryCode="lk" />
-        <EtykietaTyp20 countryCode="th" />
-        <EtykietaTyp20 countryCode="fr" />
-        <EtykietaTyp20 countryCode="de" />
-        <EtykietaTyp20 countryCode="cz" />
-        <EtykietaTyp20 countryCode="se" />
-        <EtykietaTyp20 countryCode="tr" />
-        <EtykietaTyp20 countryCode='' label={Typ20Label('Temerski Oren', 'Wiedźmin 2')} flag='https://etykiety.s3-eu-west-1.amazonaws.com/wiedzmin_logo.png' />
-      </A4TwoSideLabelContainer>
+      <A4TwoSideMasterContainer>
+        <TwoSideContainer>
+          <EtykietaTyp20 countryCode="es" />
+          <EtykietaTyp20 countryCode="il" />
+          <EtykietaTyp20 countryCode="il" />
+          <EtykietaTyp20 countryCode="mu" />
+          <EtykietaTyp20 countryCode="lk" />
+          <EtykietaTyp20 countryCode="th" />
+          <EtykietaTyp20 countryCode="fr" />
+          <EtykietaTyp20 countryCode="de" />
+          <EtykietaTyp20 countryCode="cz" />
+          <EtykietaTyp20 countryCode="se" />
+          <EtykietaTyp20 countryCode="tr" />
+          <EtykietaTyp20 countryCode='' label={Typ20Label('Temerski Oren', 'Wiedźmin 2')} flag='https://etykiety.s3-eu-west-1.amazonaws.com/wiedzmin_logo.png' />
+        </TwoSideContainer>
+      </A4TwoSideMasterContainer>
 
       <OkładkaA4
         mapLabel="Strefa Euro"

@@ -92,6 +92,8 @@ const A4TwoSideMasterStyledContainer = styled.div<{ side: 'front' | 'back'; }>`
 const SideMasterContainer = styled.div<{ rotate: number; printable: boolean }>`
     position: absolute;
     left: 0;
+    height: 100%;
+    width:  100%;
     display:inline-flex;
     backface-visibility: hidden;
     transition: transform .5s;
@@ -113,4 +115,5 @@ const TwoSideStyledContainer = styled.div<{ side: 'front' | 'back'; }>`
     flex-direction: ${props => props.side === 'front' ? 'row' : 'row-reverse'};
     justify-content: start;
     align-content: baseline;
+    flex-wrap: wrap;
 `;

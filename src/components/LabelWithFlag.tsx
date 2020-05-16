@@ -37,7 +37,7 @@ export const LabelWithFlag = (props: ILabelWithFlagProps) => {
 };
 
 interface ILabelWithFlagContainerProps {
-    variant: 'regular' | 'typ35';
+    variant: 'regular' | 'typ35' | 'responsive';
 }
 
 const LabelWithFlagContainer = styled.div<ILabelWithFlagContainerProps>`
@@ -49,7 +49,7 @@ const LabelWithFlagContainer = styled.div<ILabelWithFlagContainerProps>`
 
     padding: 5px;
     padding-top: 2px;
-    min-width: ${props => props.variant === 'regular' ? '37mm' : '95px'};
+    min-width: ${props => props.variant === 'regular' ? '37mm' : '30mm'};
     min-height: ${props => props.variant === 'regular' ? '175px' : '104px'};
 
     ul.info {
