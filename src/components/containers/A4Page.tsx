@@ -1,6 +1,10 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const A4Page = styled.div`
+interface IA4PageProps {
+    position?: 'absolute' | 'relative';
+}
+
+export const A4Page = styled.div<IA4PageProps>(props => css`
     height: 297mm;
     width: 210mm;
     padding: 10mm;
@@ -16,6 +20,7 @@ export const A4Page = styled.div`
     @media print {
         margin: 0px;
         border: none;
+        page-break-after: always;
     }
 
-`;
+`, props => ({ position: props.position }));

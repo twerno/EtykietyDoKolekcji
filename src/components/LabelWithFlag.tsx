@@ -4,7 +4,7 @@ import { IFlagProvider } from '../chart/FlagProvider';
 import { FlagLabel } from './FlagLabel';
 import { AsyncTextRenderer } from './utils/AsyncTextRenderer';
 
-export interface ICountryLabelProps {
+export interface ILabelWithFlagProps {
     countryCode: string;
     infoList?: Array<string | Promise<string>>;
     flag: IFlagProvider | string;
@@ -12,7 +12,7 @@ export interface ICountryLabelProps {
     label?: string | React.ReactElement;
 }
 
-export const LabelWithFlag = (props: ICountryLabelProps) => {
+export const LabelWithFlag = (props: ILabelWithFlagProps) => {
     const countryCode = props.countryCode;
     console.log(props);
 
@@ -49,7 +49,7 @@ const LabelWithFlagContainer = styled.div<ILabelWithFlagContainerProps>`
 
     padding: 5px;
     padding-top: 2px;
-    min-width: ${props => props.variant === 'regular' ? '130px' : '85px'};
+    min-width: ${props => props.variant === 'regular' ? '37mm' : '95px'};
     min-height: ${props => props.variant === 'regular' ? '175px' : '104px'};
 
     ul.info {

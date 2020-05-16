@@ -41,7 +41,7 @@ const labelVariants = variant<object, LabelWithFlagContainerVariants>(
                 justify-content: flex-start;
 
                 .flag {
-                    width: 17mm;
+                    width: 18mm;
                     margin-top: 5px;
                 }
 

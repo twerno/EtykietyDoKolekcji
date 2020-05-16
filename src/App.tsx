@@ -1,18 +1,20 @@
+import * as am4core from "@amcharts/amcharts4/core";
 import React from 'react';
 import './App.css';
 import { MapChart } from './chart/chart';
 import { FlagIconCssProvider } from './chart/FlagProvider';
 import { A4Page } from './components/containers/A4Page';
 import { FlexContainer } from './components/containers/FlexContainer';
-import { A4TwoSideLabelContainer } from './components/containers/TwoSideLabelContainer';
+import { A4TwoSideLabelContainer } from './components/containers/TwoSideLabelContainer.old';
 import { Typ3Container } from './components/containers/Typ3Container';
-import { EtykietaTyp20 } from './components/etykiety/EtykietaTyp20';
+import { EtykietaTyp20, Typ20Label } from './components/etykiety/EtykietaTyp20';
 import { EtykietaTyp35, Typ35Label } from './components/etykiety/EtykietaTyp35';
 import { LabelWithFlag } from './components/LabelWithFlag';
 import { OkładkaA4 } from './components/OkładkaA4';
 import CountryConverterService from './service/CountryConverterService';
 import CurrencyService from './service/CurrencyService';
-import * as am4core from "@amcharts/amcharts4/core";
+import VerticalLabel from "./components/VerticalLabel";
+import { A4TwoSideMasterContainer, TwoSideContainer, TwoSideComponent } from "./components/containers/TwoSideLabelContainer";
 
 const currencyRate = async (countryCode: string, staticRate?: number) => {
   const currencyCode = CountryConverterService.countryCode2CurrencyCode(countryCode);
@@ -77,6 +79,71 @@ function App() {
         </Typ3Container>
       </A4Page>
 
+      <A4TwoSideMasterContainer>
+        <FlexContainer fullSize flexDirection='column'>
+          <Typ3Container>
+            <TwoSideContainer>
+              <TwoSideComponent
+                front={
+                  <VerticalLabel
+                    countryCode='th'
+                    flag={FlagIconCssProvider}
+                    variant='regular'
+                    infoList={['1', 'FRONT', 'Bat', '1 bat = 100 satangów', currencyRate('th')]}
+                  />
+                }
+                back={
+                  <VerticalLabel
+                    countryCode='th'
+                    flag={FlagIconCssProvider}
+                    variant='regular'
+                    infoList={['1', 'BACK', 'Bat', '1 bat = 100 satangów', currencyRate('th')]}
+                  />
+                }
+              />
+
+              <TwoSideComponent
+                front={
+                  <VerticalLabel
+                    countryCode='th'
+                    flag={FlagIconCssProvider}
+                    variant='regular'
+                    infoList={['2', 'FRONT', 'Bat', '1 bat = 100 satangów', currencyRate('th')]}
+                  />
+                }
+                back={
+                  <VerticalLabel
+                    countryCode='th'
+                    flag={FlagIconCssProvider}
+                    variant='regular'
+                    infoList={['2', 'BACK', 'Bat', '1 bat = 100 satangów', currencyRate('th')]}
+                  />
+                }
+              />
+
+              <TwoSideComponent
+                front={
+                  <VerticalLabel
+                    countryCode='th'
+                    flag={FlagIconCssProvider}
+                    variant='regular'
+                    infoList={['3', 'FRONT', 'Bat', '1 bat = 100 satangów', currencyRate('th')]}
+                  />
+                }
+                back={
+                  <VerticalLabel
+                    countryCode='th'
+                    flag={FlagIconCssProvider}
+                    variant='regular'
+                    infoList={['3', 'BACK', 'Bat', '1 bat = 100 satangów', currencyRate('th')]}
+                  />
+                }
+              />
+            </TwoSideContainer>
+          </Typ3Container>
+        </FlexContainer>
+      </A4TwoSideMasterContainer>
+
       <A4TwoSideLabelContainer>
         <EtykietaTyp35 countryCode="us" />
         <EtykietaTyp35 countryCode="bs" />
@@ -115,6 +182,7 @@ function App() {
         <EtykietaTyp20 countryCode="cz" />
         <EtykietaTyp20 countryCode="se" />
         <EtykietaTyp20 countryCode="tr" />
+        <EtykietaTyp20 countryCode='' label={Typ20Label('Temerski Oren', 'Wiedźmin 2')} flag='https://etykiety.s3-eu-west-1.amazonaws.com/wiedzmin_logo.png' />
       </A4TwoSideLabelContainer>
 
       <OkładkaA4
