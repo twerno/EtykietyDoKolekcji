@@ -1,8 +1,8 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
-import { variant } from 'styled-system';
 import { IFlagProvider } from '../chart/FlagProvider';
 import CountryConverterService from '../service/CountryConverterService';
+import { variant } from '../helper/VariantUtils';
 
 export interface IFlagLabelProps {
     flag: string | IFlagProvider;
@@ -32,10 +32,9 @@ export const FlagLabel = ({ flag, countryCode, variant, label }: IFlagLabelProps
 
 export type LabelWithFlagContainerVariants = 'typ35' | 'typ20' | 'regular';
 
-const labelVariants = variant<object, LabelWithFlagContainerVariants>(
+const labelVariants = variant<LabelWithFlagContainerVariants>(
     {
-        variants: {
-            typ35: css`
+        typ35: css`
                 padding: 0px;
                 padding: 0px;
                 justify-content: flex-start;
@@ -50,7 +49,7 @@ const labelVariants = variant<object, LabelWithFlagContainerVariants>(
                     margin: 4px 0px;
                 }
             `,
-            typ20: css`
+        typ20: css`
                 padding: 0px;
                 padding: 0px;
 
@@ -64,13 +63,11 @@ const labelVariants = variant<object, LabelWithFlagContainerVariants>(
                     padding: 0px 1px;
                 }
             `,
-            regular: css`
+        regular: css`
                 min-height: 140px;
                 min-height: 140px;
                 flex: unset;
             `
-
-        }
     });
 
 interface ILabelWithFlagContainerProps {
