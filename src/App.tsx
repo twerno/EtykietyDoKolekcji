@@ -64,7 +64,7 @@ function App() {
       </A4Page>
 
       <A4TwoSideMasterContainer>
-        <FlexContainer fullSize flexDirection='column'>
+        <FlexContainer fullSize flexDirection='column' alignItems="center">
           <Typ3Container>
             <TwoSideContainer>
               <TwoSideVerticalLabel
