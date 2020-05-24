@@ -28,6 +28,7 @@ export const VerticalLabel = (props: IVerticalLabelProps) => {
                         flag={props.flag}
                         width="65%"
                     />
+
                     <div className="header">
                         {namePl}
                     </div>

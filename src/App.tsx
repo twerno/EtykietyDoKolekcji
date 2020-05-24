@@ -88,7 +88,9 @@ function App() {
                   interspace: 'loose',
                   items: [
                     { label: 'portret', text: 'sir Wilfrid Laurier - premier Kanady 1896-1911' },
-                    { label: 'hologram', text: 'Wieża Mackenzie - najbardziej rozpoznawalna wieża Zachodniego Budynku Parlamentu Kanadyjskiego' }
+                    { label: 'hologram', text: 'Wieża Mackenzie - najbardziej rozpoznawalna wieża Zachodniego Budynku Parlamentu Kanadyjskiego' },
+                    { label: 'okienko', text: 'liść klonu' }
+
                   ]
                 }}
                 backSideInfo={{
@@ -124,7 +126,7 @@ function App() {
                     { label: 'portret', text: 'królowa Elżbieta II' },
                     { label: 'hologram', text: 'Miodopijek długodzioby' },
                     { label: 'hologram', text: 'Pawilon federacji - tymczasowa budowla, w której w 1901 r. 6 Brytyjskich kolonii zjednoczyło się tworząc państwo Australia' },
-                    { label: 'okienko', text: 'Gwiazda federacji - siedmioramienna (7 ramie dodane w 1908r.) gwiazda symbolizująca stany Australii, gwiazda użyta jest także na herbie Australii' }
+                    { label: 'okienko', text: 'Gwiazda federacji - siedmioramienna (oryginalnie 6-ramienna, 7 ramie dodane w 1908r.) gwiazda symbolizująca stany Australii; gwiazda użyta jest także na herbie Australii' }
                   ]
                 }}
                 backSideInfo={{
@@ -132,7 +134,7 @@ function App() {
                   items: [
                     { label: 'Budynek Parlamentu', text: 'otwarty w 1988r. przez królową Elżbietę II' },
                     'Mozajka przez budynkiem Parlamentu',
-                    'Rzut z góry przedtawiający budynki Parlamentu Australijskiego',
+                    { label: 'Plan zagospodarowania Capital Hill', text: 'budynek parlamentu wraz z ogrodami i terenami sportowymi' },
                   ]
                 }}
               />
