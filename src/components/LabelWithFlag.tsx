@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { IFlagProvider } from '../chart/FlagProvider';
 import { FlagLabel } from './FlagLabel';
-import { AsyncTextRenderer } from './utils/AsyncTextRenderer';
+import Infobox from './Infobox';
 
 export interface ILabelWithFlagProps {
     countryCode: string;
@@ -24,13 +24,8 @@ export const LabelWithFlag = (props: ILabelWithFlagProps) => {
                 countryCode={countryCode}
                 label={props.label}
             />
-            <ul className="info">
-                {props.infoList?.map((v, idx) =>
-                    <li key={`${countryCode}_${idx}`}>
-                        <AsyncTextRenderer provider={v} />
-                    </li>)
-                }
-            </ul>
+
+            <Infobox items={props.infoList} />
 
         </LabelWithFlagContainer>
     );
@@ -45,28 +40,11 @@ const LabelWithFlagContainer = styled.div<ILabelWithFlagContainerProps>`
     flex-direction: column;
     align-items: center;
     justify-content: ${props => props.variant === 'regular' ? 'start' : 'space-between'};
+    font-size:  ${props => props.variant === 'regular' ? '9px' : '8px'};
     flex: 1;
 
     padding: 5px;
     padding-top: 2px;
     min-width: ${props => props.variant === 'regular' ? '37mm' : '26mm'};
     min-height: ${props => props.variant === 'regular' ? '175px' : '104px'};
-
-    ul.info {
-        margin: 0;
-        list-style: none;
-        padding: 0;
-        font-size:  ${props => props.variant === 'regular' ? '9px' : '8px'};
-        color: #7b7b7b99;
-        margin-left: -5px;
-        margin-right: -5px;
-    }
-
-    ul li {
-        min-height: 10px;
-    }
-
-    ul.info li:not(':first-child') {
-        margin-top: 1px;
-    }
 `;

@@ -74,6 +74,8 @@ function App() {
                 flag={FlagIconCssProvider}
                 label="5 dolarów kanadyjskich"
                 sharedInfobox={{
+                  showSeparator: true,
+                  interspace: 'loose',
                   items: [
                     { label: 'Wartość', text: CurrencyUtils.convert2PLNFormat(5, 'ca') },
                     { label: 'Rok emisji', text: '2013' },
@@ -83,12 +85,14 @@ function App() {
                   ]
                 }}
                 frontSideInfo={{
+                  interspace: 'loose',
                   items: [
                     { label: 'portret', text: 'sir Wilfrid Laurier - premier Kanady 1896-1911' },
                     { label: 'hologram', text: 'Wieża Mackenzie - najbardziej rozpoznawalna wieża Zachodniego Budynku Parlamentu Kanadyjskiego' }
                   ]
                 }}
                 backSideInfo={{
+                  interspace: 'loose',
                   items: [
                     { label: 'Canadarm2', text: 'mechaniczne, mobilne ramie dźwigu zamontowanego w 2001r. na ISS' },
                     { label: 'Dextre (Canada Hand)', text: 'końcówka do Canadarm2 służąca do prac precyzyjnych' },
@@ -105,15 +109,17 @@ function App() {
                 flag={FlagIconCssProvider}
                 label="5 dolarów australijskich"
                 sharedInfobox={{
+                  showSeparator: true,
+                  interspace: 'loose',
                   items: [
                     { label: 'Wartość', text: CurrencyUtils.convert2PLNFormat(5, 'au') },
                     { label: 'Rok emisji', text: '2016' },
                     { label: 'Typ', text: 'plastikowy' },
                     { label: 'W obiegu', text: 'tak' },
-
                   ]
                 }}
                 frontSideInfo={{
+                  interspace: 'loose',
                   items: [
                     { label: 'portret', text: 'królowa Elżbieta II' },
                     { label: 'hologram', text: 'Miodopijek długodzioby' },
@@ -122,6 +128,7 @@ function App() {
                   ]
                 }}
                 backSideInfo={{
+                  interspace: 'loose',
                   items: [
                     { label: 'Budynek Parlamentu', text: 'otwarty w 1988r. przez królową Elżbietę II' },
                     'Mozajka przez budynkiem Parlamentu',

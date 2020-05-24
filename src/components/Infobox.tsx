@@ -7,28 +7,33 @@ export interface IInfoboxItem {
     text: string | Promise<string>;
 }
 
-export interface IInfoboxProps {
+export interface IInfoboxProps extends IInfoBoxContainerProps {
     items?: Array<IInfoboxItem | string | Promise<string>>;
 }
 
-export default ({ items }: IInfoboxProps) => {
+export default (props: IInfoboxProps) => {
     return (
-        <InfoBoxContainer>
-            {items?.map(item => <InfoboxItemRenderer item={item} />)}
+        <InfoBoxContainer {...props}>
+            {props.items?.map(item => <InfoboxItemRenderer item={item} />)}
         </InfoBoxContainer>
     );
 }
 
-const InfoBoxContainer = styled.ul`
+interface IInfoBoxContainerProps {
+    interspace?: 'dence' | 'loose';
+    showSeparator?: boolean;
+}
+
+const InfoBoxContainer = styled.ul<IInfoBoxContainerProps>`
     margin: 0;
     list-style: none;
     padding: 0;
     margin: 0px 3px;
     position: relative;
-    margin-bottom: 8px;
+    margin-bottom: ${props => props.showSeparator === true ? '8px' : '5px'};
 
     ::after {
-        content: '';
+        content: ${props => props.showSeparator === true ? `''` : undefined};
         border-bottom: 1px solid #d1d1d1;
         width: 70%;
         position: absolute;
@@ -38,12 +43,12 @@ const InfoBoxContainer = styled.ul`
 
     li {
         text-align: left;
-        padding-top: 3px;
+        padding-top: ${props => props.interspace === 'loose' ? '3px' : '0px'};
     }
 
     li:empty {
         border-bottom: none;
-        height: 10px;
+        height: 6px;
     }
 
     li:not(':first-child') {
