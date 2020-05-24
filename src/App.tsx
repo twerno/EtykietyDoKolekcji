@@ -5,29 +5,14 @@ import { MapChart } from './chart/chart';
 import { FlagIconCssProvider } from './chart/FlagProvider';
 import { A4Page } from './components/containers/A4Page';
 import { FlexContainer } from './components/containers/FlexContainer';
+import { A4TwoSideMasterContainer, TwoSideContainer } from "./components/containers/TwoSideLabelContainer";
 import { Typ3Container } from './components/containers/Typ3Container';
 import { EtykietaTyp20, Typ20Label } from './components/etykiety/EtykietaTyp20';
 import { EtykietaTyp35, Typ35Label } from './components/etykiety/EtykietaTyp35';
 import { LabelWithFlag } from './components/LabelWithFlag';
 import { OkładkaA4 } from './components/OkładkaA4';
-import CountryConverterService from './service/CountryConverterService';
-import CurrencyService from './service/CurrencyService';
-import { VerticalLabel, TwoSideVerticalLabel } from "./components/VerticalLabel";
-import { A4TwoSideMasterContainer, TwoSideContainer, TwoSideComponent } from "./components/containers/TwoSideLabelContainer";
-
-const currencyRate = async (countryCode: string, staticRate?: number) => {
-  const currencyCode = CountryConverterService.countryCode2CurrencyCode(countryCode);
-  if (currencyCode === undefined) { return '' }
-  const rate = await CurrencyService.currencyCode2Rate(currencyCode) || staticRate;
-  if (rate === undefined) { return '' }
-  return `1 ${currencyCode.toLocaleUpperCase()} = ${rate.toPrecision(3)} PLN`;
-}
-
-const currencyName = async (countryCode: string) => {
-  const currencyCode = CountryConverterService.countryCode2CurrencyCode(countryCode);
-  if (currencyCode === undefined) { return '' }
-  return await CurrencyService.code2CurrencyNamePl(currencyCode) || '';
-}
+import { TwoSideVerticalLabel } from "./components/VerticalLabel";
+import CurrencyUtils from "./helper/CurrencyUtils";
 
 function App() {
 
@@ -83,24 +68,66 @@ function App() {
           <Typ3Container>
             <TwoSideContainer>
               <TwoSideVerticalLabel
-                countryCode='bt'
+                width={30}
+                fontSize={7}
+                countryCode='ca'
                 flag={FlagIconCssProvider}
-                frontSideInfo={['1', 'FRONT', 'Bat', '1 bat = 100 satangów', currencyRate('th')]}
-                backSideInfo={['1', 'BACK', 'Bat', '1 bat = 100 satangów', currencyRate('th')]}
+                label="5 dolarów kanadyjskich"
+                sharedInfobox={{
+                  items: [
+                    { label: 'Wartość', text: CurrencyUtils.convert2PLNFormat(5, 'ca') },
+                    { label: 'Rok emisji', text: '2013' },
+                    { label: 'Typ', text: 'plastikowy' },
+                    { label: 'W obiegu', text: 'tak' },
+
+                  ]
+                }}
+                frontSideInfo={{
+                  items: [
+                    { label: 'portret', text: 'sir Wilfrid Laurier - premier Kanady 1896-1911' },
+                    { label: 'hologram', text: 'Wieża Mackenzie - najbardziej rozpoznawalna wieża Zachodniego Budynku Parlamentu Kanadyjskiego' }
+                  ]
+                }}
+                backSideInfo={{
+                  items: [
+                    { label: 'Canadarm2', text: 'mechaniczne, mobilne ramie dźwigu zamontowanego w 2001r. na ISS' },
+                    { label: 'Dextre (Canada Hand)', text: 'końcówka do Canadarm2 służąca do prac precyzyjnych' },
+                    'Kanadyjski astronauta',
+                    { label: 'Tło', text: 'widok na Wielkie Jeziora i zatokę Hudsona' }
+                  ]
+                }}
               />
 
               <TwoSideVerticalLabel
-                countryCode='th'
+                width={35}
+                fontSize={7}
+                countryCode='au'
                 flag={FlagIconCssProvider}
-                frontSideInfo={['2', 'FRONT', 'Bat', '1 bat = 100 satangów', currencyRate('th')]}
-                backSideInfo={['2', 'BACK', 'Bat', '1 bat = 100 satangów', currencyRate('th')]}
-              />
+                label="5 dolarów australijskich"
+                sharedInfobox={{
+                  items: [
+                    { label: 'Wartość', text: CurrencyUtils.convert2PLNFormat(5, 'au') },
+                    { label: 'Rok emisji', text: '2016' },
+                    { label: 'Typ', text: 'plastikowy' },
+                    { label: 'W obiegu', text: 'tak' },
 
-              <TwoSideVerticalLabel
-                countryCode='th'
-                flag={FlagIconCssProvider}
-                frontSideInfo={['3', 'FRONT', 'Bat', '1 bat = 100 satangów', currencyRate('th')]}
-                backSideInfo={['3', 'BACK', 'Bat', '1 bat = 100 satangów', currencyRate('th')]}
+                  ]
+                }}
+                frontSideInfo={{
+                  items: [
+                    { label: 'portret', text: 'królowa Elżbieta II' },
+                    { label: 'hologram', text: 'Miodopijek długodzioby' },
+                    { label: 'hologram', text: 'Pawilon federacji - tymczasowa budowla, w której w 1901 r. 6 Brytyjskich kolonii zjednoczyło się tworząc państwo Australia' },
+                    { label: 'okienko', text: 'Gwiazda federacji - siedmioramienna (7 ramie dodane w 1908r.) gwiazda symbolizująca stany Australii, gwiazda użyta jest także na herbie Australii' }
+                  ]
+                }}
+                backSideInfo={{
+                  items: [
+                    { label: 'Budynek Parlamentu', text: 'otwarty w 1988r. przez królową Elżbietę II' },
+                    'Mozajka przez budynkiem Parlamentu',
+                    'Rzut z góry przedtawiający budynki Parlamentu Australijskiego',
+                  ]
+                }}
               />
 
             </TwoSideContainer>
@@ -194,13 +221,13 @@ function App() {
 
       <OkładkaA4
         countryList={[
-          { countryCode: 'hr', info: ['Kuna', '1 kuna = 100 lip', currencyRate('hr')] },
-          { countryCode: 'cz', info: ['Korona czeska', '1 korona = 100 halerzy', currencyRate('cz')] },
-          { countryCode: 'no', info: ['Korona norweska', '1 korona = 100 öre', currencyRate('no')] },
-          { countryCode: 'se', info: ['Korona szwedzka', '1 korona = 100 öre', currencyRate('se')] },
+          { countryCode: 'hr', info: ['Kuna', '1 kuna = 100 lip', CurrencyUtils.currencyRateMsg('hr')] },
+          { countryCode: 'cz', info: ['Korona czeska', '1 korona = 100 halerzy', CurrencyUtils.currencyRateMsg('cz')] },
+          { countryCode: 'no', info: ['Korona norweska', '1 korona = 100 öre', CurrencyUtils.currencyRateMsg('no')] },
+          { countryCode: 'se', info: ['Korona szwedzka', '1 korona = 100 öre', CurrencyUtils.currencyRateMsg('se')] },
           { countryCode: 'sk', info: ['Korona słowacka', '1 korona = 100 halerzy', 'Euro od 1 stycznia 2009'] },
-          { countryCode: 'bg', info: ['Lew', '1 lew = 100 stotinek', currencyRate('bg')] },
-          { countryCode: 'tr', info: ['Lira turecka', '1 lira = 100 kuruszy', currencyRate('tr')] },
+          { countryCode: 'bg', info: ['Lew', '1 lew = 100 stotinek', CurrencyUtils.currencyRateMsg('bg')] },
+          { countryCode: 'tr', info: ['Lira turecka', '1 lira = 100 kuruszy', CurrencyUtils.currencyRateMsg('tr')] },
         ]}
         includeInView={["is"]}
         minimap="bottom-left"
@@ -208,19 +235,19 @@ function App() {
 
       <OkładkaA4
         countryList={[
-          { countryCode: 'ca', info: ['Dolar kanadyjski', '1 dolar = 100 centów', currencyRate('ca')] },
-          { countryCode: 'us', info: ['Dolar amerykański', '1 dolar = 100 centów', currencyRate('us')] },
-          { countryCode: 'bs', info: ['Dolar bahamski', '1 dolar = 100 centów', currencyRate('bs')], showPin: true },
-          { countryCode: 'au', info: ['Dolar australijski', '1 dolar = 100 centów', currencyRate('au')] },
+          { countryCode: 'ca', info: ['Dolar kanadyjski', '1 dolar = 100 centów', CurrencyUtils.currencyRateMsg('ca')] },
+          { countryCode: 'us', info: ['Dolar amerykański', '1 dolar = 100 centów', CurrencyUtils.currencyRateMsg('us')] },
+          { countryCode: 'bs', info: ['Dolar bahamski', '1 dolar = 100 centów', CurrencyUtils.currencyRateMsg('bs')], showPin: true },
+          { countryCode: 'au', info: ['Dolar australijski', '1 dolar = 100 centów', CurrencyUtils.currencyRateMsg('au')] },
         ]}
         minimap="bottom-left"
       />
 
       <OkładkaA4
         countryList={[
-          { countryCode: 'az', info: ['Manat azerbejdżański', '1 manat = 100 gapików', 'denominacja w 2007 roku', '1 nowy manat = 5000 starych', currencyRate('az')] },
-          { countryCode: 'il', info: ['Nowy izraelski szekel', '1 szekel = 100 agor', currencyRate('il')] },
-          { countryCode: 'af', info: ['Afgani', '1 afgani = 100 pul', currencyRate('af')] },
+          { countryCode: 'az', info: ['Manat azerbejdżański', '1 manat = 100 gapików', 'denominacja w 2007 roku', '1 nowy manat = 5000 starych', CurrencyUtils.currencyRateMsg('az')] },
+          { countryCode: 'il', info: ['Nowy izraelski szekel', '1 szekel = 100 agor', CurrencyUtils.currencyRateMsg('il')] },
+          { countryCode: 'af', info: ['Afgani', '1 afgani = 100 pul', CurrencyUtils.currencyRateMsg('af')] },
         ]}
         includeInView={['pk', 'tr']}
         minimap="bottom-left"
@@ -228,7 +255,7 @@ function App() {
 
       <OkładkaA4
         countryList={[
-          { countryCode: 'br', info: ['Real brazylijski', '1 real = 100 centavos', currencyRate('br')] },
+          { countryCode: 'br', info: ['Real brazylijski', '1 real = 100 centavos', CurrencyUtils.currencyRateMsg('br')] },
         ]}
         includeInView={['br', 'gs', 'pa']}
         minimap="bottom-left"
@@ -236,11 +263,11 @@ function App() {
 
       <OkładkaA4
         countryList={[
-          { countryCode: 'mu', info: ['Rupia maurytyjska', '1 rumia = 100 centów', currencyRate('mu')], showPin: true },
-          { countryCode: 'na', info: ['Dolar namibijski', '1 dolar = 100 centów', currencyRate('na')] },
-          { countryCode: 'ao', info: ['Kwanza', '1 kwanza  = 100 centymów', currencyRate('ao')] },
-          { countryCode: 'ng', info: ['Naira', '1 naira = 100 kobo', currencyRate('ng')] },
-          { countryCode: 'ke', info: ['Szyling kenijski', '1 szyling = 100 centów', currencyRate('ke')] },
+          { countryCode: 'mu', info: ['Rupia maurytyjska', '1 rumia = 100 centów', CurrencyUtils.currencyRateMsg('mu')], showPin: true },
+          { countryCode: 'na', info: ['Dolar namibijski', '1 dolar = 100 centów', CurrencyUtils.currencyRateMsg('na')] },
+          { countryCode: 'ao', info: ['Kwanza', '1 kwanza  = 100 centymów', CurrencyUtils.currencyRateMsg('ao')] },
+          { countryCode: 'ng', info: ['Naira', '1 naira = 100 kobo', CurrencyUtils.currencyRateMsg('ng')] },
+          { countryCode: 'ke', info: ['Szyling kenijski', '1 szyling = 100 centów', CurrencyUtils.currencyRateMsg('ke')] },
         ]}
         includeInView={['za', 'ma']}
         minimap="bottom-left"
@@ -248,19 +275,19 @@ function App() {
 
       <OkładkaA4
         countryList={[
-          { countryCode: 'bt', info: ['Ngultrum', '1 ngultrum = 100 czetrum', currencyRate('bt', 0.055)] },
+          { countryCode: 'bt', info: ['Ngultrum', '1 ngultrum = 100 czetrum', CurrencyUtils.currencyRateMsg('bt', 0.055)] },
           {
             countryCode: 'mm',
             label: {
               sortName: 'Mjanma',
               renderer: Typ35Label('Mjanma', '(Birma)'),
             },
-            info: ['Kiat', '1 kiat = 100 pia', currencyRate('mm')]
+            info: ['Kiat', '1 kiat = 100 pia', CurrencyUtils.currencyRateMsg('mm')]
           },
-          { countryCode: 'lk', info: ['Rupia lankijska', '1 rupia = 100 centów', currencyRate('lk')] },
-          { countryCode: 'mn', info: ['Tugrik', '1 tugrik = 100 möngö', currencyRate('mn')] },
-          { countryCode: 'th', info: ['Bat', '1 bat = 100 satangów', currencyRate('th')] },
-          { countryCode: 'la', info: ['Kip', '1 kip = 100 at', currencyRate('la')] },
+          { countryCode: 'lk', info: ['Rupia lankijska', '1 rupia = 100 centów', CurrencyUtils.currencyRateMsg('lk')] },
+          { countryCode: 'mn', info: ['Tugrik', '1 tugrik = 100 möngö', CurrencyUtils.currencyRateMsg('mn')] },
+          { countryCode: 'th', info: ['Bat', '1 bat = 100 satangów', CurrencyUtils.currencyRateMsg('th')] },
+          { countryCode: 'la', info: ['Kip', '1 kip = 100 at', CurrencyUtils.currencyRateMsg('la')] },
 
         ]}
         includeInView={['jp', 'pg']}

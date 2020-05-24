@@ -30,44 +30,53 @@ export const FlagLabel = ({ flag, countryCode, variant, label }: IFlagLabelProps
     );
 };
 
-export type LabelWithFlagContainerVariants = 'typ35' | 'typ20' | 'regular';
+export type LabelWithFlagContainerVariants = 'typ35' | 'typ20' | 'regular' | 'responsive';
 
 const labelVariants = variant<LabelWithFlagContainerVariants>(
     {
         typ35: css`
-                padding: 0px;
-                padding: 0px;
-                justify-content: flex-start;
+            padding: 0px;
+            padding: 0px;
+            justify-content: flex-start;
 
-                .flag {
-                    width: 18mm;
-                    margin-top: 5px;
-                }
+            .flag {
+                width: 18mm;
+                margin-top: 5px;
+            }
 
-                .label {
-                    font-size: 11px; 
-                    margin: 4px 0px;
-                }
-            `,
+            .label {
+                font-size: 11px; 
+                margin: 4px 0px;
+            }
+        `,
         typ20: css`
-                padding: 0px;
-                padding: 0px;
+            padding: 0px;
+            padding: 0px;
 
-                .flag {
-                    width: 30mm;
-                }
+            .flag {
+                width: 30mm;
+            }
 
-                .label {
-                    font-size: 14px; 
-                    margin: 0px;
-                    padding: 0px 1px;
-                }
-            `,
+            .label {
+                font-size: 14px; 
+                margin: 0px;
+                padding: 0px 1px;
+            }
+        `,
         regular: css`
-                min-height: 140px;
-                min-height: 140px;
-                flex: unset;
-            `
+            min-height: 140px;
+            min-height: 140px;
+            flex: unset;
+         `,
+        responsive: css`
+            width: 100%;
+            .flag {
+                width: 65%;
+            }
+            .label {
+                margin: 5px 0px;
+            }
+        `
     });
 
 interface ILabelWithFlagContainerProps {

@@ -17,5 +17,5 @@ export const AsyncTextRenderer = (props: IAsyncTextRendererProps) => {
         }
     }, [props.provider]);
 
-    return <>{text}</>;
+    return <>{text === null ? '...' : text}</>;
 }
