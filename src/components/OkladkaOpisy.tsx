@@ -2,9 +2,9 @@ import * as React from 'react';
 import { FlagIconCssProvider } from '../chart/FlagProvider';
 import CountryConverterService from '../service/CountryConverterService';
 import { FlexContainer } from './containers/FlexContainer';
-import { Typ2Container } from './containers/Typ2Container';
 import { LabelWithFlag } from './LabelWithFlag';
 import { IOkladkaCountryProps, isRendererWithSortName } from './OkladkaMapa';
+import { StronaQuatro } from './containers/Okienko';
 
 export interface IOkladkaOpisyProps {
     countryList: IOkladkaCountryProps[];
@@ -17,7 +17,7 @@ export const OkladkaOpisy = (props: IOkladkaOpisyProps) => {
         : 'regular';
 
     return (
-        <Typ2Container>
+        <StronaQuatro.OkienkoTyp2>
             <FlexContainer flexDirection="row" flexWrap="wrap" height="100%" alignItems="base-line" alignContent="space-evenly">
                 {
                     props.countryList
@@ -34,7 +34,7 @@ export const OkladkaOpisy = (props: IOkladkaOpisyProps) => {
                         )
                 }
             </FlexContainer>
-        </Typ2Container>
+        </StronaQuatro.OkienkoTyp2>
     );
 }
 

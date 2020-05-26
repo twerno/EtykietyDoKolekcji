@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { MapChart, MinimapPosition } from '../chart/chart';
 import { FlagIconCssProvider } from '../chart/FlagProvider';
-import { Typ2Container } from './containers/Typ2Container';
 import styled from 'styled-components';
+import { StronaQuatro } from './containers/Okienko';
 
 export interface IOkladkaCountryProps {
     countryCode: string;
@@ -25,7 +25,7 @@ export interface IOkladkaMapaProps {
 export const OkladkaMapa = (props: IOkladkaMapaProps) => {
 
     return (
-        <Typ2Container>
+        <StronaQuatro.OkienkoTyp2>
             {
                 props.mapLabel
                     ? (
@@ -44,7 +44,7 @@ export const OkladkaMapa = (props: IOkladkaMapaProps) => {
                 minimap={props.minimap}
                 flagProvider={FlagIconCssProvider}
             />
-        </Typ2Container>
+        </StronaQuatro.OkienkoTyp2>
     );
 }
 

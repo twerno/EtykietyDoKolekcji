@@ -6,13 +6,13 @@ import { FlagIconCssProvider } from './chart/FlagProvider';
 import { A4Page } from './components/containers/A4Page';
 import { FlexContainer } from './components/containers/FlexContainer';
 import { A4TwoSideMasterContainer, TwoSideContainer } from "./components/containers/TwoSideLabelContainer";
-import { Typ3Container } from './components/containers/Typ3Container';
 import { EtykietaTyp20, Typ20Label } from './components/etykiety/EtykietaTyp20';
 import { EtykietaTyp35, Typ35Label } from './components/etykiety/EtykietaTyp35';
 import { LabelWithFlag } from './components/LabelWithFlag';
 import { OkładkaA4 } from './components/OkładkaA4';
 import { TwoSideVerticalLabel } from "./components/VerticalLabel";
 import CurrencyUtils from "./helper/CurrencyUtils";
+import { StronaQuatro } from "./components/containers/Okienko";
 
 function App() {
 
@@ -20,7 +20,7 @@ function App() {
     <div className="App">
 
       <A4Page>
-        <Typ3Container>
+        <StronaQuatro.OkienkoTyp3>
           <FlexContainer flexDirection="row" height="100%">
             <MapChart
               countryDataList={[
@@ -60,12 +60,12 @@ function App() {
               label='Jugosławia'
             />
           </FlexContainer>
-        </Typ3Container>
+        </StronaQuatro.OkienkoTyp3>
       </A4Page>
 
       <A4TwoSideMasterContainer>
         <FlexContainer fullSize flexDirection='column' alignItems="center">
-          <Typ3Container>
+          <StronaQuatro.OkienkoTyp3>
             <TwoSideContainer>
               <TwoSideVerticalLabel
                 width={30}
@@ -125,8 +125,9 @@ function App() {
                   items: [
                     { label: 'portret', text: 'królowa Elżbieta II' },
                     { label: 'hologram', text: 'Miodopijek długodzioby' },
-                    { label: 'hologram', text: 'Pawilon federacji - tymczasowa budowla, w której w 1901 r. 6 Brytyjskich kolonii zjednoczyło się tworząc państwo Australia' },
-                    { label: 'okienko', text: 'Gwiazda federacji - siedmioramienna (oryginalnie 6-ramienna, 7 ramie dodane w 1908r.) gwiazda symbolizująca stany Australii; gwiazda użyta jest także na herbie Australii' }
+                    { label: 'hologram', text: 'Pawilon federacji - tymczasowa budowla, w której 1 stycznia 1901 r. 6 brytyjskich kolonii oficjalnie utworzyło Związek Australijski' },
+                    { label: 'okienko', text: 'Gwiazda federacji - siedmioramienna (oryginalnie 6-ramienna, 7 ramie dodane w 1908r.) gwiazda symbolizująca stany Australii; gwiazda użyta jest także na herbie Australii' },
+                    { label: 'motyw roślinny', text: 'gatunek akacji pochodzący z południowo-wschodniej Australii' }
                   ]
                 }}
                 backSideInfo={{
@@ -134,13 +135,73 @@ function App() {
                   items: [
                     { label: 'Budynek Parlamentu', text: 'otwarty w 1988r. przez królową Elżbietę II' },
                     'Mozajka przez budynkiem Parlamentu',
-                    { label: 'Plan zagospodarowania Capital Hill', text: 'budynek parlamentu wraz z ogrodami i terenami sportowymi' },
+                    { label: 'Widok z lotu ptaka na budynek Parlamentu', text: 'w tym Izby Reprezentantów, Senatu i obiektów sportowych' },
+                  ]
+                }}
+              />
+
+              <TwoSideVerticalLabel
+                width={25}
+                fontSize={7}
+                countryCode='us'
+                flag={FlagIconCssProvider}
+                label="1 dolar amerykański"
+                sharedInfobox={{
+                  showSeparator: true,
+                  interspace: 'loose',
+                  items: [
+                    { label: 'Wartość', text: CurrencyUtils.convert2PLNFormat(1, 'us') },
+                    { label: 'Rok emisji', text: '2013' },
+                    { label: 'Typ', text: 'papierowy' },
+                    { label: 'W obiegu', text: 'tak' },
+                  ]
+                }}
+                frontSideInfo={{
+                  interspace: 'loose',
+                  items: [
+                    { label: 'portret', text: 'George Washington - pierwszy prezydent USA (1789 - 1797)' },
+                  ]
+                }}
+                backSideInfo={{
+                  interspace: 'loose',
+                  items: [
+                    { label: 'Wielka Pieczęć Stanów Zjednoczonych', text: '' },
+                  ]
+                }}
+              />
+
+              <TwoSideVerticalLabel
+                width={25}
+                fontSize={7}
+                countryCode='us'
+                flag={FlagIconCssProvider}
+                label="5 dolarów amerykańskich"
+                sharedInfobox={{
+                  showSeparator: true,
+                  interspace: 'loose',
+                  items: [
+                    { label: 'Wartość', text: CurrencyUtils.convert2PLNFormat(5, 'us') },
+                    { label: 'Rok emisji', text: '2013' },
+                    { label: 'Typ', text: 'papierowy' },
+                    { label: 'W obiegu', text: 'tak' },
+                  ]
+                }}
+                frontSideInfo={{
+                  interspace: 'loose',
+                  items: [
+                    { label: 'portret', text: 'Abraham Lincoln - 16-sty prezydent USA (1861 - 1865)' },
+                  ]
+                }}
+                backSideInfo={{
+                  interspace: 'loose',
+                  items: [
+                    { label: 'Mauzoleum Abrahama Lincolna', text: 'budynek przypominający wyglądem klasyczną grecką świątynię, zbudowany na planie prostokąta, otoczony kolumnami doryckimi. We wnętrzu znajduje się posąg Lincolna.' },
                   ]
                 }}
               />
 
             </TwoSideContainer>
-          </Typ3Container>
+          </StronaQuatro.OkienkoTyp3>
         </FlexContainer>
       </A4TwoSideMasterContainer>
 

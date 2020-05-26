@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FlagIconCssProvider } from '../../chart/FlagProvider';
-import { Typ20Container } from '../containers/Typ20Container';
 import { FlagLabel } from '../FlagLabel';
+import { StronaQuatro } from '../containers/Okienko';
 
 interface IEtykietaTyp20Props {
     flag?: string;
@@ -11,14 +11,14 @@ interface IEtykietaTyp20Props {
 
 export const EtykietaTyp20 = ({ flag, countryCode, label }: IEtykietaTyp20Props) => {
     return (
-        <Typ20Container>
+        <StronaQuatro.OkienkoTyp20>
             <FlagLabel
                 variant="typ20"
                 countryCode={countryCode}
                 flag={flag || FlagIconCssProvider}
                 label={label}
             />
-        </Typ20Container>
+        </StronaQuatro.OkienkoTyp20>
     )
 };
 
