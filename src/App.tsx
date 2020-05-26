@@ -12,7 +12,7 @@ import { LabelWithFlag } from './components/LabelWithFlag';
 import { OkładkaA4 } from './components/OkładkaA4';
 import { TwoSideVerticalLabel } from "./components/VerticalLabel";
 import CurrencyUtils from "./helper/CurrencyUtils";
-import { StronaQuatro } from "./components/containers/Okienko";
+import OkienkaNaStronie_203x257 from "./components/OkienkaNaStronie_203x257";
 
 function App() {
 
@@ -20,7 +20,7 @@ function App() {
     <div className="App">
 
       <A4Page>
-        <StronaQuatro.OkienkoTyp3>
+        <OkienkaNaStronie_203x257.Typ3>
           <FlexContainer flexDirection="row" height="100%">
             <MapChart
               countryDataList={[
@@ -60,12 +60,12 @@ function App() {
               label='Jugosławia'
             />
           </FlexContainer>
-        </StronaQuatro.OkienkoTyp3>
+        </OkienkaNaStronie_203x257.Typ3>
       </A4Page>
 
       <A4TwoSideMasterContainer>
         <FlexContainer fullSize flexDirection='column' alignItems="center">
-          <StronaQuatro.OkienkoTyp3>
+          <OkienkaNaStronie_203x257.Typ3>
             <TwoSideContainer>
               <TwoSideVerticalLabel
                 width={30}
@@ -105,7 +105,7 @@ function App() {
               />
 
               <TwoSideVerticalLabel
-                width={35}
+                width={40}
                 fontSize={7}
                 countryCode='au'
                 flag={FlagIconCssProvider}
@@ -201,7 +201,7 @@ function App() {
               />
 
             </TwoSideContainer>
-          </StronaQuatro.OkienkoTyp3>
+          </OkienkaNaStronie_203x257.Typ3>
         </FlexContainer>
       </A4TwoSideMasterContainer>
 

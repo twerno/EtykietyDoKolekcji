@@ -2,7 +2,7 @@ import * as React from 'react';
 import { MapChart, MinimapPosition } from '../chart/chart';
 import { FlagIconCssProvider } from '../chart/FlagProvider';
 import styled from 'styled-components';
-import { StronaQuatro } from './containers/Okienko';
+import OkienkaNaStronie_203x257 from './OkienkaNaStronie_203x257';
 
 export interface IOkladkaCountryProps {
     countryCode: string;
@@ -25,7 +25,7 @@ export interface IOkladkaMapaProps {
 export const OkladkaMapa = (props: IOkladkaMapaProps) => {
 
     return (
-        <StronaQuatro.OkienkoTyp2>
+        <OkienkaNaStronie_203x257.Typ2>
             {
                 props.mapLabel
                     ? (
@@ -44,7 +44,7 @@ export const OkladkaMapa = (props: IOkladkaMapaProps) => {
                 minimap={props.minimap}
                 flagProvider={FlagIconCssProvider}
             />
-        </StronaQuatro.OkienkoTyp2>
+        </OkienkaNaStronie_203x257.Typ2>
     );
 }
 

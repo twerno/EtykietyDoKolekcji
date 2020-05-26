@@ -48,7 +48,7 @@ export const VerticalLabel = (props: IVerticalLabelProps) => {
 
 const VerticalLabelContainer = styled.div<{ side: boolean } & IVerticalLabelProps>`
     height: calc(100% - 20px);
-    margin: 10px 0px;
+    margin: 10px 0px 0px 0px;
     border-right: 1px solid #d9d9d9;
     width: ${props => props.width}mm;
     font-size: ${props => props.fontSize}px;

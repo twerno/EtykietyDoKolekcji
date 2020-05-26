@@ -4,7 +4,7 @@ import CountryConverterService from '../service/CountryConverterService';
 import { FlexContainer } from './containers/FlexContainer';
 import { LabelWithFlag } from './LabelWithFlag';
 import { IOkladkaCountryProps, isRendererWithSortName } from './OkladkaMapa';
-import { StronaQuatro } from './containers/Okienko';
+import OkienkaNaStronie_203x257 from './OkienkaNaStronie_203x257';
 
 export interface IOkladkaOpisyProps {
     countryList: IOkladkaCountryProps[];
@@ -17,7 +17,7 @@ export const OkladkaOpisy = (props: IOkladkaOpisyProps) => {
         : 'regular';
 
     return (
-        <StronaQuatro.OkienkoTyp2>
+        <OkienkaNaStronie_203x257.Typ2>
             <FlexContainer flexDirection="row" flexWrap="wrap" height="100%" alignItems="base-line" alignContent="space-evenly">
                 {
                     props.countryList
@@ -34,7 +34,7 @@ export const OkladkaOpisy = (props: IOkladkaOpisyProps) => {
                         )
                 }
             </FlexContainer>
-        </StronaQuatro.OkienkoTyp2>
+        </OkienkaNaStronie_203x257.Typ2>
     );
 }
 
