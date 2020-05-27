@@ -5,7 +5,7 @@ import * as React from 'react';
 import ChartHelper from "./ChartHelper";
 import ChartStyle from "./ChartStyle";
 import { IFlagProvider } from "./FlagProvider";
-import { IOkladkaCountryProps } from "../components/OkladkaMapa";
+import { IOkladkaCountryProps } from "../components.old/OkladkaMapa";
 
 export type MinimapPosition = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
 

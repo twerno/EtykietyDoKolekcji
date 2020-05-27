@@ -2,7 +2,7 @@ import * as React from 'react';
 import { A4Page } from './containers/A4Page';
 import { IOkladkaMapaProps, OkladkaMapa } from './OkladkaMapa';
 import { IOkladkaOpisyProps, OkladkaOpisy } from './OkladkaOpisy';
-import { LazyComponent } from './utils/LazyComponent';
+import { LazyComponent } from '../components/utils/LazyComponent';
 
 export interface IOkładkaA4Props extends IOkladkaMapaProps, IOkladkaOpisyProps {
 

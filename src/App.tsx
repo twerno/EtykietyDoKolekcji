@@ -3,16 +3,17 @@ import React from 'react';
 import './App.css';
 import { MapChart } from './chart/chart';
 import { FlagIconCssProvider } from './chart/FlagProvider';
-import { A4Page } from './components/containers/A4Page';
-import { FlexContainer } from './components/containers/FlexContainer';
-import { A4TwoSideMasterContainer, TwoSideContainer } from "./components/containers/TwoSideLabelContainer";
-import { EtykietaTyp20, Typ20Label } from './components/etykiety/EtykietaTyp20';
-import { EtykietaTyp35, Typ35Label } from './components/etykiety/EtykietaTyp35';
-import { LabelWithFlag } from './components/LabelWithFlag';
-import { OkładkaA4 } from './components/OkładkaA4';
-import { TwoSideVerticalLabel } from "./components/VerticalLabel";
+import { A4Page } from './components.old/containers/A4Page';
+import { FlexContainer } from './components/utils/FlexContainer';
+import { EtykietaTyp20, Typ20Label } from './components.old/etykiety/EtykietaTyp20';
+import { EtykietaTyp35, Typ35Label } from './components.old/etykiety/EtykietaTyp35';
+import { LabelWithFlag } from './components.old/LabelWithFlag';
+import { OkładkaA4 } from './components.old/OkładkaA4';
+import { TwoSideVerticalLabel } from "./components.old/VerticalLabel";
 import CurrencyUtils from "./helper/CurrencyUtils";
-import OkienkaNaStronie_203x257 from "./components/OkienkoDlaStrony_203x257";
+import OkienkaNaStronie_203x257 from "./components.old/OkienkoDlaStrony_203x257";
+import { DoubleSideElementController } from "./components/utils/DoubleSidedElement/DoubleSideElementController";
+import { DoubleSideElementContainer } from "./components/utils/DoubleSidedElement/DoubleSideElementContainer";
 
 function App() {
 
@@ -63,192 +64,198 @@ function App() {
         </OkienkaNaStronie_203x257.Typ3>
       </A4Page>
 
-      <A4TwoSideMasterContainer>
-        <FlexContainer fullSize flexDirection='column' alignItems="center">
-          <OkienkaNaStronie_203x257.Typ3>
-            <TwoSideContainer>
-              <TwoSideVerticalLabel
-                width={30}
-                fontSize={7}
-                countryCode='ca'
-                flag={FlagIconCssProvider}
-                label="5 dolarów kanadyjskich"
-                sharedInfobox={{
-                  showSeparator: true,
-                  interspace: 'loose',
-                  items: [
-                    { label: 'Wartość', text: CurrencyUtils.convert2PLNFormat(5, 'ca') },
-                    { label: 'Rok emisji', text: '2013' },
-                    { label: 'Typ', text: 'plastikowy' },
-                    { label: 'W obiegu', text: 'tak' },
+      <A4Page>
+        <DoubleSideElementController>
+          <FlexContainer fullSize flexDirection='column' alignItems="center">
+            <OkienkaNaStronie_203x257.Typ3>
+              <DoubleSideElementContainer>
+                <TwoSideVerticalLabel
+                  width={30}
+                  fontSize={7}
+                  countryCode='ca'
+                  flag={FlagIconCssProvider}
+                  label="5 dolarów kanadyjskich"
+                  sharedInfobox={{
+                    showSeparator: true,
+                    interspace: 'loose',
+                    items: [
+                      { label: 'Wartość', text: CurrencyUtils.convert2PLNFormat(5, 'ca') },
+                      { label: 'Rok emisji', text: '2013' },
+                      { label: 'Typ', text: 'plastikowy' },
+                      { label: 'W obiegu', text: 'tak' },
 
-                  ]
-                }}
-                frontSideInfo={{
-                  interspace: 'loose',
-                  items: [
-                    { label: 'portret', text: 'sir Wilfrid Laurier - premier Kanady 1896-1911' },
-                    { label: 'hologram', text: 'Wieża Mackenzie - najbardziej rozpoznawalna wieża Zachodniego Budynku Parlamentu Kanadyjskiego' },
-                    { label: 'okienko', text: 'liść klonu' }
+                    ]
+                  }}
+                  frontSideInfo={{
+                    interspace: 'loose',
+                    items: [
+                      { label: 'portret', text: 'sir Wilfrid Laurier - premier Kanady 1896-1911' },
+                      { label: 'hologram', text: 'Wieża Mackenzie - najbardziej rozpoznawalna wieża Zachodniego Budynku Parlamentu Kanadyjskiego' },
+                      { label: 'okienko', text: 'liść klonu' }
 
-                  ]
-                }}
-                backSideInfo={{
-                  interspace: 'loose',
-                  items: [
-                    { label: 'Canadarm2', text: 'mechaniczne, mobilne ramie dźwigu zamontowanego w 2001r. na ISS' },
-                    { label: 'Dextre (Canada Hand)', text: 'końcówka do Canadarm2 służąca do prac precyzyjnych' },
-                    'Kanadyjski astronauta',
-                    { label: 'Tło', text: 'widok na Wielkie Jeziora i zatokę Hudsona' }
-                  ]
-                }}
-              />
+                    ]
+                  }}
+                  backSideInfo={{
+                    interspace: 'loose',
+                    items: [
+                      { label: 'Canadarm2', text: 'mechaniczne, mobilne ramie dźwigu zamontowanego w 2001r. na ISS' },
+                      { label: 'Dextre (Canada Hand)', text: 'końcówka do Canadarm2 służąca do prac precyzyjnych' },
+                      'Kanadyjski astronauta',
+                      { label: 'Tło', text: 'widok na Wielkie Jeziora i zatokę Hudsona' }
+                    ]
+                  }}
+                />
 
-              <TwoSideVerticalLabel
-                width={40}
-                fontSize={7}
-                countryCode='au'
-                flag={FlagIconCssProvider}
-                label="5 dolarów australijskich"
-                sharedInfobox={{
-                  showSeparator: true,
-                  interspace: 'loose',
-                  items: [
-                    { label: 'Wartość', text: CurrencyUtils.convert2PLNFormat(5, 'au') },
-                    { label: 'Rok emisji', text: '2016' },
-                    { label: 'Typ', text: 'plastikowy' },
-                    { label: 'W obiegu', text: 'tak' },
-                  ]
-                }}
-                frontSideInfo={{
-                  interspace: 'loose',
-                  items: [
-                    { label: 'portret', text: 'królowa Elżbieta II' },
-                    { label: 'hologram', text: 'Miodopijek długodzioby' },
-                    { label: 'hologram', text: 'Pawilon federacji - tymczasowa budowla, w której 1 stycznia 1901 r. 6 brytyjskich kolonii oficjalnie utworzyło Związek Australijski' },
-                    { label: 'okienko', text: 'Gwiazda federacji - siedmioramienna (oryginalnie 6-ramienna, 7 ramie dodane w 1908r.) gwiazda symbolizująca stany Australii; gwiazda użyta jest także na herbie Australii' },
-                    { label: 'motyw roślinny', text: 'gatunek akacji pochodzący z południowo-wschodniej Australii' }
-                  ]
-                }}
-                backSideInfo={{
-                  interspace: 'loose',
-                  items: [
-                    { label: 'Budynek Parlamentu', text: 'otwarty w 1988r. przez królową Elżbietę II' },
-                    'Mozajka przez budynkiem Parlamentu',
-                    { label: 'Widok z lotu ptaka na budynek Parlamentu', text: 'w tym Izby Reprezentantów, Senatu i obiektów sportowych' },
-                  ]
-                }}
-              />
+                <TwoSideVerticalLabel
+                  width={40}
+                  fontSize={7}
+                  countryCode='au'
+                  flag={FlagIconCssProvider}
+                  label="5 dolarów australijskich"
+                  sharedInfobox={{
+                    showSeparator: true,
+                    interspace: 'loose',
+                    items: [
+                      { label: 'Wartość', text: CurrencyUtils.convert2PLNFormat(5, 'au') },
+                      { label: 'Rok emisji', text: '2016' },
+                      { label: 'Typ', text: 'plastikowy' },
+                      { label: 'W obiegu', text: 'tak' },
+                    ]
+                  }}
+                  frontSideInfo={{
+                    interspace: 'loose',
+                    items: [
+                      { label: 'portret', text: 'królowa Elżbieta II' },
+                      { label: 'hologram', text: 'Miodopijek długodzioby' },
+                      { label: 'hologram', text: 'Pawilon federacji - tymczasowa budowla, w której 1 stycznia 1901 r. 6 brytyjskich kolonii oficjalnie utworzyło Związek Australijski' },
+                      { label: 'okienko', text: 'Gwiazda federacji - siedmioramienna (oryginalnie 6-ramienna, 7 ramie dodane w 1908r.) gwiazda symbolizująca stany Australii; gwiazda użyta jest także na herbie Australii' },
+                      { label: 'motyw roślinny', text: 'gatunek akacji pochodzący z południowo-wschodniej Australii' }
+                    ]
+                  }}
+                  backSideInfo={{
+                    interspace: 'loose',
+                    items: [
+                      { label: 'Budynek Parlamentu', text: 'otwarty w 1988r. przez królową Elżbietę II' },
+                      'Mozajka przez budynkiem Parlamentu',
+                      { label: 'Widok z lotu ptaka na budynek Parlamentu', text: 'w tym Izby Reprezentantów, Senatu i obiektów sportowych' },
+                    ]
+                  }}
+                />
 
-              <TwoSideVerticalLabel
-                width={25}
-                fontSize={7}
-                countryCode='us'
-                flag={FlagIconCssProvider}
-                label="1 dolar amerykański"
-                sharedInfobox={{
-                  showSeparator: true,
-                  interspace: 'loose',
-                  items: [
-                    { label: 'Wartość', text: CurrencyUtils.convert2PLNFormat(1, 'us') },
-                    { label: 'Rok emisji', text: '2013' },
-                    { label: 'Typ', text: 'papierowy' },
-                    { label: 'W obiegu', text: 'tak' },
-                  ]
-                }}
-                frontSideInfo={{
-                  interspace: 'loose',
-                  items: [
-                    { label: 'portret', text: 'George Washington - pierwszy prezydent USA (1789 - 1797)' },
-                  ]
-                }}
-                backSideInfo={{
-                  interspace: 'loose',
-                  items: [
-                    { label: 'Wielka Pieczęć Stanów Zjednoczonych', text: '' },
-                  ]
-                }}
-              />
+                <TwoSideVerticalLabel
+                  width={25}
+                  fontSize={7}
+                  countryCode='us'
+                  flag={FlagIconCssProvider}
+                  label="1 dolar amerykański"
+                  sharedInfobox={{
+                    showSeparator: true,
+                    interspace: 'loose',
+                    items: [
+                      { label: 'Wartość', text: CurrencyUtils.convert2PLNFormat(1, 'us') },
+                      { label: 'Rok emisji', text: '2013' },
+                      { label: 'Typ', text: 'papierowy' },
+                      { label: 'W obiegu', text: 'tak' },
+                    ]
+                  }}
+                  frontSideInfo={{
+                    interspace: 'loose',
+                    items: [
+                      { label: 'portret', text: 'George Washington - pierwszy prezydent USA (1789 - 1797)' },
+                    ]
+                  }}
+                  backSideInfo={{
+                    interspace: 'loose',
+                    items: [
+                      { label: 'Wielka Pieczęć Stanów Zjednoczonych', text: '' },
+                    ]
+                  }}
+                />
 
-              <TwoSideVerticalLabel
-                width={25}
-                fontSize={7}
-                countryCode='us'
-                flag={FlagIconCssProvider}
-                label="5 dolarów amerykańskich"
-                sharedInfobox={{
-                  showSeparator: true,
-                  interspace: 'loose',
-                  items: [
-                    { label: 'Wartość', text: CurrencyUtils.convert2PLNFormat(5, 'us') },
-                    { label: 'Rok emisji', text: '2013' },
-                    { label: 'Typ', text: 'papierowy' },
-                    { label: 'W obiegu', text: 'tak' },
-                  ]
-                }}
-                frontSideInfo={{
-                  interspace: 'loose',
-                  items: [
-                    { label: 'portret', text: 'Abraham Lincoln - 16-sty prezydent USA (1861 - 1865)' },
-                  ]
-                }}
-                backSideInfo={{
-                  interspace: 'loose',
-                  items: [
-                    { label: 'Mauzoleum Abrahama Lincolna', text: 'budynek przypominający wyglądem klasyczną grecką świątynię, zbudowany na planie prostokąta, otoczony kolumnami doryckimi. We wnętrzu znajduje się posąg Lincolna.' },
-                  ]
-                }}
-              />
+                <TwoSideVerticalLabel
+                  width={25}
+                  fontSize={7}
+                  countryCode='us'
+                  flag={FlagIconCssProvider}
+                  label="5 dolarów amerykańskich"
+                  sharedInfobox={{
+                    showSeparator: true,
+                    interspace: 'loose',
+                    items: [
+                      { label: 'Wartość', text: CurrencyUtils.convert2PLNFormat(5, 'us') },
+                      { label: 'Rok emisji', text: '2013' },
+                      { label: 'Typ', text: 'papierowy' },
+                      { label: 'W obiegu', text: 'tak' },
+                    ]
+                  }}
+                  frontSideInfo={{
+                    interspace: 'loose',
+                    items: [
+                      { label: 'portret', text: 'Abraham Lincoln - 16-sty prezydent USA (1861 - 1865)' },
+                    ]
+                  }}
+                  backSideInfo={{
+                    interspace: 'loose',
+                    items: [
+                      { label: 'Mauzoleum Abrahama Lincolna', text: 'budynek przypominający wyglądem klasyczną grecką świątynię, zbudowany na planie prostokąta, otoczony kolumnami doryckimi. We wnętrzu znajduje się posąg Lincolna.' },
+                    ]
+                  }}
+                />
 
-            </TwoSideContainer>
-          </OkienkaNaStronie_203x257.Typ3>
-        </FlexContainer>
-      </A4TwoSideMasterContainer>
+              </DoubleSideElementContainer>
+            </OkienkaNaStronie_203x257.Typ3>
+          </FlexContainer>
+        </DoubleSideElementController>
+      </A4Page>
 
-      <A4TwoSideMasterContainer>
-        <TwoSideContainer>
-          <EtykietaTyp35 countryCode="us" />
-          <EtykietaTyp35 countryCode="bs" />
-          <EtykietaTyp35 countryCode="" label='Żeton telefoniczny' flag='https://etykiety.s3-eu-west-1.amazonaws.com/poczta_polska.jpg' />
-          <EtykietaTyp35 countryCode="" label='Żeton' flag='https://etykiety.s3-eu-west-1.amazonaws.com/lidl.png' />
-          <EtykietaTyp35 countryCode="" label='Żeton' flag='https://etykiety.s3-eu-west-1.amazonaws.com/eurocoin.png' />
-          <EtykietaTyp35 countryCode="at" />
-          <EtykietaTyp35 countryCode="fr" />
-          <EtykietaTyp35 countryCode="sk" />
-          <EtykietaTyp35 countryCode="de" />
-          <EtykietaTyp35 countryCode="gr" />
-          <EtykietaTyp35 countryCode="it" />
-          <EtykietaTyp35 countryCode="es" />
-          <EtykietaTyp35 countryCode="be" />
-          <EtykietaTyp35 countryCode="pt" />
-          <EtykietaTyp35 countryCode="nl" label={Typ35Label('Niderlandy', '(Holandia)')} />
-          <EtykietaTyp35 countryCode="nl" label={Typ35Label('Niderlandy', '(Holandia)')} />
-          <EtykietaTyp35 countryCode="cy" />
-          <EtykietaTyp35 countryCode="lu" />
-          <EtykietaTyp35 countryCode="hr" />
-          <EtykietaTyp35 countryCode="no" />
-          <EtykietaTyp35 countryCode="bg" />
-          <EtykietaTyp35 countryCode="tr" />
-          <EtykietaTyp35 countryCode="sk" />
-        </TwoSideContainer>
-      </A4TwoSideMasterContainer>
+      <A4Page>
+        <DoubleSideElementController>
+          <DoubleSideElementContainer>
+            <EtykietaTyp35 countryCode="us" />
+            <EtykietaTyp35 countryCode="bs" />
+            <EtykietaTyp35 countryCode="" label='Żeton telefoniczny' flag='https://etykiety.s3-eu-west-1.amazonaws.com/poczta_polska.jpg' />
+            <EtykietaTyp35 countryCode="" label='Żeton' flag='https://etykiety.s3-eu-west-1.amazonaws.com/lidl.png' />
+            <EtykietaTyp35 countryCode="" label='Żeton' flag='https://etykiety.s3-eu-west-1.amazonaws.com/eurocoin.png' />
+            <EtykietaTyp35 countryCode="at" />
+            <EtykietaTyp35 countryCode="fr" />
+            <EtykietaTyp35 countryCode="sk" />
+            <EtykietaTyp35 countryCode="de" />
+            <EtykietaTyp35 countryCode="gr" />
+            <EtykietaTyp35 countryCode="it" />
+            <EtykietaTyp35 countryCode="es" />
+            <EtykietaTyp35 countryCode="be" />
+            <EtykietaTyp35 countryCode="pt" />
+            <EtykietaTyp35 countryCode="nl" label={Typ35Label('Niderlandy', '(Holandia)')} />
+            <EtykietaTyp35 countryCode="nl" label={Typ35Label('Niderlandy', '(Holandia)')} />
+            <EtykietaTyp35 countryCode="cy" />
+            <EtykietaTyp35 countryCode="lu" />
+            <EtykietaTyp35 countryCode="hr" />
+            <EtykietaTyp35 countryCode="no" />
+            <EtykietaTyp35 countryCode="bg" />
+            <EtykietaTyp35 countryCode="tr" />
+            <EtykietaTyp35 countryCode="sk" />
+          </DoubleSideElementContainer>
+        </DoubleSideElementController>
+      </A4Page>
 
-      <A4TwoSideMasterContainer>
-        <TwoSideContainer>
-          <EtykietaTyp20 countryCode="es" />
-          <EtykietaTyp20 countryCode="il" />
-          <EtykietaTyp20 countryCode="il" />
-          <EtykietaTyp20 countryCode="mu" />
-          <EtykietaTyp20 countryCode="lk" />
-          <EtykietaTyp20 countryCode="th" />
-          <EtykietaTyp20 countryCode="fr" />
-          <EtykietaTyp20 countryCode="de" />
-          <EtykietaTyp20 countryCode="cz" />
-          <EtykietaTyp20 countryCode="se" />
-          <EtykietaTyp20 countryCode="tr" />
-          <EtykietaTyp20 countryCode='' label={Typ20Label('Temerski Oren', 'Wiedźmin 2')} flag='https://etykiety.s3-eu-west-1.amazonaws.com/wiedzmin_logo.png' />
-        </TwoSideContainer>
-      </A4TwoSideMasterContainer>
+      <A4Page>
+        <DoubleSideElementController>
+          <DoubleSideElementContainer>
+            <EtykietaTyp20 countryCode="es" />
+            <EtykietaTyp20 countryCode="il" />
+            <EtykietaTyp20 countryCode="il" />
+            <EtykietaTyp20 countryCode="mu" />
+            <EtykietaTyp20 countryCode="lk" />
+            <EtykietaTyp20 countryCode="th" />
+            <EtykietaTyp20 countryCode="fr" />
+            <EtykietaTyp20 countryCode="de" />
+            <EtykietaTyp20 countryCode="cz" />
+            <EtykietaTyp20 countryCode="se" />
+            <EtykietaTyp20 countryCode="tr" />
+            <EtykietaTyp20 countryCode='' label={Typ20Label('Temerski Oren', 'Wiedźmin 2')} flag='https://etykiety.s3-eu-west-1.amazonaws.com/wiedzmin_logo.png' />
+          </DoubleSideElementContainer>
+        </DoubleSideElementController>
+      </A4Page>
 
       <OkładkaA4
         mapLabel="Strefa Euro"

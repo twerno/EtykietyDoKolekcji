@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import StyledHelper from "../utils/StyledHelper";
+import StyledHelper from "../../helper/StyledHelper";
 
 export interface IFlexContainerProps {
     center?: boolean;

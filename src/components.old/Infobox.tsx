@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { AsyncTextRenderer } from './utils/AsyncTextRenderer';
+import { AsyncTextRenderer } from '../components/utils/AsyncTextRenderer';
 
 export interface IInfoboxItem {
     label: string;
@@ -20,6 +20,7 @@ export default (props: IInfoboxProps) => {
 }
 
 interface IInfoBoxContainerProps {
+    textAlign?: 'center' | 'left';
     interspace?: 'dence' | 'loose';
     showSeparator?: boolean;
 }
@@ -42,7 +43,7 @@ const InfoBoxContainer = styled.ul<IInfoBoxContainerProps>`
     }
 
     li {
-        text-align: left;
+        text-align: ${props => props.textAlign || 'center'};
         padding-top: ${props => props.interspace === 'loose' ? '3px' : '0px'};
     }
 

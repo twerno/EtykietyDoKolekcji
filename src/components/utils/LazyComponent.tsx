@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FlexContainer } from '../containers/FlexContainer';
+import { FlexContainer } from './FlexContainer';
 
 export const LazyComponent: React.FC<{}> = (props) => {
 

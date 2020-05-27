@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FlagIconCssProvider } from '../chart/FlagProvider';
 import CountryConverterService from '../service/CountryConverterService';
-import { FlexContainer } from './containers/FlexContainer';
+import { FlexContainer } from '../components/utils/FlexContainer';
 import { LabelWithFlag } from './LabelWithFlag';
 import { IOkladkaCountryProps, isRendererWithSortName } from './OkladkaMapa';
 import OkienkaNaStronie_203x257 from './OkienkoDlaStrony_203x257';

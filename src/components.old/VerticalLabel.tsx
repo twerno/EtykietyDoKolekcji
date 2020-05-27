@@ -1,8 +1,9 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { IFlagProvider } from '../chart/FlagProvider';
+import { DoubleSideElement } from '../components/utils/DoubleSidedElement/DoubleSideElement';
+import { DoubleSideElementContext } from '../components/utils/DoubleSidedElement/DoubleSideElementController';
 import CountryConverterService from '../service/CountryConverterService';
-import { A4TwoSideContainerContext, TwoSideComponent } from './containers/TwoSideLabelContainer';
 import Flag from './Flag';
 import Infobox, { IInfoboxProps } from './Infobox';
 
@@ -20,7 +21,7 @@ export const VerticalLabel = (props: IVerticalLabelProps) => {
     const namePl = props.label || CountryConverterService.countryCode2NamePl(countryCode);
 
     return (
-        <A4TwoSideContainerContext.Consumer>
+        <DoubleSideElementContext.Consumer>
             {side =>
                 <VerticalLabelContainer {...props} side={side}>
                     <Flag
@@ -42,7 +43,7 @@ export const VerticalLabel = (props: IVerticalLabelProps) => {
 
                 </VerticalLabelContainer>
             }
-        </A4TwoSideContainerContext.Consumer>
+        </DoubleSideElementContext.Consumer>
     )
 };
 
@@ -92,7 +93,7 @@ export const TwoSideVerticalLabel = (props: ITwoSideVerticalLabelProps) => {
         />;
 
     return (
-        <TwoSideComponent
+        <DoubleSideElement
             front={frontComponent}
             back={backComponent}
         />
