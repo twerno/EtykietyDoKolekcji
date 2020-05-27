@@ -4,7 +4,7 @@ import CountryConverterService from '../service/CountryConverterService';
 import { FlexContainer } from './containers/FlexContainer';
 import { LabelWithFlag } from './LabelWithFlag';
 import { IOkladkaCountryProps, isRendererWithSortName } from './OkladkaMapa';
-import OkienkaNaStronie_203x257 from './OkienkaNaStronie_203x257';
+import OkienkaNaStronie_203x257 from './OkienkoDlaStrony_203x257';
 
 export interface IOkladkaOpisyProps {
     countryList: IOkladkaCountryProps[];

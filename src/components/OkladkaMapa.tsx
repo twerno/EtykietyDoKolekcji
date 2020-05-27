@@ -2,7 +2,7 @@ import * as React from 'react';
 import { MapChart, MinimapPosition } from '../chart/chart';
 import { FlagIconCssProvider } from '../chart/FlagProvider';
 import styled from 'styled-components';
-import OkienkaNaStronie_203x257 from './OkienkaNaStronie_203x257';
+import OkienkaNaStronie_203x257 from './OkienkoDlaStrony_203x257';
 
 export interface IOkladkaCountryProps {
     countryCode: string;

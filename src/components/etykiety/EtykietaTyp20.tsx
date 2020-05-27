@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FlagIconCssProvider } from '../../chart/FlagProvider';
 import { FlagLabel } from '../FlagLabel';
-import OkienkaNaStronie_168x214 from '../OkienkaNaStronie_168x214';
+import OkienkaNaStronie_168x214 from '../OkienkoDlaStrony_168x214';
 
 interface IEtykietaTyp20Props {
     flag?: string;

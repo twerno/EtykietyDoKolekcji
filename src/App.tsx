@@ -12,7 +12,7 @@ import { LabelWithFlag } from './components/LabelWithFlag';
 import { OkładkaA4 } from './components/OkładkaA4';
 import { TwoSideVerticalLabel } from "./components/VerticalLabel";
 import CurrencyUtils from "./helper/CurrencyUtils";
-import OkienkaNaStronie_203x257 from "./components/OkienkaNaStronie_203x257";
+import OkienkaNaStronie_203x257 from "./components/OkienkoDlaStrony_203x257";
 
 function App() {
 
