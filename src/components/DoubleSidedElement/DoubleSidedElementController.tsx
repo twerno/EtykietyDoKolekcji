@@ -1,42 +1,42 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-export const DoubleSideElementContext = React.createContext(false);
+export const DoubleSidedElementContext = React.createContext(false);
 
-export const DoubleSideElementController: React.FC<{}> = ({ children }) => {
+export const DoubleSidedElementController: React.FC<{}> = ({ children }) => {
 
     // aktywna strona
     // true === front
     const [side, setSide] = React.useState<boolean>(true);
 
     return (
-        <DoubleSideElementContainer
+        <DoubleSidedElementContainer
             side={side ? 'front' : 'back'}
             onClick={_ => setSide(v => !v)}
         >
 
-            <DoubleSideElementRenderer
+            <DoubleSidedElementRenderer
                 render="front"
                 currentSide={side}
                 children={children}
             />
 
-            <DoubleSideElementRenderer
+            <DoubleSidedElementRenderer
                 render="back"
                 currentSide={side}
                 children={children}
             />
 
-        </DoubleSideElementContainer>
+        </DoubleSidedElementContainer>
     );
 };
 
-interface IDoubleSideElementRendererProps {
+interface IDoubleSidedElementRendererProps {
     render: 'front' | 'back';
     currentSide: boolean;
 }
 
-const DoubleSideElementRenderer: React.FC<IDoubleSideElementRendererProps> =
+const DoubleSidedElementRenderer: React.FC<IDoubleSidedElementRendererProps> =
     ({ render, currentSide, children }) => {
 
         // obrot elementu
@@ -45,14 +45,14 @@ const DoubleSideElementRenderer: React.FC<IDoubleSideElementRendererProps> =
             + (render === 'back' ? 180 : 0);
 
         return (
-            <DoubleSideElementContext.Provider value={render === 'front'}>
+            <DoubleSidedElementContext.Provider value={render === 'front'}>
                 <SingleSideElementContainer
                     rotate={rotate}
                     printable={!currentSide}
                 >
                     {children}
                 </SingleSideElementContainer>
-            </DoubleSideElementContext.Provider>
+            </DoubleSidedElementContext.Provider>
         );
     };
 
@@ -64,7 +64,7 @@ interface IDoubleSideControllerContainerProps {
     side: 'front' | 'back';
 }
 
-const DoubleSideElementContainer = styled.div<IDoubleSideControllerContainerProps>`
+const DoubleSidedElementContainer = styled.div<IDoubleSideControllerContainerProps>`
     position: relative;
     height: 100%;
     width: 100%;

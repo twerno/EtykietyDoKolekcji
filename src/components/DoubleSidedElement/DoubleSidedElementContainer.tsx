@@ -1,17 +1,17 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { DoubleSideElementContext } from './DoubleSideElementController';
+import { DoubleSidedElementContext } from './DoubleSidedElementController';
 
-export const DoubleSideElementContainer: React.FC<{}> = ({ children }) => {
+export const DoubleSidedElementContainer: React.FC<{}> = ({ children }) => {
 
     return (
-        <DoubleSideElementContext.Consumer>
+        <DoubleSidedElementContext.Consumer>
             {side =>
-                <DoubleSideElementContainerStyles side={side}>
+                <DoubleSidedElementContainerStyles side={side}>
                     {children}
-                </DoubleSideElementContainerStyles>
+                </DoubleSidedElementContainerStyles>
             }
-        </DoubleSideElementContext.Consumer>
+        </DoubleSidedElementContext.Consumer>
     );
 };
 
@@ -19,11 +19,11 @@ export const DoubleSideElementContainer: React.FC<{}> = ({ children }) => {
 // containers
 // //////////////////////////////////////////////////////
 
-interface IDoubleSideElementContainerStylesProps {
+interface IDoubleSidedElementContainerStylesProps {
     side: boolean;
 }
 
-const DoubleSideElementContainerStyles = styled.div<IDoubleSideElementContainerStylesProps>`
+const DoubleSidedElementContainerStyles = styled.div<IDoubleSidedElementContainerStylesProps>`
     height: 100%;
     width: 100%;
     position: absolute;

@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { IFlagProvider } from '../chart/FlagProvider';
+import { IFlagProvider } from '../../chart/FlagProvider';
 import styled from 'styled-components';
 
 interface IFlagProps extends IFlagStyleProps {
-    flag: string | IFlagProvider;
+    flag?: string | IFlagProvider;
     countryCode: string;
-    width: string;
 }
 
 export default ({ flag, countryCode, width }: IFlagProps) => {
@@ -20,6 +19,10 @@ export default ({ flag, countryCode, width }: IFlagProps) => {
         width={width}
     />;
 }
+
+// //////////////////////////////////////////////////////
+// containers
+// //////////////////////////////////////////////////////
 
 interface IFlagStyleProps {
     width: string;

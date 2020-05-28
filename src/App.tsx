@@ -3,17 +3,17 @@ import React from 'react';
 import './App.css';
 import { MapChart } from './chart/chart';
 import { FlagIconCssProvider } from './chart/FlagProvider';
-import { A4Page } from './components.old/containers/A4Page';
-import { FlexContainer } from './components/utils/FlexContainer';
-import { EtykietaTyp20, Typ20Label } from './components.old/etykiety/EtykietaTyp20';
-import { EtykietaTyp35, Typ35Label } from './components.old/etykiety/EtykietaTyp35';
-import { LabelWithFlag } from './components.old/LabelWithFlag';
 import { OkładkaA4 } from './components.old/OkładkaA4';
-import { TwoSideVerticalLabel } from "./components.old/VerticalLabel";
+import { A4Page } from './components/A4Page';
+import { DoubleSidedElementContainer } from "./components/DoubleSidedElement/DoubleSidedElementContainer";
+import { DoubleSidedElementController } from "./components/DoubleSidedElement/DoubleSidedElementController";
+import EtykietaTyp20 from "./components/etykiety/EtykietaTyp20";
+import EtykietaTyp35 from "./components/etykiety/EtykietaTyp35";
+import OkienkaNaStronie_203x257 from "./components/klocki/OkienkoDlaStrony_203x257";
+import { DoubleSidedLabelWithInfobox } from "./components/label/DoubleSidedLabelWithInfobox";
+import { LabelWithInfobox } from "./components/label/LabelWithInfobox";
+import { FlexContainer } from './components/utils/FlexContainer';
 import CurrencyUtils from "./helper/CurrencyUtils";
-import OkienkaNaStronie_203x257 from "./components.old/OkienkoDlaStrony_203x257";
-import { DoubleSideElementController } from "./components/utils/DoubleSidedElement/DoubleSideElementController";
-import { DoubleSideElementContainer } from "./components/utils/DoubleSidedElement/DoubleSideElementContainer";
 
 function App() {
 
@@ -39,42 +39,51 @@ function App() {
               flagProvider={FlagIconCssProvider}
               backgroundColor={am4core.color('red')}
             />
-            <LabelWithFlag
+            <LabelWithInfobox
               countryCode='ju'
               flag='https://etykiety.s3-eu-west-1.amazonaws.com/jugos%C5%82awia.png'
-              infoList={[
-                'Dinar jugosłowiański',
-                '1 dinar = 100 para',
-                '',
-                'rozpad Jugosławi w 1991r.',
-                '',
-                'Teren byłej Jugosławii zajmują:',
-                '- Bośnia i Harcegowina',
-                '- Chorwacja',
-                '- Kosowo',
-                '- Monteregro',
-                '- Macedonia',
-                '- Serbia',
-                '- Słowenia',
+              infoBoxes={[
+                {
+                  items: [
+                    'Dinar jugosłowiański',
+                    '1 dinar = 100 para',
+                    '',
+                    'rozpad Jugosławi w 1991r.',
+                    '',
+                    'Teren byłej Jugosławii zajmują:',
+                    '- Bośnia i Harcegowina',
+                    '- Chorwacja',
+                    '- Kosowo',
+                    '- Monteregro',
+                    '- Macedonia',
+                    '- Serbia',
+                    '- Słowenia',
+                  ]
+                }
               ]}
-              variant='regular'
-              label='Jugosławia'
-            />
+              fontSize={9}
+              width={45}
+              paddingTop="none"
+            >
+              Jugosławia
+            </LabelWithInfobox>
           </FlexContainer>
         </OkienkaNaStronie_203x257.Typ3>
       </A4Page>
 
       <A4Page>
-        <DoubleSideElementController>
+        <DoubleSidedElementController>
           <FlexContainer fullSize flexDirection='column' alignItems="center">
             <OkienkaNaStronie_203x257.Typ3>
-              <DoubleSideElementContainer>
-                <TwoSideVerticalLabel
+              <DoubleSidedElementContainer>
+                <DoubleSidedLabelWithInfobox
                   width={30}
                   fontSize={7}
                   countryCode='ca'
                   flag={FlagIconCssProvider}
-                  label="5 dolarów kanadyjskich"
+                  children="5 dolarów kanadyjskich"
+                  paddingTop="single"
+                  border
                   sharedInfobox={{
                     showSeparator: true,
                     interspace: 'loose',
@@ -106,12 +115,14 @@ function App() {
                   }}
                 />
 
-                <TwoSideVerticalLabel
+                <DoubleSidedLabelWithInfobox
                   width={40}
                   fontSize={7}
                   countryCode='au'
                   flag={FlagIconCssProvider}
-                  label="5 dolarów australijskich"
+                  children="5 dolarów australijskich"
+                  paddingTop="single"
+                  border
                   sharedInfobox={{
                     showSeparator: true,
                     interspace: 'loose',
@@ -142,12 +153,14 @@ function App() {
                   }}
                 />
 
-                <TwoSideVerticalLabel
+                <DoubleSidedLabelWithInfobox
                   width={25}
                   fontSize={7}
                   countryCode='us'
                   flag={FlagIconCssProvider}
-                  label="1 dolar amerykański"
+                  children="1 dolar amerykański"
+                  paddingTop="single"
+                  border
                   sharedInfobox={{
                     showSeparator: true,
                     interspace: 'loose',
@@ -172,12 +185,14 @@ function App() {
                   }}
                 />
 
-                <TwoSideVerticalLabel
+                <DoubleSidedLabelWithInfobox
                   width={25}
                   fontSize={7}
                   countryCode='us'
                   flag={FlagIconCssProvider}
-                  label="5 dolarów amerykańskich"
+                  children="5 dolarów amerykańskich"
+                  paddingTop="single"
+                  border
                   sharedInfobox={{
                     showSeparator: true,
                     interspace: 'loose',
@@ -201,21 +216,26 @@ function App() {
                     ]
                   }}
                 />
-
-              </DoubleSideElementContainer>
+              </DoubleSidedElementContainer>
             </OkienkaNaStronie_203x257.Typ3>
           </FlexContainer>
-        </DoubleSideElementController>
+        </DoubleSidedElementController>
       </A4Page>
 
       <A4Page>
-        <DoubleSideElementController>
-          <DoubleSideElementContainer>
+        <DoubleSidedElementController>
+          <DoubleSidedElementContainer>
             <EtykietaTyp35 countryCode="us" />
             <EtykietaTyp35 countryCode="bs" />
-            <EtykietaTyp35 countryCode="" label='Żeton telefoniczny' flag='https://etykiety.s3-eu-west-1.amazonaws.com/poczta_polska.jpg' />
-            <EtykietaTyp35 countryCode="" label='Żeton' flag='https://etykiety.s3-eu-west-1.amazonaws.com/lidl.png' />
-            <EtykietaTyp35 countryCode="" label='Żeton' flag='https://etykiety.s3-eu-west-1.amazonaws.com/eurocoin.png' />
+            <EtykietaTyp35 flag='https://etykiety.s3-eu-west-1.amazonaws.com/poczta_polska.jpg'>
+              Żeton telefoniczny
+            </EtykietaTyp35>
+            <EtykietaTyp35 flag='https://etykiety.s3-eu-west-1.amazonaws.com/lidl.png'>
+              Żeton
+            </EtykietaTyp35>
+            <EtykietaTyp35 flag='https://etykiety.s3-eu-west-1.amazonaws.com/eurocoin.png'>
+              Żeton
+            </EtykietaTyp35>
             <EtykietaTyp35 countryCode="at" />
             <EtykietaTyp35 countryCode="fr" />
             <EtykietaTyp35 countryCode="sk" />
@@ -225,8 +245,8 @@ function App() {
             <EtykietaTyp35 countryCode="es" />
             <EtykietaTyp35 countryCode="be" />
             <EtykietaTyp35 countryCode="pt" />
-            <EtykietaTyp35 countryCode="nl" label={Typ35Label('Niderlandy', '(Holandia)')} />
-            <EtykietaTyp35 countryCode="nl" label={Typ35Label('Niderlandy', '(Holandia)')} />
+            <EtykietaTyp35 countryCode="nl">Niderlandy<br /><small>(Holandia)</small></EtykietaTyp35>
+            <EtykietaTyp35 countryCode="nl">Niderlandy<br /><small>(Holandia)</small></EtykietaTyp35>
             <EtykietaTyp35 countryCode="cy" />
             <EtykietaTyp35 countryCode="lu" />
             <EtykietaTyp35 countryCode="hr" />
@@ -234,13 +254,13 @@ function App() {
             <EtykietaTyp35 countryCode="bg" />
             <EtykietaTyp35 countryCode="tr" />
             <EtykietaTyp35 countryCode="sk" />
-          </DoubleSideElementContainer>
-        </DoubleSideElementController>
+          </DoubleSidedElementContainer>
+        </DoubleSidedElementController>
       </A4Page>
 
       <A4Page>
-        <DoubleSideElementController>
-          <DoubleSideElementContainer>
+        <DoubleSidedElementController>
+          <DoubleSidedElementContainer>
             <EtykietaTyp20 countryCode="es" />
             <EtykietaTyp20 countryCode="il" />
             <EtykietaTyp20 countryCode="il" />
@@ -252,13 +272,17 @@ function App() {
             <EtykietaTyp20 countryCode="cz" />
             <EtykietaTyp20 countryCode="se" />
             <EtykietaTyp20 countryCode="tr" />
-            <EtykietaTyp20 countryCode='' label={Typ20Label('Temerski Oren', 'Wiedźmin 2')} flag='https://etykiety.s3-eu-west-1.amazonaws.com/wiedzmin_logo.png' />
-          </DoubleSideElementContainer>
-        </DoubleSideElementController>
+            <EtykietaTyp20 flag='https://etykiety.s3-eu-west-1.amazonaws.com/wiedzmin_logo.png'>
+              Temerski Oren<br /><small>(Wiedźmin 2)</small>
+            </EtykietaTyp20>
+          </DoubleSidedElementContainer>
+        </DoubleSidedElementController>
       </A4Page>
 
       <OkładkaA4
         mapLabel="Strefa Euro"
+        fontSize={8}
+        width={25}
         countryList={[
           { countryCode: 'ie', info: ['w UE od 1973', '€ od 1 stycznia 1999'] },
           { countryCode: 'es', info: ['w UE od 1986', '€ od 1 stycznia 1999'] },
@@ -268,7 +292,7 @@ function App() {
             countryCode: 'nl',
             label: {
               sortName: 'Niderlandy',
-              renderer: Typ35Label('Niderlandy', '(Holandia)')
+              renderer: <>Niderlandy<br /><small>(Holandia)</small></>
             }, info: ['w UE od 1957', '€ od 1 stycznia 1999']
           },
           { countryCode: 'de', info: ['w UE od 1957', '€ od 1 stycznia 1999'] },
@@ -297,6 +321,8 @@ function App() {
       />
 
       <OkładkaA4
+        fontSize={11}
+        width={45}
         countryList={[
           { countryCode: 'hr', info: ['Kuna', '1 kuna = 100 lip', CurrencyUtils.currencyRateMsg('hr')] },
           { countryCode: 'cz', info: ['Korona czeska', '1 korona = 100 halerzy', CurrencyUtils.currencyRateMsg('cz')] },
@@ -311,6 +337,8 @@ function App() {
       />
 
       <OkładkaA4
+        fontSize={11}
+        width={45}
         countryList={[
           { countryCode: 'ca', info: ['Dolar kanadyjski', '1 dolar = 100 centów', CurrencyUtils.currencyRateMsg('ca')] },
           { countryCode: 'us', info: ['Dolar amerykański', '1 dolar = 100 centów', CurrencyUtils.currencyRateMsg('us')] },
@@ -321,6 +349,8 @@ function App() {
       />
 
       <OkładkaA4
+        fontSize={11}
+        width={45}
         countryList={[
           { countryCode: 'az', info: ['Manat azerbejdżański', '1 manat = 100 gapików', 'denominacja w 2007 roku', '1 nowy manat = 5000 starych', CurrencyUtils.currencyRateMsg('az')] },
           { countryCode: 'il', info: ['Nowy izraelski szekel', '1 szekel = 100 agor', CurrencyUtils.currencyRateMsg('il')] },
@@ -331,6 +361,8 @@ function App() {
       />
 
       <OkładkaA4
+        fontSize={11}
+        width={45}
         countryList={[
           { countryCode: 'br', info: ['Real brazylijski', '1 real = 100 centavos', CurrencyUtils.currencyRateMsg('br')] },
         ]}
@@ -339,6 +371,8 @@ function App() {
       />
 
       <OkładkaA4
+        fontSize={11}
+        width={45}
         countryList={[
           { countryCode: 'mu', info: ['Rupia maurytyjska', '1 rumia = 100 centów', CurrencyUtils.currencyRateMsg('mu')], showPin: true },
           { countryCode: 'na', info: ['Dolar namibijski', '1 dolar = 100 centów', CurrencyUtils.currencyRateMsg('na')] },
@@ -351,13 +385,15 @@ function App() {
       />
 
       <OkładkaA4
+        fontSize={11}
+        width={45}
         countryList={[
           { countryCode: 'bt', info: ['Ngultrum', '1 ngultrum = 100 czetrum', CurrencyUtils.currencyRateMsg('bt', 0.055)] },
           {
             countryCode: 'mm',
             label: {
               sortName: 'Mjanma',
-              renderer: Typ35Label('Mjanma', '(Birma)'),
+              renderer: <div>Mjanma<br /> <small>(Birma)</small></div>,
             },
             info: ['Kiat', '1 kiat = 100 pia', CurrencyUtils.currencyRateMsg('mm')]
           },

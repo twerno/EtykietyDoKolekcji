@@ -1,42 +1,46 @@
 import * as React from 'react';
 import { FlagIconCssProvider } from '../chart/FlagProvider';
+import ElementGridContainer from '../components/klocki/GridItemsContainer';
+import { LabelWithInfobox } from '../components/label/LabelWithInfobox';
 import CountryConverterService from '../service/CountryConverterService';
-import { FlexContainer } from '../components/utils/FlexContainer';
-import { LabelWithFlag } from './LabelWithFlag';
 import { IOkladkaCountryProps, isRendererWithSortName } from './OkladkaMapa';
-import OkienkaNaStronie_203x257 from './OkienkoDlaStrony_203x257';
 
 export interface IOkladkaOpisyProps {
+    width: number;
+    fontSize: number;
     countryList: IOkladkaCountryProps[];
 }
 
 export const OkladkaOpisy = (props: IOkladkaOpisyProps) => {
 
-    const variant = props.countryList.length > 12
-        ? 'typ35'
-        : 'regular';
-
     return (
-        <OkienkaNaStronie_203x257.Typ2>
-            <FlexContainer flexDirection="row" flexWrap="wrap" height="100%" alignItems="base-line" alignContent="space-evenly">
-                {
-                    props.countryList
-                        .sort(sortByNamePl)
-                        .map(data =>
-                            <LabelWithFlag
-                                key={data.countryCode}
-                                countryCode={data.countryCode}
-                                flag={FlagIconCssProvider}
-                                infoList={data.info}
-                                variant={variant}
-                                label={isRendererWithSortName(data.label) ? data.label.renderer : data.label}
-                            />
-                        )
-                }
-            </FlexContainer>
-        </OkienkaNaStronie_203x257.Typ2>
+        <ElementGridContainer items={
+            props.countryList
+                .sort(sortByNamePl)
+                .map(data =>
+                    <LabelWithInfobox
+                        key={data.countryCode}
+                        countryCode={data.countryCode}
+                        flag={FlagIconCssProvider}
+                        infoBoxes={[
+                            {
+                                items: data.info
+                            }
+                        ]}
+                        fontSize={props.fontSize}
+                        width={props.width}
+                        paddingTop="none"
+                    >
+                        {isRendererWithSortName(data.label) ? data.label.renderer : data.label}
+                    </LabelWithInfobox>
+                )
+        } />
     );
 }
+
+// //////////////////////////////////////////////////////
+// private
+// //////////////////////////////////////////////////////
 
 function sortByNamePl(a: IOkladkaCountryProps, b: IOkladkaCountryProps): number {
     const nameA = typeof a.label === 'string'

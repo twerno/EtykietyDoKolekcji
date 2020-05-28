@@ -10,12 +10,13 @@ export interface IFlexContainerProps {
     margin?: string | number;
     padding?: string | number;
     height?: string | number;
+    width?: string | number;
 
     flexDirection?: 'row' | 'column' | 'row-reverse' | 'column-reverse';
     flexWrap?: 'nowrap' | 'wrap';
-    justifyContent?: 'flex-start' | 'center' | 'space-between';
-    alignItems?: 'base-line' | 'flex-start' | 'center';
-    alignContent?: 'flex-start' | 'space-around' | 'space-between' | 'space-evenly' | "baseline";
+    justifyContent?: 'flex-start' | 'center' | 'space-between' | 'space-evenly' | 'space-around';
+    alignItems?: 'baseline' | 'flex-start' | 'center';
+    alignContent?: 'flex-start' | 'space-around' | 'space-between' | 'space-evenly' | "baseline" | "center";
     flexGrow?: number;
     flexShrink?: number;
     flexBasis?: number | string;
@@ -38,6 +39,7 @@ export const FlexContainer = styled.div<IFlexContainerProps>(props => css`
                 margin: StyledHelper.addPxToNumber(props.margin),
                 padding: StyledHelper.addPxToNumber(props.padding),
                 height: StyledHelper.addPxToNumber(props.height),
+                width: StyledHelper.addPxToNumber(props.width),
                 position: props.position,
 
                 flexDirection: props.flexDirection,

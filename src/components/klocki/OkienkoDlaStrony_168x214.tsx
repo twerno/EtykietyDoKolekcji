@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Okienko } from './containers/Okienko';
+import { Okienko } from './Okienko';
 
 /**
  * Strona na monety o wymiarach 168 x 214 mm

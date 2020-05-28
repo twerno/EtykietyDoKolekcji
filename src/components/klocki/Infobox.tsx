@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { AsyncTextRenderer } from '../components/utils/AsyncTextRenderer';
+import { AsyncTextRenderer } from '../utils/AsyncTextRenderer';
 
 export interface IInfoboxItem {
     label: string;
@@ -12,12 +12,24 @@ export interface IInfoboxProps extends IInfoBoxContainerProps {
 }
 
 export default (props: IInfoboxProps) => {
+    const [id] = React.useState(Math.random());
+
     return (
         <InfoBoxContainer {...props}>
-            {props.items?.map(item => <InfoboxItemRenderer item={item} />)}
+            {props.items?.map(
+                (item, idx) =>
+                    <InfoboxItemRenderer
+                        item={item}
+                        key={`${id}_${idx}`}
+                    />
+            )}
         </InfoBoxContainer>
     );
 }
+
+// //////////////////////////////////////////////////////
+// containers
+// //////////////////////////////////////////////////////
 
 interface IInfoBoxContainerProps {
     textAlign?: 'center' | 'left';
@@ -64,6 +76,10 @@ const InfoBoxContainer = styled.ul<IInfoBoxContainerProps>`
         content: ': ';
     }
 `;
+
+// //////////////////////////////////////////////////////
+// private
+// //////////////////////////////////////////////////////
 
 interface IInfoboxItemRendererProps {
     item: IInfoboxItem | string | Promise<string>;

@@ -1,18 +1,13 @@
 import * as React from 'react';
+import styled from 'styled-components';
 import { MapChart, MinimapPosition } from '../chart/chart';
 import { FlagIconCssProvider } from '../chart/FlagProvider';
-import styled from 'styled-components';
-import OkienkaNaStronie_203x257 from './OkienkoDlaStrony_203x257';
 
 export interface IOkladkaCountryProps {
     countryCode: string;
     label?: React.ReactElement | string | { sortName: string, renderer: React.ReactElement };
     info?: Array<string | Promise<string>>;
     showPin?: true;
-}
-
-export function isRendererWithSortName(x: any): x is { sortName: string, renderer: React.ReactElement } {
-    return !!x && typeof x.sortName === 'string' && (x.renderer instanceof Object);
 }
 
 export interface IOkladkaMapaProps {
@@ -25,7 +20,7 @@ export interface IOkladkaMapaProps {
 export const OkladkaMapa = (props: IOkladkaMapaProps) => {
 
     return (
-        <OkienkaNaStronie_203x257.Typ2>
+        <>
             {
                 props.mapLabel
                     ? (
@@ -44,9 +39,13 @@ export const OkladkaMapa = (props: IOkladkaMapaProps) => {
                 minimap={props.minimap}
                 flagProvider={FlagIconCssProvider}
             />
-        </OkienkaNaStronie_203x257.Typ2>
+        </>
     );
 }
+
+// //////////////////////////////////////////////////////
+// containers
+// //////////////////////////////////////////////////////
 
 const LabelContainer = styled.div`
     position: absolute;
@@ -66,3 +65,9 @@ const Label = styled.div`
     background-color: white;
     box-shadow: 3px 3px 6px 1px rgba(0,0,0,0.51);
 `;
+
+
+
+export function isRendererWithSortName(x: any): x is { sortName: string, renderer: React.ReactElement } {
+    return !!x && typeof x.sortName === 'string' && (x.renderer instanceof Object);
+}

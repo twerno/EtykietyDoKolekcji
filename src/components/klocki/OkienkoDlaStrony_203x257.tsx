@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Okienko } from './containers/Okienko';
+import { Okienko } from './Okienko';
 
 /**
  * Strona na banknoty o wymiarach 203 x 257 mm

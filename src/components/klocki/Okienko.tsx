@@ -14,7 +14,6 @@ export const Okienko = styled.div<IOkienkoProps>`
     position: relative;
     box-sizing: border-box;
     
-    background: #ededed59;
     overflow: hidden;
 
     @media print {

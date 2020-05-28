@@ -1,4 +1,4 @@
-import { CSSObject } from "styled-components";
+import { CSSObject, FlattenSimpleInterpolation } from "styled-components";
 
 export default {
     addPxToNumber,
@@ -17,3 +17,11 @@ function cssMerge<Props>(items: Array<{ condition: (props: Props) => boolean, fo
         .map(item => item.formatter(props))
         .reduce((prev, curr) => ({ ...prev, ...curr }), {});
 }
+
+type IVariantMap<T extends string = string> = { [key in T]: (CSSObject | FlattenSimpleInterpolation) };
+
+export const variant = <T extends string = string>(variants: IVariantMap<T>) => {
+    return (props: { variant: T }) => {
+        return variants[props.variant];
+    };
+};
