@@ -14,27 +14,30 @@ export interface IOkladkaOpisyProps {
 export const OkladkaOpisy = (props: IOkladkaOpisyProps) => {
 
     return (
-        <ElementGridContainer items={
-            props.countryList
-                .sort(sortByNamePl)
-                .map(data =>
-                    <LabelWithInfobox
-                        key={data.countryCode}
-                        countryCode={data.countryCode}
-                        flag={FlagIconCssProvider}
-                        infoBoxes={[
-                            {
-                                items: data.info
-                            }
-                        ]}
-                        fontSize={props.fontSize}
-                        width={props.width}
-                        paddingTop="none"
-                    >
-                        {isRendererWithSortName(data.label) ? data.label.renderer : data.label}
-                    </LabelWithInfobox>
-                )
-        } />
+        <ElementGridContainer
+            mode={props.countryList.length <= 8 ? 'flexBox' : 'grid'}
+            width={props.width}
+            items={
+                props.countryList
+                    .sort(sortByNamePl)
+                    .map(data =>
+                        <LabelWithInfobox
+                            key={data.countryCode}
+                            countryCode={data.countryCode}
+                            flag={FlagIconCssProvider}
+                            infoBoxes={[
+                                {
+                                    items: data.info
+                                }
+                            ]}
+                            fontSize={props.fontSize}
+                            width={props.width}
+                            paddingTop="none"
+                        >
+                            {isRendererWithSortName(data.label) ? data.label.renderer : data.label}
+                        </LabelWithInfobox>
+                    )
+            } />
     );
 }
 

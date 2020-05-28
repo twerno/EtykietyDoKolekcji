@@ -37,7 +37,6 @@ interface ILabelWithInfoboxContainerProps {
 
 const LabelWithInfoboxContainer = styled.div<ILabelWithInfoboxContainerProps>`
     font-size: ${props => props.fontSize}px;
-    padding: 0.5em;
 
     ${
     props => props.width

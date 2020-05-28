@@ -282,7 +282,7 @@ function App() {
       <OkładkaA4
         mapLabel="Strefa Euro"
         fontSize={8}
-        width={25}
+        width={23}
         countryList={[
           { countryCode: 'ie', info: ['w UE od 1973', '€ od 1 stycznia 1999'] },
           { countryCode: 'es', info: ['w UE od 1986', '€ od 1 stycznia 1999'] },
@@ -292,8 +292,8 @@ function App() {
             countryCode: 'nl',
             label: {
               sortName: 'Niderlandy',
-              renderer: <>Niderlandy<br /><small>(Holandia)</small></>
-            }, info: ['w UE od 1957', '€ od 1 stycznia 1999']
+              renderer: <>Niderlandy</>
+            }, info: ['dawniej Holandia', 'w UE od 1957', '€ od 1 stycznia 1999']
           },
           { countryCode: 'de', info: ['w UE od 1957', '€ od 1 stycznia 1999'] },
           { countryCode: 'dk', info: ['w UE od 1973', '€ od 1 stycznia 1999'] },
@@ -393,9 +393,9 @@ function App() {
             countryCode: 'mm',
             label: {
               sortName: 'Mjanma',
-              renderer: <div>Mjanma<br /> <small>(Birma)</small></div>,
+              renderer: <>Mjanma</>,
             },
-            info: ['Kiat', '1 kiat = 100 pia', CurrencyUtils.currencyRateMsg('mm')]
+            info: ['dawniej Birma', 'Kiat', '1 kiat = 100 pia', CurrencyUtils.currencyRateMsg('mm')]
           },
           { countryCode: 'lk', info: ['Rupia lankijska', '1 rupia = 100 centów', CurrencyUtils.currencyRateMsg('lk')] },
           { countryCode: 'mn', info: ['Tugrik', '1 tugrik = 100 möngö', CurrencyUtils.currencyRateMsg('mn')] },
