@@ -32,6 +32,7 @@ interface IGridContainerStyledProps {
     width: number;
 }
 
+// https://stackoverflow.com/a/46099319
 const GridContainerStyled = styled.ul<IGridContainerStyledProps>`
     display: grid;
     grid-template-columns: repeat(auto-fill, ${props => props.width}mm);

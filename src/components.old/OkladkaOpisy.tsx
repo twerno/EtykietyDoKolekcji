@@ -13,9 +13,11 @@ export interface IOkladkaOpisyProps {
 
 export const OkladkaOpisy = (props: IOkladkaOpisyProps) => {
 
+    const useGrid = props.countryList.length > 4;
+
     return (
         <ElementGridContainer
-            mode={props.countryList.length <= 8 ? 'flexBox' : 'grid'}
+            mode={useGrid ? 'grid' : 'flexBox'}
             width={props.width}
             items={
                 props.countryList
@@ -31,7 +33,7 @@ export const OkladkaOpisy = (props: IOkladkaOpisyProps) => {
                                 }
                             ]}
                             fontSize={props.fontSize}
-                            width={props.width}
+                            width={useGrid ? undefined : props.width}
                             paddingTop="none"
                         >
                             {isRendererWithSortName(data.label) ? data.label.renderer : data.label}

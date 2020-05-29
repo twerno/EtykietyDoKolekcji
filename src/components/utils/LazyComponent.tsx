@@ -23,7 +23,7 @@ export const LazyComponent: React.FC<{}> = (props) => {
     }, []);
 
     return (
-        <FlexContainer ref={wrapperRef} fullSize display="block">
+        <FlexContainer ref={wrapperRef} height="100%" width="100%" display="block">
             {inView ? props.children : null}
         </FlexContainer>
     );

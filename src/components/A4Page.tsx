@@ -7,7 +7,7 @@ interface IA4PageProps {
 export const A4Page = styled.div<IA4PageProps>`
     height: 297mm;
     width: 210mm;
-    padding: 10mm;
+    padding: 5mm;
     position: ${props => props.position};
 
     display: flex;
