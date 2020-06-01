@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Typ2ContainerSchema } from "../PageSchema";
+import { Typ2ContainerSchema } from "../state/PageSchema";
 import OkienkoDlaStrony_203x257 from "../../components/klocki/OkienkoDlaStrony_203x257";
-import ListaEtykietBuilder from './ListaEtykietBuilder';
+import ListaEtykietBuilder from '../elements/ListaEtykiet/ListaEtykietBuilder';
 
 export interface ITyp2ContainerBuilderProps {
     data: Typ2ContainerSchema;

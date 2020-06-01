@@ -1,6 +1,6 @@
-export interface IPageSchema {
-    interfaceId: 'IPageSchema';
+import { IListaEtykietSchema } from "../elements/ListaEtykiet/ListaEtykietSchema";
 
+export interface IPageSchema {
     name: string;
     content: IListaEtykietSchema;
 }
@@ -31,20 +31,20 @@ export interface MapaPlusOpisy {
 //     content: EtykietaZInfoboxem[];
 // }
 
-export interface EtykietaMalaTyp20 extends Etykieta {
-    interfaceId: 'EtykietaMalaTyp20';
-}
+// export interface EtykietaMalaTyp20 extends Etykieta {
+//     interfaceId: 'EtykietaMalaTyp20';
+// }
 
-export interface EtykietaMalaTyp35 extends Etykieta {
-    interfaceId: 'EtykietaMalaTyp35';
-}
+// export interface EtykietaMalaTyp35 extends Etykieta {
+//     interfaceId: 'EtykietaMalaTyp35';
+// }
 
-export interface Etykieta {
-    countryCode: string;
-    customImgUrl?: string;
-    customLabel?: string;
-    // fontSize: number;
-}
+// export interface Etykieta {
+//     countryCode: string;
+//     customImgUrl?: string;
+//     customLabel?: string;
+//     // fontSize: number;
+// }
 
 export interface EtykietaZInfoboxem {
     interfaceId: 'EtykietaZInfoboxem';
@@ -73,26 +73,4 @@ export interface IInfoboxItemTextWithLabelConfig {
     interfaceId: 'IInfoboxItemTextWithLabelConfig';
     label: string;
     text: string;
-}
-
-export interface IListaEtykietSchema {
-    interfaceId: 'IListaEtykiet';
-
-    content: Array<IEtykietaTyp20Schema | IEtykietaTyp35Schema>;
-}
-
-export interface IEtykietaTyp20Schema {
-    interfaceId: 'IEtykietaTyp20';
-    countryCode: string;
-    customImgUrl?: string;
-    customLabel?: string;
-    // fontSize: number;
-}
-
-export interface IEtykietaTyp35Schema {
-    interfaceId: 'IEtykietaTyp35';
-    countryCode: string;
-    customImgUrl?: string;
-    customLabel?: string;
-    // fontSize: number;
 }

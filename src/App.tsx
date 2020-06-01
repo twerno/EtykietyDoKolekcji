@@ -1,19 +1,21 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import './App.css';
-import OriginalPages from './staticRenderer/OriginalPages';
-import { PageBuilder } from './pageBuilder/PageBuilder';
-import { pageData } from './pageBuilder/PageData';
+import { Pages } from './pageBuilder/elements/ListaEtykiet/Pages';
+import { store } from './state/store';
 
 function App() {
 
   return (
-    <div className="App">
+    <Provider store={store}>
+      <div className="App">
 
-      <PageBuilder pageData={pageData} />
+        <Pages />
 
-      <OriginalPages />
+        {/* <OriginalPages /> */}
 
-    </div>
+      </div>
+    </Provider>
   );
 }
 

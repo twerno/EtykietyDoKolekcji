@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { IPageSchema } from './PageSchema';
+import { IPageSchema } from './state/PageSchema';
 import { A4Page } from '../components/A4Page';
-import ListaEtykietBuilder from './builders/ListaEtykietBuilder';
+import ListaEtykietBuilder from './elements/ListaEtykiet/ListaEtykietBuilder';
 
 export interface IPageBuilderProps {
     pageData: IPageSchema;
