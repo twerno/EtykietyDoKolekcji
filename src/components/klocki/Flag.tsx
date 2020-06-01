@@ -11,7 +11,9 @@ export default ({ flag, countryCode, width }: IFlagProps) => {
 
     const flagUrl = typeof flag === 'string'
         ? flag
-        : flag?.provideFlagFor(countryCode).url;
+        : countryCode !== ''
+            ? flag?.provideFlagFor(countryCode).url
+            : '/img/flag_placeholder.jpg';
 
     return <FlagContainer
         src={flagUrl}

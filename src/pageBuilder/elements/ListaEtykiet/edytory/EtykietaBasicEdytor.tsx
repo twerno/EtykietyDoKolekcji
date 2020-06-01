@@ -6,10 +6,13 @@ import { IEtykietaBasicSchema } from '../ListaEtykietSchema';
 
 export interface IEtykietaBasicEdytorProps {
     value: IEtykietaBasicSchema;
-    changeHandler: (delta: Partial<IEtykietaBasicSchema>) => void;
+    changeHandler: (delta: IEtykietaBasicSchema) => void;
+    removeHandler: () => void;
 }
 
-export default ({ value, changeHandler }: IEtykietaBasicEdytorProps) => {
+export default ({ value, changeHandler, removeHandler }: IEtykietaBasicEdytorProps) => {
+
+    const change = (delta: Partial<IEtykietaBasicSchema>) => changeHandler({ ...value, ...delta });
 
     const countryData = countryList
         .filter(i => StringUtils.lowerCaseCompare(i.code, value?.countryCode))[0];
@@ -20,7 +23,7 @@ export default ({ value, changeHandler }: IEtykietaBasicEdytorProps) => {
                 <label>Typ</label>
                 <select
                     value={value.typ || 'Typ20'}
-                    onChange={ev => changeHandler({ typ: ev.target.value as any })}
+                    onChange={ev => change({ typ: ev.target.value as any })}
                 >
                     <option value="typ20">Typ20</option>
                     <option value="typ35">Typ35</option>
@@ -30,7 +33,7 @@ export default ({ value, changeHandler }: IEtykietaBasicEdytorProps) => {
             <FlexContainer flexDirection="column">
                 <label>Państwo</label>
                 <select
-                    onChange={ev => changeHandler({ countryCode: ev.target.value })}
+                    onChange={ev => change({ countryCode: ev.target.value })}
                     value={value.countryCode.toUpperCase() || ''}
                 >
                     <option value="">Brak</option>
@@ -47,7 +50,7 @@ export default ({ value, changeHandler }: IEtykietaBasicEdytorProps) => {
                 <label>Flaga</label>
                 <input
                     type="text"
-                    onChange={ev => changeHandler({ customImgUrl: ev.target.value })}
+                    onChange={ev => change({ customImgUrl: ev.target.value })}
                     value={value.customImgUrl || ''}
                     placeholder={countryData ? 'Flaga państwa' : 'brak'}
                 />
@@ -57,10 +60,14 @@ export default ({ value, changeHandler }: IEtykietaBasicEdytorProps) => {
                 <label>Nazwa państwa</label>
                 <input
                     type="text"
-                    onChange={ev => changeHandler({ customLabel: ev.target.value })}
+                    onChange={ev => change({ customLabel: ev.target.value })}
                     value={value.customLabel || ''}
                     placeholder={countryData?.name_pl}
                 />
+            </FlexContainer>
+
+            <FlexContainer flexDirection="column" justifyContent="flex-end">
+                <button onClick={removeHandler}>Usuń</button>
             </FlexContainer>
 
         </FlexContainer>

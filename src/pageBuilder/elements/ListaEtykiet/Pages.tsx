@@ -7,6 +7,7 @@ import { pageSlice } from '../../state/pageSlice';
 import ListaEtykietEdytor from './edytory/ListaEtykietEdytor';
 import { IListaEtykietSchema } from './ListaEtykietSchema';
 import { store } from '../../../state/store';
+import { FlexContainer } from '../../../components/utils/FlexContainer';
 
 export interface IPagesProps {
 
@@ -30,14 +31,14 @@ export const Pages = (props: IPagesProps) => {
     return <>
         {
             pages.map((page, idx) =>
-                <React.Fragment key={`page_${idx}`}>
+                <FlexContainer key={`page_${idx}`}>
                     <PageBuilder pageData={page} />
 
                     <ListaEtykietEdytor
                         values={page.content}
                         changeHandler={listaEtykietChangeHandler(idx)}
                     />
-                </React.Fragment>
+                </FlexContainer>
             )
         }
     </>;
