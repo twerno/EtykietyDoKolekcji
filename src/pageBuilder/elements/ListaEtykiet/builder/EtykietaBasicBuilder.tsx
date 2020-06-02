@@ -15,6 +15,7 @@ export default ({ data }: IEtykietaBasicBuilderProps) => {
             <EtykietaTyp20
                 countryCode={data.countryCode}
                 flag={data.customImgUrl || FlagIconCssProvider}
+                fontSize={data.fontSize}
             >
                 {data.customLabel}
             </EtykietaTyp20>
@@ -23,6 +24,7 @@ export default ({ data }: IEtykietaBasicBuilderProps) => {
             <EtykietaTyp35
                 countryCode={data.countryCode}
                 flag={data.customImgUrl || FlagIconCssProvider}
+                fontSize={data.fontSize}
             >
                 {data.customLabel}
             </EtykietaTyp35>

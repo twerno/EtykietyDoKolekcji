@@ -4,7 +4,7 @@ import StyledHelper from "../../helper/StyledHelper";
 export interface IFlexContainerProps {
     center?: boolean;
     fullSize?: boolean;
-    position?: 'relative' | 'absolute';
+    position?: 'relative' | 'absolute' | 'fixed';
 
     display?: 'block' | 'flex';
     margin?: string | number;
@@ -23,12 +23,18 @@ export interface IFlexContainerProps {
     flex?: string;
 
     overflow?: 'visible' | 'hidden';
-    overflowX?: 'visible' | 'hidden';
-    overflowY?: 'visible' | 'hidden';
+    overflowX?: 'visible' | 'hidden' | 'scroll';
+    overflowY?: 'visible' | 'hidden' | 'scroll';
+
+    isPrintable?: boolean;
 }
 
 export const FlexContainer = styled.div<IFlexContainerProps>(props => css`
     display: flex;
+
+    @media print {
+        display: ${props.isPrintable === false ? 'none' : props.theme.display || 'flex'};
+    };
     `,
 
     StyledHelper.cssMerge([

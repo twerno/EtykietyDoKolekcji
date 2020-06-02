@@ -31,13 +31,16 @@ export const Pages = (props: IPagesProps) => {
     return <>
         {
             pages.map((page, idx) =>
-                <FlexContainer key={`page_${idx}`}>
+                <FlexContainer key={`page_${idx}`} position="fixed" width="100%">
                     <PageBuilder pageData={page} />
 
-                    <ListaEtykietEdytor
-                        values={page.content}
-                        changeHandler={listaEtykietChangeHandler(idx)}
-                    />
+                    <FlexContainer height='100vh' overflowY='scroll' width='100%' isPrintable={false}>
+                        <ListaEtykietEdytor
+                            values={page.content}
+                            changeHandler={listaEtykietChangeHandler(idx)}
+                        />
+
+                    </FlexContainer>
                 </FlexContainer>
             )
         }

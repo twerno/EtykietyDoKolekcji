@@ -47,7 +47,7 @@ const BasicLabelContainer = styled.div<IBasicLabelContainerProps>`
     width: 100%;
     max-width: ${props => props.width ? `${props.width}mm` : 'unset'};
     font-size: ${props => props.fontSize}px;
-    padding-top: 0.8em;
+    padding-top: 7px;
 
     display: flex;
     flex-direction: column;
@@ -64,6 +64,7 @@ const BasicLabelHeader = styled.div<IBasicLabelContainerProps>`
     font-size: 1.5em;
     font-family: 'Inter', sans-serif;
     font-weight: bold;
+    text-align: center;
                 
     ${
     props => props.responsiveHeader

@@ -48,7 +48,7 @@ const DoubleSidedElementRenderer: React.FC<IDoubleSidedElementRendererProps> =
             <DoubleSidedElementContext.Provider value={render === 'front'}>
                 <SingleSideElementContainer
                     rotate={rotate}
-                    printable={!currentSide}
+                    show={currentSide ? render === 'front' : render === 'back'}
                 >
                     {children}
                 </SingleSideElementContainer>
@@ -98,7 +98,7 @@ const DoubleSidedElementContainer = styled.div<IDoubleSideControllerContainerPro
 
 interface ISingleSideElementContainerProps {
     rotate: number;
-    printable: boolean;
+    show: boolean;
 }
 
 const SingleSideElementContainer = styled.div<ISingleSideElementContainerProps>`
@@ -116,6 +116,6 @@ const SingleSideElementContainer = styled.div<ISingleSideElementContainerProps>`
     transform: rotateY(${props => props.rotate}deg);
 
     @media print {
-        display: ${props => props.printable ? undefined : 'none'};
+        display: ${props => props.show ? undefined : 'none'};
     }
 `;

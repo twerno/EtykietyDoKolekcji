@@ -12,13 +12,15 @@ export const pageData: IPageSchema[] =
                         interfaceId: "IEtykietaBasicSchema",
                         typ: 'typ20',
                         countryCode: 'us',
+                        fontSize: 11,
                     },
                     {
                         interfaceId: 'IEtykietaBasicSchema',
                         typ: 'typ35',
                         countryCode: '',
                         customImgUrl: 'https://etykiety.s3-eu-west-1.amazonaws.com/poczta_polska.jpg',
-                        customLabel: 'Żeton telefoniczny'
+                        customLabel: 'Żeton telefoniczny',
+                        fontSize: 8
                     }
                 ]
             }

@@ -10,5 +10,5 @@ export interface IEtykietaBasicSchema {
     countryCode: string;
     customImgUrl?: string;
     customLabel?: string;
-    // fontSize: number;
+    fontSize: number;
 }
