@@ -222,6 +222,7 @@ function App() {
         </DoubleSidedElementController>
       </A4Page>
 
+
       <A4Page>
         <DoubleSidedElementController>
           <DoubleSidedElementContainer>
@@ -254,6 +255,12 @@ function App() {
             <EtykietaTyp35 countryCode="bg" />
             <EtykietaTyp35 countryCode="tr" />
             <EtykietaTyp35 countryCode="sk" />
+            <EtykietaTyp35 countryCode="fr" />
+            <EtykietaTyp35 countryCode="de" />
+            <EtykietaTyp35 countryCode="sg" />
+            <EtykietaTyp35 countryCode="tt" />
+            <EtykietaTyp35 countryCode="se" />
+            <EtykietaTyp35 countryCode="tw" />
           </DoubleSidedElementContainer>
         </DoubleSidedElementController>
       </A4Page>
@@ -322,7 +329,7 @@ function App() {
 
       <OkładkaA4
         fontSize={11}
-        width={45}
+        width={35}
         countryList={[
           { countryCode: 'hr', info: ['Kuna', '1 kuna = 100 lip', CurrencyUtils.currencyRateMsg('hr')] },
           { countryCode: 'cz', info: ['Korona czeska', '1 korona = 100 halerzy', CurrencyUtils.currencyRateMsg('cz')] },
@@ -331,6 +338,8 @@ function App() {
           { countryCode: 'sk', info: ['Korona słowacka', '1 korona = 100 halerzy', 'Euro od 1 stycznia 2009'] },
           { countryCode: 'bg', info: ['Lew', '1 lew = 100 stotinek', CurrencyUtils.currencyRateMsg('bg')] },
           { countryCode: 'tr', info: ['Lira turecka', '1 lira = 100 kuruszy', CurrencyUtils.currencyRateMsg('tr')] },
+          { countryCode: 'fr', info: ['Frank francuski', '1 frank = 100 centymów', 'Euro od 1 stycznia 2002'] },
+          { countryCode: 'de', info: ['Marka niemiecka', '1 marka = 100 fenigów', 'Euro od 1 stycznia 2002'] },
         ]}
         includeInView={["is"]}
         minimap="bottom-left"
@@ -342,8 +351,17 @@ function App() {
         countryList={[
           { countryCode: 'ca', info: ['Dolar kanadyjski', '1 dolar = 100 centów', CurrencyUtils.currencyRateMsg('ca')] },
           { countryCode: 'us', info: ['Dolar amerykański', '1 dolar = 100 centów', CurrencyUtils.currencyRateMsg('us')] },
-          { countryCode: 'bs', info: ['Dolar bahamski', '1 dolar = 100 centów', CurrencyUtils.currencyRateMsg('bs')], showPin: true },
           { countryCode: 'au', info: ['Dolar australijski', '1 dolar = 100 centów', CurrencyUtils.currencyRateMsg('au')] },
+        ]}
+        minimap="bottom-left"
+      />
+
+      <OkładkaA4
+        fontSize={11}
+        width={45}
+        countryList={[
+          { countryCode: 'bs', info: ['Dolar bahamski', '1 dolar = 100 centów', CurrencyUtils.currencyRateMsg('bs')], showPin: true },
+          { countryCode: 'tt', info: ['Dolar Trynidadu i Tobago', '1 dolar = 100 centów', CurrencyUtils.currencyRateMsg('tt')] },
         ]}
         minimap="bottom-left"
       />
@@ -365,6 +383,7 @@ function App() {
         width={45}
         countryList={[
           { countryCode: 'br', info: ['Real brazylijski', '1 real = 100 centavos', CurrencyUtils.currencyRateMsg('br')] },
+          { countryCode: 've', info: ['Boliwar', '1 boliwar = 100 centymów', CurrencyUtils.currencyRateMsg('ves')] },
         ]}
         includeInView={['br', 'gs', 'pa']}
         minimap="bottom-left"
@@ -401,9 +420,10 @@ function App() {
           { countryCode: 'mn', info: ['Tugrik', '1 tugrik = 100 möngö', CurrencyUtils.currencyRateMsg('mn')] },
           { countryCode: 'th', info: ['Bat', '1 bat = 100 satangów', CurrencyUtils.currencyRateMsg('th')] },
           { countryCode: 'la', info: ['Kip', '1 kip = 100 at', CurrencyUtils.currencyRateMsg('la')] },
+          { countryCode: 'tw', info: ['Dolar tajwański', '1 dolar = 100 centów', CurrencyUtils.currencyRateMsg('tw')] },
+          { countryCode: 'jp', info: ['Jen', '1 jen = 100 senów', '1 jen = 1000 rinów', CurrencyUtils.currencyRateMsg('jp')] },
 
         ]}
-        includeInView={['jp', 'pg']}
         minimap="top-right"
       />
 
